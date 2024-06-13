@@ -239,6 +239,169 @@ class SV6_english:
         changelog.to_csv("Changelog.csv",index = False)
         print("SV6 completed")
 
+class SV151_Japanese():
+    def __init__(self):
+        print("Loading...")
+
+    #from Sawadeekard_151
+    def swdk_main():
+        url = "https://sawadeekard.com/collections/jap-pokemon-151"
+        newlist = []
+        namelist = []
+        IDlist = []
+
+        for i in range(1, 23):
+            if i == 1:
+                url = "https://sawadeekard.com/collections/jap-pokemon-151"
+                page = requests.get(url)
+                soup = BeautifulSoup(page.content, 'html.parser')
+
+                data = soup.find_all("h3", class_="card__heading h5")
+
+                # print (data)
+                for each in data:
+                    newlist.append(str(each))
+            else:
+                url = "https://sawadeekard.com/collections/jap-pokemon-151" + "?page=" + str(i)
+                page = requests.get(url)
+                soup = BeautifulSoup(page.content, 'html.parser')
+
+                data = soup.find_all("h3", class_="card__heading h5")
+
+                # print (data)
+                for each in data:
+                    newlist.append(str(each))
+
+        for i in range(len(newlist)):
+            # newlist[i]=re.search(r"^([).*())$",newlist[i])
+            newlist[i] = str(re.findall(r"\[.*\)", newlist[i]))
+
+        for i in range(len(newlist)):
+            a = newlist[i]
+            IDlist.append(a[18:25])
+            # namelist.append(a[26:-2])
+            namelist.append(a[2:-2])
+
+        df_swdk = pd.DataFrame({"ID": IDlist, "Name": namelist})
+        df_swdk.sort_values("ID", ascending=True, inplace=True)
+        return df_swdk
+    #from yuyutei_151
+    def yyt_main():
+        page = requests.get("https://yuyu-tei.jp/sell/poc/s/sv02a")
+        soup = BeautifulSoup(page.content, "html.parser")
+
+        # page2 = requests.get("https://jp.pokellector.com/Pokemon-151-Expansion/")
+        # soup2 = BeautifulSoup(page2.content,"html.parser")
+
+        # ggwp = soup2.find_all("div",class_="plaque")
+        # for each in ggwp:
+        #     print (each)
+
+        # print(soup.find_all('h4','strong','span'))
+        ID = soup.find_all('span', class_="d-block border border-dark p-1 w-100 text-center my-2")
+        name = soup.find_all('h4', class_="text-primary fw-bold")
+        price = soup.find_all('strong', class_=re.compile('^d-block text-end'))
+
+        ID_str = []
+        name_str = []
+        price_1 = []
+        price_str = []
+
+        for each in ID:
+            ID_str.append(str(each))
+
+        for each in name:
+            name_str.append(str(each))
+
+        for each in price:
+            price_1.append(str(each))
+
+        for i in range(len(ID_str)):
+            ID_str[i] = ID_str[i].replace('<span class="d-block border border-dark p-1 w-100 text-center my-2">', '')
+            ID_str[i] = ID_str[i].replace('</span>', '')
+            price_1[i] = price_1[i].replace('<strong class="d-block text-end">', '')
+            price_1[i] = price_1[i].replace('<strong class="d-block text-end text-danger">', '')
+            price_1[i] = price_1[i].replace('</strong>', '')
+            price_1[i] = price_1[i].replace('円', '')
+            price_1[i] = price_1[i].replace(',', '')
+            name_str[i] = name_str[i].replace('<h4 class="text-primary fw-bold">', '')
+            name_str[i] = name_str[i].replace('</h4>', '')
+            name_str[i] = name_str[i].strip()
+            price_str.append(int(price_1[i].strip()))
+
+        # dttm = datetime.datetime.now()
+        # filename = f"Japanese 151 {dttm.strftime('%y%m%d')}.csv"
+
+        df_yyt = pd.DataFrame({"ID": ID_str, "Name": name_str, "Price in Yen": price_str})
+        df_yyt.sort_values(["ID", "Price in Yen"], ascending=True, inplace=True)
+        df_yyt.reset_index(drop=True, inplace=True)
+        # df_yyt.to_csv(filename,index=False)
+        return df_yyt
+
+    #from Japanese_151_price
+    def namechk(string, df):
+        chk = string
+        strvar = ''
+        for each in range(len(df.index)):
+            strhold = df.loc[each]['Name']
+            if re.findall(chk, strhold):
+                strvar = strhold
+        return strvar
+
+    def jp_151_merge():
+        df_swdk = SV151_Japanese().swdk_main()
+        df_yyt = SV151_Japanese().yyt_main()
+
+        df_final = pd.DataFrame(columns=['ID', 'Name', 'Price'])
+        # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5][0]].Name
+        for i in range(len(df_yyt.index)):
+            # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5][0]].Name
+            if (len(df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].index) > 1):
+                df_swdk_hold = df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].reset_index(drop=True)
+                df_yyt_hold = df_yyt[df_yyt.ID == df_yyt.iloc[i][0]].reset_index(drop=True)
+                if re.search(r".*マスターボール柄.*", df_yyt.loc[i]['Name']):
+                    namestr = namechk(r".*Master Ball.*", df_swdk_hold)
+                    new_row = {
+                        'ID': df_yyt.loc[i]['ID'],
+                        'Name': namestr,
+                        'Price': df_yyt.loc[i]['Price in Yen']
+                    }
+                elif re.search(r".*モンスターボール柄.*", df_yyt.loc[i]['Name']):
+                    namestr = namechk(r".*Reverse Holo.*", df_swdk_hold)
+                    new_row = {
+                        'ID': df_yyt.loc[i]['ID'],
+                        'Name': namestr,
+                        'Price': df_yyt.loc[i]['Price in Yen']
+                    }
+                else:
+                    namestr = namechk(r".*Foil.*", df_swdk_hold)
+                    new_row = {
+                        'ID': df_yyt.loc[i]['ID'],
+                        'Name': namestr,
+                        'Price': df_yyt.loc[i]['Price in Yen']
+                    }
+            elif (len(df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].index) == 1):
+                new_row = {
+                    'ID': df_yyt.loc[i]['ID'],
+                    'Name': df_swdk.loc[i]['Name'],
+                    'Price': df_yyt.loc[i]['Price in Yen']
+                }
+            new_row = pd.DataFrame(new_row, index=[0])
+            df_final = pd.concat([df_final, new_row], ignore_index=True)
+
+        #    directory="\data\Japanese_151"
+        #    if not os.path.exists(directory):
+        #        os.makedirs(directory)
+
+        dttm = datetime.now()
+        filename = f"Japanese 151 {dttm.strftime('%y%m%d')}.csv"
+
+        df_final.to_csv(filename, index=False)
+        return (df_final)
+
+    def jp_151_main():
+        pass
+
 class controller:
     def __init__(self):
         print('\n===========================================')
