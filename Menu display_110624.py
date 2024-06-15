@@ -141,8 +141,8 @@ class SV6_english:
         correctcounter = 0
         wrongcounter = 0
         wronglist = []
-        usdtosgd = SV6_english().xe_rates()
-        usdtosgd = float(usdtosgd)
+        rates = SV6_english().xe_rates()
+        usdtosgd = float(rates)
         for i in range(len(df_swdk)):
             if re.search('Reverse Holo', df_swdk.iloc[i][1]):
                 if re.search(df_singles.iloc[singles_counter-1][1],df_swdk.iloc[i][1]):
@@ -215,6 +215,7 @@ class SV6_english:
         return(df_shopify,df_changelog)
 
     def xe_rates():
+        #USD to SGD
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content,"html.parser")
@@ -239,7 +240,7 @@ class SV6_english:
         changelog.to_csv("Changelog.csv",index = False)
         print("SV6 completed")
 
-class SV151_Japanese():
+class SV2a_Japanese():
     def __init__(self):
         print("Loading...")
 
@@ -349,8 +350,10 @@ class SV151_Japanese():
         return strvar
 
     def jp_151_merge():
-        df_swdk = SV151_Japanese().swdk_main()
-        df_yyt = SV151_Japanese().yyt_main()
+        df_swdk = SV2a_Japanese().swdk_main()
+        df_yyt = SV2a_Japanese().yyt_main()
+        rates = SV2a_Japanese().xe_rates()
+        jpytosgd = float(rates)
 
         df_final = pd.DataFrame(columns=['ID', 'Name', 'Price'])
         # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5][0]].Name
@@ -359,32 +362,37 @@ class SV151_Japanese():
             if (len(df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].index) > 1):
                 df_swdk_hold = df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].reset_index(drop=True)
                 df_yyt_hold = df_yyt[df_yyt.ID == df_yyt.iloc[i][0]].reset_index(drop=True)
+                sgdvalue = round(df_yyt.loc[i]['Price in Yen']*10)/10
                 if re.search(r".*マスターボール柄.*", df_yyt.loc[i]['Name']):
                     namestr = namechk(r".*Master Ball.*", df_swdk_hold)
                     new_row = {
                         'ID': df_yyt.loc[i]['ID'],
                         'Name': namestr,
-                        'Price': df_yyt.loc[i]['Price in Yen']
+                        'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                        'Price in SGD': sgdvalue
                     }
                 elif re.search(r".*モンスターボール柄.*", df_yyt.loc[i]['Name']):
                     namestr = namechk(r".*Reverse Holo.*", df_swdk_hold)
                     new_row = {
                         'ID': df_yyt.loc[i]['ID'],
                         'Name': namestr,
-                        'Price': df_yyt.loc[i]['Price in Yen']
+                        'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                        'Price in SGD': sgdvalue
                     }
                 else:
                     namestr = namechk(r".*Foil.*", df_swdk_hold)
                     new_row = {
                         'ID': df_yyt.loc[i]['ID'],
                         'Name': namestr,
-                        'Price': df_yyt.loc[i]['Price in Yen']
+                        'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                        'Price in SGD': sgdvalue
                     }
             elif (len(df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].index) == 1):
                 new_row = {
                     'ID': df_yyt.loc[i]['ID'],
                     'Name': df_swdk.loc[i]['Name'],
-                    'Price': df_yyt.loc[i]['Price in Yen']
+                    'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                    'Price in SGD': sgdvalue
                 }
             new_row = pd.DataFrame(new_row, index=[0])
             df_final = pd.concat([df_final, new_row], ignore_index=True)
@@ -398,7 +406,18 @@ class SV151_Japanese():
 
         df_final.to_csv(filename, index=False)
         return (df_final)
-
+    def xe_rates():
+        url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=JPY&To=SGD'
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        ratedata = soup.find_all('p', class_="sc-295edd9f-1 jqMUXt")
+        for each in ratedata:
+            each = str(each)
+            holder1 = re.split(">", each)
+            holder21 = re.split("<", holder1[1])
+            holder22 = re.split("<", holder1[2])
+            rates = holder21[0] + holder22[0]
+        return (rates)
     def jp_151_main():
         pass
 
