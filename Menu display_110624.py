@@ -20,6 +20,7 @@ Created on Thu Nov 16 04:24:31 2023
 #=========================================================================
 #Version 3
 #Inserted SV5 temporal forces for English
+#Changed TnT scraping method to account for multiple prices for a single card, always use first option
 
 
 import pandas as pd
