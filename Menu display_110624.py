@@ -21,6 +21,7 @@ Created on Thu Nov 16 04:24:31 2023
 #Version 3
 #Inserted SV5 temporal forces for English
 #Changed TnT scraping method to account for multiple prices for a single card, always use first option
+#Included self.name to reflect current set, so _main will not have to be updated
 
 
 import pandas as pd
@@ -45,6 +46,7 @@ class ExitException(Exception):
 class SV5_english:
     def __init__(self):
         print("Loading...")
+        self.name = "SV5_English"
 
     def swdk_sv5():
         newlist = []
@@ -243,22 +245,23 @@ class SV5_english:
             rates = holder21[0] + holder22[0]
         return (rates)
 
-    def sv5_main(filename=""):
+    def sv5_main(filename="",self):
         swdk_name = SV5_english().swdk_sv5()
         shpfy_name = SV5_english().shopify_sv5(filename)  # include error handling here
         tnt_rh, tnt_singles = SV5_english().tnt_sv5()
         simplemerge = SV5_english().sv5_merge(swdk_name, tnt_rh, tnt_singles)
         finalmerge, changelog = SV5_english().shopify_merge(simplemerge, shpfy_name)
         dttm = datetime.now()
-        filename = f"SV5 Shopify English {dttm.strftime('%y%m%d')}.csv"
+        filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
         finalmerge.to_csv(filename, index=False)
-        changelog.to_csv("Changelog.csv", index=False)
-        print("SV5 completed")
+        changelog.to_csv(f"Changelog {self.name}.csv", index=False)
+        print(f"{self.name} completed")
 
 #SV6 imported
 class SV6_english:
     def __init__(self):
         print("Loading...")
+        self.name = "SV6_english"
         
     def swdk_sv6():
         url = "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade"
@@ -456,21 +459,22 @@ class SV6_english:
             rates = holder21[0]+holder22[0]
         return (rates)
 
-    def sv6_main(filename = ""):
+    def sv6_main(filename = "",self):
         swdk_name = SV6_english().swdk_sv6()
         shpfy_name = SV6_english().shopify_sv6(filename) #include error handling here
         tnt_rh,tnt_singles = SV6_english().tnt_sv6()
         simplemerge = SV6_english().sv6_merge(swdk_name, tnt_rh, tnt_singles)
         finalmerge,changelog = SV6_english().shopify_merge(simplemerge, shpfy_name)
         dttm = datetime.now()
-        filename = f"SV6 Shopify English {dttm.strftime('%y%m%d')}.csv"
+        filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
         finalmerge.to_csv(filename,index=False)
-        changelog.to_csv("Changelog.csv",index = False)
-        print("SV6 completed")
+        changelog.to_csv(f"Changelog {self.name}.csv",index = False)
+        print(f"{self.name} completed")
 
 class SV2a_Japanese():
     def __init__(self):
         print("Loading...")
+        self.name = "SV2a_Japanese"
 
     #from Sawadeekard_151
     def swdk_main():
