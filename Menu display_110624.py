@@ -4,6 +4,20 @@ Created on Thu Nov 16 04:24:31 2023
 
 @author: khin_
 """
+#=========================================================================
+#Version 1
+#Created the base structure of the menu using OOP
+#Created initial options for Japanese and English sets
+#Inserted options for SV2a 151 for Japanese and S12a VSU for Japanese
+#Succesfully imported SV2a 151 script to run
+#=========================================================================
+#Version 2
+#Inserted SV2a_main script into current script
+#Inserted options for SV6 twilight masquerade for English
+#Inserted options for run all (to be finished)
+#Inserted SV6 twilight masquerade for English into current script
+#SV6 script includes automated feature to do the shopify csv and to create a changelog for prices
+#=========================================================================
 
 import pandas as pd
 import sys
