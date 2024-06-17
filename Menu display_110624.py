@@ -32,23 +32,33 @@ import os
 import re
 import requests
 from bs4 import BeautifulSoup
-from Sawadeekard_151 import swdk_main
-from Yuyutei_151 import yyt_main
-import Japanese_151_price
+#from Sawadeekard_151 import swdk_main
+#from Yuyutei_151 import yyt_main
+#import Japanese_151_price
 
+#adding csv file reading 2 versions (singular and entire list)
+def csvfile(setname):
+    csvname = input(f"What is the csv file name for {setname}?")
+    return csvname
+
+def csvlist(setlist):
+    namelist = []
+    for setname in setlist:
+        csvname = input(f"What is the csv file name for {setname}?")
+        namelist.append(csvname)
+    return namelist
 
 #Set a custom exception to be raised when it is necessary to exit the application
 class ExitException(Exception):
     pass
 
-
-# SV6 imported
+# SV5 imported
 class SV5_english:
     def __init__(self):
         print("Loading...")
         self.name = "SV5_English"
 
-    def swdk_sv5():
+    def swdk_sv5(self):
         newlist = []
         namelist = []
         IDlist = []
@@ -84,7 +94,7 @@ class SV5_english:
         df_swdk.reset_index(drop=True, inplace=True)
         return (df_swdk)
 
-    def tnt_sv5():
+    def tnt_sv5(self):
         pricelist = []
         namelist = []
         IDlist = []
@@ -102,7 +112,7 @@ class SV5_english:
                 priceholder2 = re.split("<", priceholder1[1])
                 priceholder3 = priceholder2[0].replace("$", "")
                 priceholder3 = priceholder3.strip()
-                pricelist.append(priceholder3)
+                pricelist.append(float(priceholder3))
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
@@ -119,25 +129,19 @@ class SV5_english:
         namelist = []
         IDlist = []
         for i in range(1, 5):
-            url = 'https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925?Keywords=&page-no=' + str(
+            url = 'https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19897?Keywords=&page-no=' + str(
                 i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, "html.parser")
-            price = soup.find_all('div', class_="col-2 text-center p-1")
+            price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
             for each in price:
                 each = str(each)
-                if re.search("button", each):
-                    pass
-                elif re.search("Price", each):
-                    pass
-                elif re.search("Quantity", each):
-                    pass
-                else:
-                    each = each.replace('<div class="col-2 text-center p-1">', "")
-                    each = each.replace('</div>', "")
-                    each = each.replace('$', "")
-                    each = float(each)
-                    pricelist.append(each)
+                priceholder0 = re.split("col-2 text-center p-1", each)
+                priceholder1 = re.split(">", priceholder0[3])
+                priceholder2 = re.split("<", priceholder1[1])
+                priceholder3 = priceholder2[0].replace("$", "")
+                priceholder3 = priceholder3.strip()
+                pricelist.append(float(priceholder3))
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
@@ -158,7 +162,7 @@ class SV5_english:
         correctcounter = 0
         wrongcounter = 0
         wronglist = []
-        rates = sv5_english().xe_rates()
+        rates = SV5_english().xe_rates()
         usdtosgd = float(rates)
         for i in range(len(df_swdk)):
             if re.search('Reverse Holo', df_swdk.iloc[i][1]):
@@ -317,7 +321,7 @@ class SV6_english:
                 priceholder2 = re.split("<", priceholder1[1])
                 priceholder3 = priceholder2[0].replace("$", "")
                 priceholder3 = priceholder3.strip()
-                pricelist.append(priceholder3)
+                pricelist.append(float(priceholder3))
             name = soup.find_all('a',class_="card-text")
             for each in name:
                 each = str(each)
@@ -336,22 +340,16 @@ class SV6_english:
         for i in range(1,5):
             url = 'https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925?Keywords=&page-no='+str(i)
             page = requests.get(url)
-            soup = BeautifulSoup(page.content,"html.parser")
-            price = soup.find_all('div',class_="col-2 text-center p-1")
+            soup = BeautifulSoup(page.content, "html.parser")
+            price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
             for each in price:
                 each = str(each)
-                if re.search("button",each):
-                    pass
-                elif re.search("Price",each):
-                    pass
-                elif re.search("Quantity",each):
-                    pass
-                else:
-                    each = each.replace('<div class="col-2 text-center p-1">',"")
-                    each = each.replace('</div>',"")
-                    each = each.replace('$',"")
-                    each = float(each)
-                    pricelist.append(each)
+                priceholder0 = re.split("col-2 text-center p-1", each)
+                priceholder1 = re.split(">", priceholder0[3])
+                priceholder2 = re.split("<", priceholder1[1])
+                priceholder3 = priceholder2[0].replace("$", "")
+                priceholder3 = priceholder3.strip()
+                pricelist.append(float(priceholder3))
             name = soup.find_all('a',class_="card-text")
             for each in name:
                 each = str(each)

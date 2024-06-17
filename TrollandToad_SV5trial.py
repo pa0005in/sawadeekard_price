@@ -56,7 +56,7 @@ def SV6_main():
     # namelist = []
     # IDlist = []
     # for i in range(1,5):
-    #     url = 'https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925?Keywords=&page-no='+str(i)
+    #     url = 'https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19897'+str(i)
     #     page = requests.get(url)
     #     soup = BeautifulSoup(page.content,"html.parser")
     #     price = soup.find_all('div',class_="col-2 text-center p-1")
