@@ -22,6 +22,12 @@ Created on Thu Nov 16 04:24:31 2023
 #Inserted SV5 temporal forces for English
 #Changed TnT scraping method to account for multiple prices for a single card, always use first option
 #Included self.name to reflect current set, so _main will not have to be updated
+#=========================================================================
+#Version 4
+#Inserted self.csvexist for non-shopify modes (simplemerge will be given instead)
+#Inserted csvexist query for user
+#Inserted full set list of all 7 SV sets
+#Inserted jp_151_main
 
 
 import pandas as pd
@@ -54,9 +60,10 @@ class ExitException(Exception):
 
 # SV5 imported
 class SV5_english:
-    def __init__(self):
+    def __init__(self,csvexist = False):
         print("Loading...")
         self.name = "SV5_English"
+        self.csvexist = csvexist
 
     def swdk_sv5(self):
         newlist = []
@@ -155,7 +162,7 @@ class SV5_english:
         df_sv5_singles.reset_index(drop=True, inplace=True)
         return (df_sv5_rh, df_sv5_singles)
 
-    def sv5_merge(df_swdk, df_rh, df_singles):
+    def sv5_merge(self, df_swdk, df_rh, df_singles):
         df_merged = pd.DataFrame(columns=['ID', 'Name', 'Price in USD'])
         rh_counter = 0
         singles_counter = 0
@@ -211,13 +218,13 @@ class SV5_english:
         # print(wronglist)
         return (df_merged)
 
-    def shopify_sv5(productcsv="products_export_1 (3).csv"):
+    def shopify_sv5(self, productcsv="products_export_1 (3).csv"):
         df_shopify = pd.read_csv(productcsv)
         df_shopify.sort_values(["Title"], ascending=True, inplace=True)
         df_shopify.reset_index(drop=True, inplace=True)
         return (df_shopify)
 
-    def shopify_merge(df_swdk, df_shopify):
+    def shopify_merge(self,df_swdk, df_shopify):
         df_changelog = pd.DataFrame(columns=['Before', 'Change', 'After'])
         # aftercheck = []
         for i in range(len(df_shopify)):
@@ -235,7 +242,7 @@ class SV5_english:
         #     aftercheck.append(holder)
         return (df_shopify, df_changelog)
 
-    def xe_rates():
+    def xe_rates(self):
         # USD to SGD
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
         page = requests.get(url)
@@ -249,25 +256,29 @@ class SV5_english:
             rates = holder21[0] + holder22[0]
         return (rates)
 
-    def sv5_main(filename="",self):
+    def sv5_main(self,filename=""):
         swdk_name = SV5_english().swdk_sv5()
-        shpfy_name = SV5_english().shopify_sv5(filename)  # include error handling here
         tnt_rh, tnt_singles = SV5_english().tnt_sv5()
         simplemerge = SV5_english().sv5_merge(swdk_name, tnt_rh, tnt_singles)
-        finalmerge, changelog = SV5_english().shopify_merge(simplemerge, shpfy_name)
         dttm = datetime.now()
-        filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
-        finalmerge.to_csv(filename, index=False)
-        changelog.to_csv(f"Changelog {self.name}.csv", index=False)
+        if self.csvexist:
+            shpfy_name = SV5_english().shopify_sv5(filename)  # include error handling here
+            finalmerge, changelog = SV5_english().shopify_merge(simplemerge, shpfy_name)
+            filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
+            finalmerge.to_csv(filename, index=False)
+            changelog.to_csv(f"Changelog {self.name}.csv", index=False)
+        else:
+            simplemerge.to_csv(f"{self.name} Merged {dttm.strftime('%y%m%d')}.csv", index = False)
         print(f"{self.name} completed")
 
 #SV6 imported
 class SV6_english:
-    def __init__(self):
+    def __init__(self,csvexist = False):
         print("Loading...")
         self.name = "SV6_english"
+        self.csvexist = csvexist
         
-    def swdk_sv6():
+    def swdk_sv6(self):
         url = "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade"
         newlist = []
         namelist = []
@@ -304,7 +315,7 @@ class SV6_english:
         df_swdk.reset_index(drop = True,inplace=True)
         return (df_swdk)
 
-    def tnt_sv6():
+    def tnt_sv6(self):
         pricelist = []
         namelist = []
         IDlist = []
@@ -363,7 +374,7 @@ class SV6_english:
         df_sv6_singles.reset_index(drop = True,inplace=True)
         return(df_sv6_rh,df_sv6_singles)
 
-    def sv6_merge(df_swdk,df_rh,df_singles):
+    def sv6_merge(self,df_swdk,df_rh,df_singles):
         df_merged = pd.DataFrame(columns = ['ID','Name','Price in USD'])
         rh_counter = 0
         singles_counter = 0
@@ -419,13 +430,13 @@ class SV6_english:
         # print(wronglist)
         return(df_merged)
 
-    def shopify_sv6(productcsv = "products_export_1 (3).csv" ):
+    def shopify_sv6(self,productcsv = "products_export_1 (3).csv" ):
         df_shopify = pd.read_csv(productcsv)
         df_shopify.sort_values(["Title"], ascending=True, inplace=True)
         df_shopify.reset_index(drop = True,inplace=True)
         return (df_shopify)
 
-    def shopify_merge(df_swdk,df_shopify):
+    def shopify_merge(self,df_swdk,df_shopify):
         df_changelog = pd.DataFrame(columns = ['Before','Change','After'])
         # aftercheck = []
         for i in range(len(df_shopify)):
@@ -443,7 +454,7 @@ class SV6_english:
         #     aftercheck.append(holder)
         return(df_shopify,df_changelog)
 
-    def xe_rates():
+    def xe_rates(self):
         #USD to SGD
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
         page = requests.get(url)
@@ -457,25 +468,29 @@ class SV6_english:
             rates = holder21[0]+holder22[0]
         return (rates)
 
-    def sv6_main(filename = "",self):
+    def sv6_main(self,filename = ""):
         swdk_name = SV6_english().swdk_sv6()
-        shpfy_name = SV6_english().shopify_sv6(filename) #include error handling here
         tnt_rh,tnt_singles = SV6_english().tnt_sv6()
         simplemerge = SV6_english().sv6_merge(swdk_name, tnt_rh, tnt_singles)
-        finalmerge,changelog = SV6_english().shopify_merge(simplemerge, shpfy_name)
         dttm = datetime.now()
-        filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
-        finalmerge.to_csv(filename,index=False)
-        changelog.to_csv(f"Changelog {self.name}.csv",index = False)
+        if self.csvexist:
+            shpfy_name = SV6_english().shopify_sv6(filename) #include error handling here
+            finalmerge,changelog = SV6_english().shopify_merge(simplemerge, shpfy_name)
+            filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
+            finalmerge.to_csv(filename,index=False)
+            changelog.to_csv(f"Changelog {self.name}.csv",index = False)
+        else:
+            simplemerge.to_csv(f"{self.name} Merged {dttm.strftime('%y%m%d')}.csv", index = False)
         print(f"{self.name} completed")
 
 class SV2a_Japanese():
-    def __init__(self):
+    def __init__(self, csvexist = False):
         print("Loading...")
         self.name = "SV2a_Japanese"
+        self.csvexist = csvexist
 
     #from Sawadeekard_151
-    def swdk_main():
+    def swdk_main(self):
         url = "https://sawadeekard.com/collections/jap-pokemon-151"
         newlist = []
         namelist = []
@@ -517,7 +532,7 @@ class SV2a_Japanese():
         df_swdk.sort_values("ID", ascending=True, inplace=True)
         return df_swdk
     #from yuyutei_151
-    def yyt_main():
+    def yyt_main(self):
         page = requests.get("https://yuyu-tei.jp/sell/poc/s/sv02a")
         soup = BeautifulSoup(page.content, "html.parser")
 
@@ -570,7 +585,7 @@ class SV2a_Japanese():
         return df_yyt
 
     #from Japanese_151_price
-    def namechk(string, df):
+    def namechk(self,string, df):
         chk = string
         strvar = ''
         for each in range(len(df.index)):
@@ -579,9 +594,9 @@ class SV2a_Japanese():
                 strvar = strhold
         return strvar
 
-    def jp_151_merge():
-        df_swdk = SV2a_Japanese().swdk_main()
-        df_yyt = SV2a_Japanese().yyt_main()
+    def jp_151_merge(self,df_swdk,df_yyt):
+        #df_swdk = SV2a_Japanese().swdk_main()
+        #df_yyt = SV2a_Japanese().yyt_main()
         rates = SV2a_Japanese().xe_rates()
         jpytosgd = float(rates)
 
@@ -630,13 +645,32 @@ class SV2a_Japanese():
         #    directory="\data\Japanese_151"
         #    if not os.path.exists(directory):
         #        os.makedirs(directory)
-
-        dttm = datetime.now()
-        filename = f"Japanese 151 {dttm.strftime('%y%m%d')}.csv"
-
-        df_final.to_csv(filename, index=False)
         return (df_final)
-    def xe_rates():
+
+    def shopify_sv2a(self,productcsv = "products_export_1 (3).csv" ):
+        df_shopify = pd.read_csv(productcsv)
+        df_shopify.sort_values(["Title"], ascending=True, inplace=True)
+        df_shopify.reset_index(drop = True,inplace=True)
+        return (df_shopify)
+
+    def shopify_merge(self,df_swdk,df_shopify):
+        df_changelog = pd.DataFrame(columns = ['Before','Change','After'])
+        # aftercheck = []
+        for i in range(len(df_shopify)):
+            holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+            new_row = {
+                'Before':df_shopify.iloc[i][20],
+                'Change':holder,
+                'After':df_swdk.iloc[i][3]
+                }
+            new_row = pd.DataFrame(new_row,index = [0])
+            df_changelog = pd.concat([df_changelog,new_row],ignore_index=True)
+        df_shopify['Variant Price'] = df_swdk['Price in SGD']
+        # for i in range(len(df_shopify)):
+        #     holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+        #     aftercheck.append(holder)
+        return(df_shopify,df_changelog)
+    def xe_rates(self):
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=JPY&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
@@ -648,9 +682,20 @@ class SV2a_Japanese():
             holder22 = re.split("<", holder1[2])
             rates = holder21[0] + holder22[0]
         return (rates)
-    def jp_151_main():
-        pass
-
+    def jp_151_main(self,filename = ""):
+        swdk_name = SV2a_Japanese().swdk_main()
+        yyt_list = SV2a_Japanese().yyt_main()
+        simplemerge = SV2a_Japanese().jp_151_merge(swdk_name, yyt_list)
+        dttm = datetime.now()
+        if self.csvexist:
+            shpfy_name = SV2a_Japanese().shopify_sv6(filename) #include error handling here
+            finalmerge,changelog = SV2a_Japanese.shopify_merge(simplemerge, shpfy_name)
+            filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
+            finalmerge.to_csv(filename,index=False)
+            changelog.to_csv(f"Changelog {self.name}.csv",index = False)
+        else:
+            simplemerge.to_csv(f"{self.name} Merged {dttm.strftime('%y%m%d')}.csv", index = False)
+        print(f"{self.name} completed")
 class controller:
     def __init__(self):
         print('\n===========================================')
@@ -699,26 +744,48 @@ class controller:
             elif choice == '2':
                 try:
                     csvlist = {}
-                    setlist = {0: "SV6 Twilight Masquerade"} #manual include set names
+                    setlist = {
+                        "SV6": "SV6 Twilight Masquerade",
+                        "SV5": "SV5 Temporal Forces",
+                        "SV4": "SV4 Paldean Fates",
+                        "SV3.5": "SV3.5 Scarlet Violet 151",
+                        "SV3": "SV3 Paradox Rift",
+                        "SV2": "SV2 Paldea Evolved",
+                        "SV1": "SV1 Scarlet & Violet Base set"
+                    } #manual include set names
                     
                     while True:
                         #options are included manually, but will just be setlist[i]
-                        print(f"1. {setlist[0]}")
+                        print(f"1. {setlist["SV6"]}")
                         print("00. All listed series")
                         print("X. Exit\n")
-                        
+                        #To know which set to scrape
                         choice = input("What set are you interested in? \n")
                         choice = choice.strip()
+                        choiceflag = False
+                        #To check if shopify csv file exists
+                        while choiceflag == False:
+                            shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
+                            if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match("YES", shpfychoice.upper()):
+                                csvexist = True
+                                print("Final CSV file is ready for Shopify upload.")
+                                choiceflag = True
+                            elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO", shpfychoice.upper()):
+                                csvexist = True
+                                print("Final CSV file is cannot be uploaded.")
+                                choiceflag = True
+                            else:
+                                print("UNACCEPTABLE INPUT!\n")
                         if choice == '1':
                             SV6_english().sv6_main(csvlist[0])
                             dttm = datetime.now()
                             df = pd.read_csv(f"SV6 Shopify English {dttm.strftime('%y%m%d')}.csv")
                             print(df)
                         elif choice == "00":
-                            for i in range(len(setlist)):
+                            for each in setlist:
                                 print("Please copy the file name directly, but .csv is not needed.") 
                                 print("E.g. products_export_1 (3).csv just write 'products_export_1 (3)'\n")
-                                csvholder = input(f"What is the csv file name for {setlist[i]}: ")
+                                csvholder = input(f"What is the csv file name for {setlist[each]}: ")
                                 csvholder = csvholder + ".csv"
                                 csvlist[i]=csvholder
                                 print(csvlist[i])
