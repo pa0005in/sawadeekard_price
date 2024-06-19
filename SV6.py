@@ -225,4 +225,13 @@ def sv6_main(filename = ""):
     print("SV6 completed")
 
 if __name__ == "__main__":
-    sv6_main()
+    url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content,"html.parser")
+    ratedata = soup.find_all('div',style='margin-top:24px')
+    for each in ratedata:
+        each = str(each)
+        holder1 = re.split(">",each)
+        holder21 = re.split("<",holder1[6])
+        holder22 = re.split("<",holder1[7])
+        rates = holder21[0]+holder22[0]

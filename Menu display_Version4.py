@@ -28,6 +28,7 @@ Created on Thu Nov 16 04:24:31 2023
 #Inserted csvexist query for user
 #Inserted full set list of all 7 SV sets
 #Inserted jp_151_main
+#Updated xerates.com scraping
 
 
 import pandas as pd
@@ -61,7 +62,7 @@ class ExitException(Exception):
 # SV5 imported
 class SV5_english:
     def __init__(self,csvexist = False):
-        print("Loading...")
+        print("SV5 Loading...")
         self.name = "SV5_English"
         self.csvexist = csvexist
 
@@ -247,12 +248,12 @@ class SV5_english:
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
-        ratedata = soup.find_all('p', class_="sc-1c293993-1 fxoXHw")
+        ratedata = soup.find_all('div', style='margin-top:24px')
         for each in ratedata:
             each = str(each)
             holder1 = re.split(">", each)
-            holder21 = re.split("<", holder1[1])
-            holder22 = re.split("<", holder1[2])
+            holder21 = re.split("<", holder1[6])
+            holder22 = re.split("<", holder1[7])
             rates = holder21[0] + holder22[0]
         return (rates)
 
@@ -274,7 +275,7 @@ class SV5_english:
 #SV6 imported
 class SV6_english:
     def __init__(self,csvexist = False):
-        print("Loading...")
+        print("SV6 Loading...")
         self.name = "SV6_english"
         self.csvexist = csvexist
         
@@ -459,13 +460,13 @@ class SV6_english:
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content,"html.parser")
-        ratedata = soup.find_all('p',class_="sc-1c293993-1 fxoXHw")
+        ratedata = soup.find_all('div', style='margin-top:24px')
         for each in ratedata:
             each = str(each)
-            holder1 = re.split(">",each)
-            holder21 = re.split("<",holder1[1])
-            holder22 = re.split("<",holder1[2])
-            rates = holder21[0]+holder22[0]
+            holder1 = re.split(">", each)
+            holder21 = re.split("<", holder1[6])
+            holder22 = re.split("<", holder1[7])
+            rates = holder21[0] + holder22[0]
         return (rates)
 
     def sv6_main(self,filename = ""):
@@ -485,7 +486,7 @@ class SV6_english:
 
 class SV2a_Japanese():
     def __init__(self, csvexist = False):
-        print("Loading...")
+        print("SV2a Loading...")
         self.name = "SV2a_Japanese"
         self.csvexist = csvexist
 
@@ -674,12 +675,12 @@ class SV2a_Japanese():
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=JPY&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
-        ratedata = soup.find_all('p', class_="sc-295edd9f-1 jqMUXt")
+        ratedata = soup.find_all('div', style='margin-top:24px')
         for each in ratedata:
             each = str(each)
             holder1 = re.split(">", each)
-            holder21 = re.split("<", holder1[1])
-            holder22 = re.split("<", holder1[2])
+            holder21 = re.split("<", holder1[6])
+            holder22 = re.split("<", holder1[7])
             rates = holder21[0] + holder22[0]
         return (rates)
     def jp_151_main(self,filename = ""):
@@ -743,20 +744,21 @@ class controller:
                     sys.exit()
             elif choice == '2':
                 try:
-                    csvlist = {}
-                    setlist = {
+                    csvdict = {}
+                    setdict = {
                         "SV6": "SV6 Twilight Masquerade",
-                        "SV5": "SV5 Temporal Forces",
-                        "SV4": "SV4 Paldean Fates",
-                        "SV3.5": "SV3.5 Scarlet Violet 151",
-                        "SV3": "SV3 Paradox Rift",
-                        "SV2": "SV2 Paldea Evolved",
-                        "SV1": "SV1 Scarlet & Violet Base set"
-                    } #manual include set names
-                    
+                        "SV5": "SV5 Temporal Forces"}
+                        #"SV4": "SV4 Paldean Fates",
+                        #"SV3.5": "SV3.5 Scarlet Violet 151",
+                        #"SV3": "SV3 Paradox Rift",
+                        #"SV2": "SV2 Paldea Evolved",
+                        #"SV1": "SV1 Scarlet & Violet Base set"
+                    #} #manual include set names
+                    objdict ={}
+
                     while True:
                         #options are included manually, but will just be setlist[i]
-                        print(f"1. {setlist["SV6"]}")
+                        print(f"1. {setdict['SV6']}")
                         print("00. All listed series")
                         print("X. Exit\n")
                         #To know which set to scrape
@@ -771,24 +773,32 @@ class controller:
                                 print("Final CSV file is ready for Shopify upload.")
                                 choiceflag = True
                             elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO", shpfychoice.upper()):
-                                csvexist = True
+                                csvexist = False
                                 print("Final CSV file is cannot be uploaded.")
                                 choiceflag = True
                             else:
                                 print("UNACCEPTABLE INPUT!\n")
                         if choice == '1':
-                            SV6_english().sv6_main(csvlist[0])
+
+                            SV6_english().sv6_main(csvdict["SV6"])
                             dttm = datetime.now()
                             df = pd.read_csv(f"SV6 Shopify English {dttm.strftime('%y%m%d')}.csv")
                             print(df)
                         elif choice == "00":
-                            for each in setlist:
-                                print("Please copy the file name directly, but .csv is not needed.") 
-                                print("E.g. products_export_1 (3).csv just write 'products_export_1 (3)'\n")
-                                csvholder = input(f"What is the csv file name for {setlist[each]}: ")
-                                csvholder = csvholder + ".csv"
-                                csvlist[i]=csvholder
-                                print(csvlist[i])
+                            if csvexist:
+                                for each in setdict:
+                                    print("Please copy the file name directly, but .csv is not needed.")
+                                    print("E.g. products_export_1 (3).csv just write 'products_export_1 (3)'\n")
+                                    csvholder = input(f"What is the csv file name for {setdict[each]}: ")
+                                    csvholder = csvholder + ".csv"
+                                    csvdict[each]=csvholder
+                                    print(csvdict[each])
+                            else:
+                                SV6obj = SV6_english(csvexist)
+                                SV6obj.sv6_main()
+                                SV5obj = SV5_english(csvexist)
+                                SV5obj.sv5_main()
+                                print("All sets are processed.")
                         elif choice.lower() == 'x':
                             break
                 except ExitException():
