@@ -29,6 +29,11 @@ Created on Thu Nov 16 04:24:31 2023
 #Inserted full set list of all 7 SV sets
 #Inserted jp_151_main
 #Updated xerates.com scraping
+#=============
+#To do
+#SV0x for all set names
+#3 digits format for card ID e.g. 001/1xx, 037/1xx
+#Include check for last card for pokellector
 
 
 import pandas as pd
@@ -62,7 +67,7 @@ class ExitException(Exception):
 # SV5 imported
 class SV5_english:
     def __init__(self,csvexist = False):
-        print("SV5 Loading...")
+        print("SV05 Loading...")
         self.name = "SV5_English"
         self.csvexist = csvexist
 
@@ -276,7 +281,7 @@ class SV5_english:
 class SV6_english:
     def __init__(self,csvexist = False):
         print("SV6 Loading...")
-        self.name = "SV6_english"
+        self.name = "SV06_english"
         self.csvexist = csvexist
         
     def swdk_sv6(self):
@@ -470,6 +475,7 @@ class SV6_english:
         return (rates)
 
     def sv6_main(self,filename = ""):
+        print(f"Shopify file is {filename}.")
         swdk_name = SV6_english().swdk_sv6()
         tnt_rh,tnt_singles = SV6_english().tnt_sv6()
         simplemerge = SV6_english().sv6_merge(swdk_name, tnt_rh, tnt_singles)
@@ -746,13 +752,13 @@ class controller:
                 try:
                     csvdict = {}
                     setdict = {
-                        "SV6": "SV6 Twilight Masquerade",
-                        "SV5": "SV5 Temporal Forces"}
-                        #"SV4": "SV4 Paldean Fates",
-                        #"SV3.5": "SV3.5 Scarlet Violet 151",
-                        #"SV3": "SV3 Paradox Rift",
-                        #"SV2": "SV2 Paldea Evolved",
-                        #"SV1": "SV1 Scarlet & Violet Base set"
+                        'SV6': "SV06 Twilight Masquerade",
+                        'SV5': "SV05 Temporal Forces"}
+                        #'SV4': "SV04 Paldean Fates",
+                        #'SV3.5': "SV3.5 Scarlet Violet 151",
+                        #'SV3': "SV03 Paradox Rift",
+                        #'SV2': "SV02 Paldea Evolved",
+                        #'SV1': "SV01 Scarlet & Violet Base set"
                     #} #manual include set names
                     objdict ={}
 
@@ -770,20 +776,23 @@ class controller:
                             shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                             if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match("YES", shpfychoice.upper()):
                                 csvexist = True
+                                print(f"The option is {csvexist}.")
                                 print("Final CSV file is ready for Shopify upload.")
                                 choiceflag = True
                             elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO", shpfychoice.upper()):
                                 csvexist = False
+                                print(f"The option is {csvexist}.")
                                 print("Final CSV file is cannot be uploaded.")
                                 choiceflag = True
                             else:
                                 print("UNACCEPTABLE INPUT!\n")
                         if choice == '1':
-
-                            SV6_english().sv6_main(csvdict["SV6"])
+                            csvdict['SV6'] = 'products_export_1 (3).csv'
+                            sv6obj = SV6_english(csvexist=csvexist)
+                            sv6obj.sv6_main(filename = csvdict['SV6'])
                             dttm = datetime.now()
-                            df = pd.read_csv(f"SV6 Shopify English {dttm.strftime('%y%m%d')}.csv")
-                            print(df)
+                            #df = pd.read_csv(f"SV6 Shopify English {dttm.strftime('%y%m%d')}.csv")
+                            #print(df)
                         elif choice == "00":
                             if csvexist:
                                 for each in setdict:
