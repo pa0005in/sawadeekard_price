@@ -68,7 +68,7 @@ class ExitException(Exception):
 class SV5_english:
     def __init__(self,csvexist = False):
         print("SV05 Loading...")
-        self.name = "SV5_English"
+        self.name = "SV05_English"
         self.csvexist = csvexist
 
     def swdk_sv5(self):
@@ -280,7 +280,7 @@ class SV5_english:
 #SV6 imported
 class SV6_english:
     def __init__(self,csvexist = False):
-        print("SV6 Loading...")
+        print("SV06 Loading...")
         self.name = "SV06_english"
         self.csvexist = csvexist
         
@@ -370,6 +370,7 @@ class SV6_english:
             name = soup.find_all('a',class_="card-text")
             for each in name:
                 each = str(each)
+                #if re.match("promo",each) == False: only if promo card and rh issue not resolved
                 nameholder1 = re.split(">",each)
                 nameholder2 = re.split("<",nameholder1[1])
                 nameholder3 = re.split("- ",nameholder2[0])
@@ -771,22 +772,24 @@ class controller:
                         choice = input("What set are you interested in? \n")
                         choice = choice.strip()
                         choiceflag = False
-                        #To check if shopify csv file exists
-                        while choiceflag == False:
-                            shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
-                            if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match("YES", shpfychoice.upper()):
-                                csvexist = True
-                                print(f"The option is {csvexist}.")
-                                print("Final CSV file is ready for Shopify upload.")
-                                choiceflag = True
-                            elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO", shpfychoice.upper()):
-                                csvexist = False
-                                print(f"The option is {csvexist}.")
-                                print("Final CSV file is cannot be uploaded.")
-                                choiceflag = True
-                            else:
-                                print("UNACCEPTABLE INPUT!\n")
                         if choice == '1':
+                            # To check if shopify csv file exists
+                            while choiceflag == False:
+                                shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
+                                if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match(
+                                        "YES", shpfychoice.upper()):
+                                    csvexist = True
+                                    print(f"The option is {csvexist}.")
+                                    print("Final CSV file is ready for Shopify upload.")
+                                    choiceflag = True
+                                elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO",
+                                                                                                           shpfychoice.upper()):
+                                    csvexist = False
+                                    print(f"The option is {csvexist}.")
+                                    print("Final CSV file is cannot be uploaded.")
+                                    choiceflag = True
+                                else:
+                                    print("UNACCEPTABLE INPUT!\n")
                             csvdict['SV6'] = 'products_export_1 (3).csv'
                             sv6obj = SV6_english(csvexist=csvexist)
                             sv6obj.sv6_main(filename = csvdict['SV6'])
@@ -794,6 +797,21 @@ class controller:
                             #df = pd.read_csv(f"SV6 Shopify English {dttm.strftime('%y%m%d')}.csv")
                             #print(df)
                         elif choice == "00":
+                            # To check if shopify csv file exists
+                            while choiceflag == False:
+                                shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
+                                if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match("YES", shpfychoice.upper()):
+                                    csvexist = True
+                                    print(f"The option is {csvexist}.")
+                                    print("Final CSV file is ready for Shopify upload.")
+                                    choiceflag = True
+                                elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO", shpfychoice.upper()):
+                                    csvexist = False
+                                    print(f"The option is {csvexist}.")
+                                    print("Final CSV file is cannot be uploaded.")
+                                    choiceflag = True
+                                else:
+                                    print("UNACCEPTABLE INPUT!\n")
                             if csvexist:
                                 for each in setdict:
                                     print("Please copy the file name directly, but .csv is not needed.")
