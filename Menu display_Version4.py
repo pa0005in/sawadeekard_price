@@ -5,25 +5,25 @@ Created on Thu Nov 16 04:24:31 2023
 @author: khin_
 """
 #=========================================================================
-#Version 1
+#Version 1.1
 #Created the base structure of the menu using OOP
 #Created initial options for Japanese and English sets
 #Inserted options for SV2a 151 for Japanese and S12a VSU for Japanese
 #Succesfully imported SV2a 151 script to run
 #=========================================================================
-#Version 2
+#Version 1.2
 #Inserted SV2a_main script into current script
 #Inserted options for SV6 twilight masquerade for English
 #Inserted options for run all (to be finished)
 #Inserted SV6 twilight masquerade for English into current script
 #SV6 script includes automated feature to do the shopify csv and to create a changelog for prices
 #=========================================================================
-#Version 3
+#Version 1.3
 #Inserted SV5 temporal forces for English
 #Changed TnT scraping method to account for multiple prices for a single card, always use first option
 #Included self.name to reflect current set, so _main will not have to be updated
 #=========================================================================
-#Version 4
+#Version 1.4
 #Inserted self.csvexist for non-shopify modes (simplemerge will be given instead)
 #Inserted csvexist query for user
 #Inserted full set list of all 7 SV sets
@@ -33,7 +33,6 @@ Created on Thu Nov 16 04:24:31 2023
 #To do
 #SV0x for all set names
 #3 digits format for card ID e.g. 001/1xx, 037/1xx
-#Include check for last card for pokellector
 
 
 import pandas as pd
@@ -149,20 +148,26 @@ class SV5_english:
             price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
             for each in price:
                 each = str(each)
-                priceholder0 = re.split("col-2 text-center p-1", each)
-                priceholder1 = re.split(">", priceholder0[3])
-                priceholder2 = re.split("<", priceholder1[1])
-                priceholder3 = priceholder2[0].replace("$", "")
-                priceholder3 = priceholder3.strip()
-                pricelist.append(float(priceholder3))
+                if re.search("Promo",each):
+                    pass
+                else:
+                    priceholder0 = re.split("col-2 text-center p-1", each)
+                    priceholder1 = re.split(">", priceholder0[3])
+                    priceholder2 = re.split("<", priceholder1[1])
+                    priceholder3 = priceholder2[0].replace("$", "")
+                    priceholder3 = priceholder3.strip()
+                    pricelist.append(float(priceholder3))
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
-                nameholder1 = re.split(">", each)
-                nameholder2 = re.split("<", nameholder1[1])
-                nameholder3 = re.split("- ", nameholder2[0])
-                namelist.append(nameholder3[0].strip())
-                IDlist.append(nameholder3[1].strip())
+                if re.search("Promo", each):
+                    pass
+                else:
+                    nameholder1 = re.split(">", each)
+                    nameholder2 = re.split("<", nameholder1[1])
+                    nameholder3 = re.split("- ", nameholder2[0])
+                    namelist.append(nameholder3[0].strip())
+                    IDlist.append(nameholder3[1].strip())
         df_sv5_singles = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
         df_sv5_singles.sort_values(["ID"], ascending=True, inplace=True)
         df_sv5_singles.reset_index(drop=True, inplace=True)
@@ -285,7 +290,7 @@ class SV6_english:
         self.csvexist = csvexist
         
     def swdk_sv6(self):
-        url = "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade"
+        #url = "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade"
         newlist = []
         namelist = []
         IDlist = []
@@ -354,6 +359,7 @@ class SV6_english:
         pricelist = []
         namelist = []
         IDlist = []
+        promocounter = 0
         for i in range(1,5):
             url = 'https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925?Keywords=&page-no='+str(i)
             page = requests.get(url)
@@ -361,21 +367,27 @@ class SV6_english:
             price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
             for each in price:
                 each = str(each)
-                priceholder0 = re.split("col-2 text-center p-1", each)
-                priceholder1 = re.split(">", priceholder0[3])
-                priceholder2 = re.split("<", priceholder1[1])
-                priceholder3 = priceholder2[0].replace("$", "")
-                priceholder3 = priceholder3.strip()
-                pricelist.append(float(priceholder3))
+                if re.search("Promo", each):
+                    pass
+                else:
+                    priceholder0 = re.split("col-2 text-center p-1", each)
+                    priceholder1 = re.split(">", priceholder0[3])
+                    priceholder2 = re.split("<", priceholder1[1])
+                    priceholder3 = priceholder2[0].replace("$", "")
+                    priceholder3 = priceholder3.strip()
+                    pricelist.append(float(priceholder3))
             name = soup.find_all('a',class_="card-text")
             for each in name:
                 each = str(each)
-                #if re.match("promo",each) == False: only if promo card and rh issue not resolved
-                nameholder1 = re.split(">",each)
-                nameholder2 = re.split("<",nameholder1[1])
-                nameholder3 = re.split("- ",nameholder2[0])
-                namelist.append(nameholder3[0].strip())
-                IDlist.append(nameholder3[1].strip())
+                if re.search("Promo",each): #promo cards were added
+                    promocounter += 1
+                else:
+                    nameholder1 = re.split(">",each)
+                    nameholder2 = re.split("<",nameholder1[1])
+                    nameholder3 = re.split("- ",nameholder2[0])
+                    namelist.append(nameholder3[0].strip())
+                    IDlist.append(nameholder3[1].strip())
+        print(f"Number of price is {len(pricelist)}, ID is {len(IDlist)} and name is {len(namelist)}.")
         df_sv6_singles = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
         df_sv6_singles.sort_values(["ID"], ascending=True, inplace=True)
         df_sv6_singles.reset_index(drop = True,inplace=True)
@@ -479,6 +491,7 @@ class SV6_english:
         print(f"Shopify file is {filename}.")
         swdk_name = SV6_english().swdk_sv6()
         tnt_rh,tnt_singles = SV6_english().tnt_sv6()
+        #print(f"Number of rows for swdk is {swdk_name.shape[0]}, rh is {tnt_rh.shape[0]} and singles is {tnt_singles.shape[0]}")
         simplemerge = SV6_english().sv6_merge(swdk_name, tnt_rh, tnt_singles)
         dttm = datetime.now()
         if self.csvexist:
@@ -751,7 +764,7 @@ class controller:
                     sys.exit()
             elif choice == '2':
                 try:
-                    csvdict = {}
+                    csvdict = {}#{"SV6":"products_export_1 (3).csv"}
                     setdict = {
                         'SV6': "SV06 Twilight Masquerade",
                         'SV5': "SV05 Temporal Forces"}
