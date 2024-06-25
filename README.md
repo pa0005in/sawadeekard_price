@@ -15,18 +15,18 @@ Any python environment with interpreter can run the script.
 However, certain libraries have to be installed beforehand.
 
 __BeautifulSoup4__
-'''
+```
 pip install beautifulsoup4
-'''
+```
 
 __requests__
-'''
+```
 pip install requests
-'''
+```
 
 __Regular Expression__
-'''
+```
 pip install regex
-'''
+```
 
 ## Features
