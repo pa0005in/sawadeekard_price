@@ -9,6 +9,19 @@ This ensures your store always reflects current market values, enhancing your in
 
 The script uses Python's library such as Pandas, Regular Expression, requests and BeautifulSoup4 to scrape, search and update the CSV file.
 
+## Scripts
+__Menu display.py__
+This main script contains an object oriented controller as menu, with each set called upon as a class.
+The script can be used after cloning in any software with Python interpreter.
+There is an option to not use the Shopify CSV file update feature and a simple CSV file will be generated containing ID, Name and Price.
+In order to use the Shopify CSV file update feature, it must be included into the same folder as the script.
+
+__Pokellector_Namegenerator.py (additional)__
+This additional script scrapes the list of names provided from the website Pokellector.com.
+The script can be used after cloning in any software with Python interpreter.
+The script will generate a CSV file containing ID and Name, and multiples will be created for cards with Reverse Holo option.
+In order to use the script, copy and paste the link directly from the webpage bar and include the last card within the set.
+
 ## Requirements
 Any python environment with interpreter can run the script.
 
@@ -30,3 +43,4 @@ pip install regex
 ```
 
 ## Features
+The main script 
