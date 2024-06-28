@@ -1,0 +1,369 @@
+ID,Name,Price in USD,Price in SGD
+001/165,Bulbasaur C (Non-Foil),0.49,0.7
+001/165,Bulbasaur C (Reverse Holo),0.65,1.0
+002/165,Ivysaur U (Non-Foil),0.39,0.5
+002/165,Ivysaur U (Reverse Holo),0.69,1.0
+003/165,Venusaur EX RR (Foil),1.99,2.7
+004/165,Charmander C (Non-Foil),0.75,1.0
+004/165,Charmander C (Reverse Holo),0.79,1.1
+005/165,Charmeleon U (Non-Foil),0.39,0.5
+005/165,Charmeleon U (Reverse Holo),0.79,1.1
+006/165,Charizard EX RR (Foil),4.49,6.1
+007/165,Squirtle C (Non-Foil),0.39,0.5
+007/165,Squirtle C (Reverse Holo),0.79,1.1
+008/165,Wartotle U (Non-Foil),0.25,0.5
+008/165,Wartotle U (Reverse Holo),0.79,1.1
+009/165,Blastoise EX RR (Foil),2.99,4.1
+010/165,Caterpie C (Non-Foil),0.25,0.5
+010/165,Caterpie C (Reverse Holo),0.39,1.0
+011/165,Metapod C (Non-Foil),0.49,0.7
+011/165,Metapod C (Reverse Holo),0.99,1.3
+012/165,Butterfree U (Non-Foil),0.25,0.5
+012/165,Butterfree U (Reverse Holo),0.35,1.0
+013/165,Weedle C (Non-Foil),0.25,0.5
+013/165,Weedle C (Reverse Holo),0.39,1.0
+014/165,Kakuna C (Non-Foil),0.49,0.7
+014/165,Kakuna C (Reverse Holo),1.39,1.9
+015/165,Beedrill R (Foil),0.49,0.7
+015/165,Beedrill R (Reverse Holo),0.89,1.2
+016/165,Pidgey C (Non-Foil),0.79,1.1
+016/165,Pidgey C (Reverse Holo),1.09,1.5
+017/165,Pigeotto C (Non-Foil),0.79,1.1
+017/165,Pigeotto C (Reverse Holo),0.89,1.2
+018/165,Pigeot U (Non-Foil),0.25,0.5
+018/165,Pigeot U (Reverse Holo),0.39,1.0
+019/165,Rattata C (Non-Foil),0.49,0.7
+019/165,Rattata C (Reverse Holo),0.39,1.0
+020/165,Raticate U (Non-Foil),0.49,0.7
+020/165,Raticate U (Reverse Holo),0.49,1.0
+021/165,Spearow C (Non-Foil),0.25,0.5
+021/165,Spearow C (Reverse Holo),0.89,1.2
+022/165,Fearow U (Non-Foil),0.35,0.5
+022/165,Fearow U (Reverse Holo),0.49,1.0
+023/165,Ekans C (Non-Foil),0.49,0.7
+023/165,Ekans C (Reverse Holo),0.49,1.0
+024/165,Arbok EX RR (Foil),1.99,2.7
+025/165,Pikachu C (Non-Foil),0.25,0.5
+025/165,Pikachu C (Reverse Holo),0.79,1.1
+026/165,Raichu R (Foil),0.69,0.9
+026/165,Raichu R (Reverse Holo),1.09,1.5
+027/165,Sandshrew C (Non-Foil),0.25,0.5
+027/165,Sandshrew C (Reverse Holo),0.69,1.0
+028/165,Sandslash U (Non-Foil),0.35,0.5
+028/165,Sandslash U (Reverse Holo),0.49,1.0
+029/165,Nidoran ♀ C (Non-Foil),0.49,0.7
+029/165,Nidoran ♀ C (Reverse Holo),1.79,2.4
+030/165,Nidorina U (Non-Foil),0.39,0.5
+030/165,Nidorina U (Reverse Holo),0.49,1.0
+031/165,Nidoqueen U (Non-Foil),0.39,0.5
+031/165,Nidoqueen U (Reverse Holo),0.39,1.0
+032/165,Nidoran ♂ C (Non-Foil),0.25,0.5
+032/165,Nidoran ♂ C (Reverse Holo),1.89,2.6
+033/165,Nidorino U (Non-Foil),0.49,0.7
+033/165,Nidorino U (Reverse Holo),0.59,1.0
+034/165,Nidoking R (Foil),0.79,1.1
+034/165,Nidoking R (Reverse Holo),1.09,1.5
+035/165,Clefairy C (Non-Foil),0.25,0.5
+035/165,Clefairy C (Reverse Holo),0.59,1.0
+036/165,Clefable U (Non-Foil),0.49,0.7
+036/165,Clefable U (Reverse Holo),0.59,1.0
+037/165,Vulpix C (Non-Foil),0.25,0.5
+037/165,Vulpix C (Reverse Holo),0.59,1.0
+038/165,Ninetails EX RR (Foil),1.49,2.0
+039/165,Jigglypuff C (Non-Foil),0.39,0.5
+039/165,Jigglypuff C (Reverse Holo),0.39,1.0
+040/165,Wigglytuff EX RR (Foil),1.49,2.0
+041/165,Zubat C (Non-Foil),0.25,0.5
+041/165,Zubat C (Reverse Holo),0.49,1.0
+042/165,Golbat U (Non-Foil),0.25,0.5
+042/165,Golbat U (Reverse Holo),0.39,1.0
+043/165,Oddish C (Non-Foil),0.25,0.5
+043/165,Oddish C (Reverse Holo),0.59,1.0
+044/165,Gloom U (Non-Foil),0.25,0.5
+044/165,Gloom U (Reverse Holo),0.49,1.0
+045/165,Vileplume R (Foil),0.59,0.8
+045/165,Vileplume R (Reverse Holo),0.89,1.2
+046/165,Paras C (Non-Foil),0.25,0.5
+046/165,Paras C (Reverse Holo),0.49,1.0
+047/165,Parasect U (Non-Foil),0.25,0.5
+047/165,Parasect U (Reverse Holo),0.49,1.0
+048/165,Venonat C (Non-Foil),0.25,0.5
+048/165,Venonat C (Reverse Holo),0.49,1.0
+049/165,Venomoth U (Non-Foil),0.49,0.7
+049/165,Venomoth U (Reverse Holo),0.59,1.0
+050/165,Diglett C (Non-Foil),0.25,0.5
+050/165,Diglett C (Reverse Holo),0.39,1.0
+051/165,Dugtrio U (Non-Foil),0.35,0.5
+051/165,Dugtrio U (Reverse Holo),0.39,1.0
+052/165,Meowth C (Non-Foil),0.25,0.5
+052/165,Meowth C (Reverse Holo),0.59,1.0
+053/165,Persian U (Non-Foil),0.25,0.5
+053/165,Persian U (Reverse Holo),0.39,1.0
+054/165,Psyduck C (Non-Foil),0.25,0.5
+054/165,Psyduck C (Reverse Holo),0.49,1.0
+055/165,Golduck U (Non-Foil),0.35,0.5
+055/165,Golduck U (Reverse Holo),0.49,1.0
+056/165,Mankey C (Non-Foil),0.25,0.5
+056/165,Mankey C (Reverse Holo),0.39,1.0
+057/165,Primeape U (Non-Foil),0.25,0.5
+057/165,Primeape U (Reverse Holo),0.49,1.0
+058/165,Growlithe C (Non-Foil),0.25,0.5
+058/165,Growlithe C (Reverse Holo),0.39,1.0
+059/165,Arcanine U (Non-Foil),0.49,0.7
+059/165,Arcanine U (Reverse Holo),0.49,1.0
+060/165,Poliwag C (Non-Foil),0.25,0.5
+060/165,Poliwag C (Reverse Holo),0.35,1.0
+061/165,Poliwhirl C (Non-Foil),0.25,0.5
+061/165,Poliwhirl C (Reverse Holo),1.39,1.9
+062/165,Poliwrath U (Non-Foil),0.25,0.5
+062/165,Poliwrath U (Reverse Holo),0.49,1.0
+063/165,Abra C (Non-Foil),0.49,0.7
+063/165,Abra C (Reverse Holo),0.59,1.0
+064/165,Kadabra U (Non-Foil),0.39,0.5
+064/165,Kadabra U (Reverse Holo),0.69,1.0
+065/165,Alakazam EX RR (Foil),1.99,2.7
+066/165,Machop C (Non-Foil),0.25,0.5
+066/165,Machop C (Reverse Holo),0.49,1.0
+067/165,Machoke U (Non-Foil),0.25,0.5
+067/165,Machoke U (Reverse Holo),0.49,1.0
+068/165,Machamp R (Foil),0.39,0.5
+068/165,Machamp R (Reverse Holo),0.89,1.2
+069/165,Bellsprout C (Non-Foil),0.25,0.5
+069/165,Bellsprout C (Reverse Holo),0.35,1.0
+070/165,Weepinbell C (Non-Foil),0.59,0.8
+070/165,Weepinbell C (Reverse Holo),0.89,1.2
+071/165,Victreebel U (Non-Foil),0.25,0.5
+071/165,Victreebel U (Reverse Holo),0.49,1.0
+072/165,Tentacool C (Non-Foil),0.25,0.5
+072/165,Tentacool C (Reverse Holo),0.39,1.0
+073/165,Tentacruel U (Non-Foil),0.25,0.5
+073/165,Tentacruel U (Reverse Holo),0.49,1.0
+074/165,Geodude C (Non-Foil),0.25,0.5
+074/165,Geodude C (Reverse Holo),0.35,1.0
+075/165,Graveller U (Non-Foil),0.39,0.5
+075/165,Graveller U (Reverse Holo),0.39,1.0
+076/165,Golem EX RR (Foil),1.49,2.0
+077/165,Ponyta C (Non-Foil),0.25,0.5
+077/165,Ponyta C (Reverse Holo),0.39,1.0
+078/165,Rapidash U (Non-Foil),0.25,0.5
+078/165,Rapidash U (Reverse Holo),0.35,1.0
+079/165,Slowpoke C (Non-Foil),0.25,0.5
+079/165,Slowpoke C (Reverse Holo),0.4,1.0
+080/165,Slowbro U (Non-Foil),0.25,0.5
+080/165,Slowbro U (Reverse Holo),0.49,1.0
+081/165,Magnemite C (Non-Foil),0.25,0.5
+081/165,Magnemite C (Reverse Holo),0.39,1.0
+082/165,Magneton U (Non-Foil),0.25,0.5
+082/165,Magneton U (Reverse Holo),0.39,1.0
+083/165,Farfetch'd C (Non-Foil),0.25,0.5
+083/165,Farfetch'd C (Reverse Holo),0.39,1.0
+084/165,Doduo C (Non-Foil),0.39,0.5
+084/165,Doduo C (Reverse Holo),0.49,1.0
+085/165,Dodrio R (Foil),0.49,0.7
+085/165,Dodrio R (Reverse Holo),1.19,1.6
+086/165,Seel C (Non-Foil),0.25,0.5
+086/165,Seel C (Reverse Holo),0.49,1.0
+087/165,Dewgong U (Non-Foil),0.35,0.5
+087/165,Dewgong U (Reverse Holo),0.49,1.0
+088/165,Grimer C (Non-Foil),0.25,0.5
+088/165,Grimer C (Reverse Holo),0.49,1.0
+089/165,Muk U (Non-Foil),0.39,0.5
+089/165,Muk U (Reverse Holo),0.39,1.0
+090/165,Shellder C (Non-Foil),0.25,0.5
+090/165,Shellder C (Reverse Holo),0.49,1.0
+091/165,Cloyster U (Non-Foil),0.49,0.7
+091/165,Cloyster U (Reverse Holo),0.39,1.0
+092/165,Ghastly C (Non-Foil),0.25,0.5
+092/165,Ghastly C (Reverse Holo),0.49,1.0
+093/165,Haunter U (Non-Foil),0.25,0.5
+093/165,Haunter U (Reverse Holo),0.59,1.0
+094/165,Gengar R (Foil),0.39,0.5
+094/165,Gengar R (Reverse Holo),1.39,1.9
+095/165,Onix U (Non-Foil),0.25,0.5
+095/165,Onix U (Reverse Holo),0.99,1.3
+096/165,Drowzee C (Non-Foil),0.25,0.5
+096/165,Drowzee C (Reverse Holo),0.49,1.0
+097/165,Hypno U (Non-Foil),0.49,0.7
+097/165,Hypno U (Reverse Holo),1.19,1.6
+098/165,Krabby C (Non-Foil),0.25,0.5
+098/165,Krabby C (Reverse Holo),0.39,1.0
+099/165,Kingler U (Non-Foil),0.25,0.5
+099/165,Kingler U (Reverse Holo),1.99,2.7
+100/165,Voltorb C (Non-Foil),0.25,0.5
+100/165,Voltorb C (Reverse Holo),0.39,1.0
+101/165,Electrode R (Foil),0.49,0.7
+101/165,Electrode R (Reverse Holo),2.69,3.7
+102/165,Exeggcute C (Non-Foil),0.49,0.7
+102/165,Exeggcute C (Reverse Holo),0.49,1.0
+103/165,Exeggutor U (Non-Foil),0.49,0.7
+103/165,Exeggutor U (Reverse Holo),0.99,1.3
+104/165,Cubone C (Non-Foil),0.35,0.5
+104/165,Cubone C (Reverse Holo),0.49,1.0
+105/165,Marowak R (Foil),0.39,0.5
+105/165,Marowak R (Reverse Holo),0.99,1.3
+106/165,Hitmonlee U (Non-Foil),0.49,0.7
+106/165,Hitmonlee U (Reverse Holo),0.89,1.2
+107/165,Hitmonchan U (Non-Foil),0.25,0.5
+107/165,Hitmonchan U (Reverse Holo),0.99,1.3
+108/165,Lickitung C (Non-Foil),0.25,0.5
+108/165,Lickitung C (Reverse Holo),0.39,1.0
+109/165,Koffing C (Non-Foil),0.25,0.5
+109/165,Koffing C (Reverse Holo),0.49,1.0
+110/165,Weezing R (Foil),0.59,0.8
+110/165,Weezing R (Reverse Holo),1.09,1.5
+111/165,Rhyhorn C (Non-Foil),0.25,0.5
+111/165,Rhyhorn C (Reverse Holo),0.49,1.0
+112/165,Rhydon U (Non-Foil),0.25,0.5
+112/165,Rhydon U (Reverse Holo),0.39,1.0
+113/165,Chansey R (Foil),1.09,1.5
+113/165,Chansey R (Reverse Holo),1.09,1.5
+114/165,Tangela C (Non-Foil),0.25,0.5
+114/165,Tangela C (Reverse Holo),0.39,1.0
+115/165,Kangaskhan EX RR (Foil),1.49,2.0
+116/165,Horsea C (Non-Foil),0.25,0.5
+116/165,Horsea C (Reverse Holo),0.49,1.0
+117/165,Seadra U (Non-Foil),0.25,0.5
+117/165,Seadra U (Reverse Holo),0.49,1.0
+118/165,Goldeen C (Non-Foil),0.25,0.5
+118/165,Goldeen C (Reverse Holo),0.49,1.0
+119/165,Seaking U (Non-Foil),0.25,0.5
+119/165,Seaking U (Reverse Holo),0.99,1.3
+120/165,Staryu C (Non-Foil),0.35,0.5
+120/165,Staryu C (Reverse Holo),0.49,1.0
+121/165,Starmie R (Foil),0.49,0.7
+121/165,Starmie R (Reverse Holo),0.89,1.2
+122/165,Mr Mime R (Foil),0.39,0.5
+122/165,Mr Mime R (Reverse Holo),0.89,1.2
+123/165,Scyther U (Non-Foil),0.49,0.7
+123/165,Scyther U (Reverse Holo),1.49,2.0
+124/165,Jinx EX RR (Foil),1.49,2.0
+125/165,Electabuzz C (Non-Foil),0.25,0.5
+125/165,Electabuzz C (Reverse Holo),0.99,1.3
+126/165,Magmar C (Non-Foil),0.25,0.5
+126/165,Magmar C (Reverse Holo),0.89,1.2
+127/165,Pinsir U (Non-Foil),0.25,0.5
+127/165,Pinsir U (Reverse Holo),0.99,1.3
+128/165,Tauros U (Non-Foil),0.25,0.5
+128/165,Tauros U (Reverse Holo),0.89,1.2
+129/165,Magikarp C (Non-Foil),0.35,0.5
+129/165,Magikarp C (Reverse Holo),0.35,1.0
+130/165,Gyrados R (Foil),0.69,0.9
+130/165,Gyrados R (Reverse Holo),0.89,1.2
+131/165,Lapras U (Non-Foil),0.25,0.5
+131/165,Lapras U (Reverse Holo),0.89,1.2
+132/165,Ditto R (Foil),0.79,1.1
+132/165,Ditto R (Reverse Holo),0.89,1.2
+133/165,Eevee C (Non-Foil),0.35,0.5
+133/165,Eevee C (Reverse Holo),0.39,1.0
+134/165,Vaporeon R (Foil),0.69,0.9
+134/165,Vaporeon R (Reverse Holo),1.69,2.3
+135/165,Jolteon R (Foil),0.49,0.7
+135/165,Jolteon R (Reverse Holo),1.19,1.6
+136/165,Flareon R (Foil),0.75,1.0
+136/165,Flareon R (Reverse Holo),1.19,1.6
+137/165,Porygon C (Non-Foil),0.25,0.5
+137/165,Porygon C (Reverse Holo),0.49,1.0
+138/165,Omanyte U (Non-Foil),0.39,0.5
+138/165,Omanyte U (Reverse Holo),0.99,1.3
+139/165,Omastar R (Foil),0.39,0.5
+139/165,Omastar R (Reverse Holo),0.99,1.3
+140/165,Kabuto U (Non-Foil),0.25,0.5
+140/165,Kabuto U (Reverse Holo),0.89,1.2
+141/165,Kabutops R (Foil),0.69,0.9
+141/165,Kabutops R (Reverse Holo),1.09,1.5
+142/165,Aerodactyl R (Foil),0.69,0.9
+142/165,Aerodactyl R (Reverse Holo),0.99,1.3
+143/165,Snorlax U (Non-Foil),0.25,0.5
+143/165,Snorlax U (Reverse Holo),1.69,2.3
+144/165,Articuno R (Foil),0.69,0.9
+144/165,Articuno R (Reverse Holo),1.09,1.5
+145/165,Zapdos EX RR (Foil),1.49,2.0
+146/165,Moltres R (Foil),0.69,0.9
+146/165,Moltres R (Reverse Holo),0.89,1.2
+147/165,Dratini C (Non-Foil),0.59,0.8
+147/165,Dratini C (Reverse Holo),0.69,1.0
+148/165,Dragonair U (Non-Foil),0.39,0.5
+148/165,Dragonair U (Reverse Holo),0.99,1.3
+149/165,Dragonite R (Foil),0.75,1.0
+149/165,Dragonite R (Reverse Holo),1.69,2.3
+150/165,Mewtwo R (Foil),0.79,1.1
+150/165,Mewtwo R (Reverse Holo),2.99,4.1
+151/165,Mew EX RR (Foil),4.49,6.1
+152/165,Antique Dome Fossil U (Non-Foil),0.35,0.5
+152/165,Antique Dome Fossil U (Reverse Holo),1.09,1.5
+153/165,Antique Helix Fossil U (Non-Foil),0.39,0.5
+153/165,Antique Helix Fossil U (Reverse Holo),0.79,1.1
+154/165,Antique Old Amber C (Non-Foil),0.35,0.5
+154/165,Antique Old Amber C (Reverse Holo),0.99,1.3
+155/165,Big Air Balloon C (Non-Foil),0.25,0.5
+155/165,Big Air Balloon C (Reverse Holo),0.99,1.3
+156/165,Bill's Transfer C (Non-Foil),0.25,0.5
+156/165,Bill's Transfer C (Reverse Holo),0.89,1.2
+157/165,Cycling Road U (Non-Foil),0.35,0.5
+157/165,Cycling Road U (Reverse Holo),0.99,1.3
+158/165,Daisy's Help U (Non-Foil),0.35,0.5
+158/165,Daisy's Help U (Reverse Holo),1.09,1.5
+159/165,Energy Sticker U (Non-Foil),0.49,0.7
+159/165,Energy Sticker U (Reverse Holo),1.29,1.8
+160/165,Erika's Invitation U (Non-Foil),0.75,1.0
+160/165,Erika's Invitation U (Reverse Holo),0.89,1.2
+161/165,Giovanni's Charisma U (Non-Foil),0.69,0.9
+161/165,Giovanni's Charisma U (Reverse Holo),1.09,1.5
+162/165,Grabber U (Non-Foil),0.39,0.5
+162/165,Grabber U (Reverse Holo),1.09,1.5
+163/165,Leftovers U (Non-Foil),0.35,0.5
+163/165,Leftovers U (Reverse Holo),1.09,1.5
+164/165,Protective Goggles U (Non-Foil),0.49,0.7
+164/165,Protective Goggles U (Reverse Holo),0.89,1.2
+165/165,Rigid Band U (Non-Foil),0.49,0.7
+165/165,Rigid Band U (Reverse Holo),0.99,1.3
+166/165,Bulbasaur IR (Foil),23.99,32.6
+167/165,Ivysaur IR (Foil),21.99,29.9
+168/165,Charmander IR (Foil),30.99,42.1
+169/165,Charmeleon IR (Foil),24.99,34.0
+170/165,Squirtle IR (Foil),29.99,40.8
+171/165,Wartotle IR (Foil),20.99,28.5
+172/165,Caterpie IR (Foil),7.49,10.2
+173/165,Pikachu IR (Foil),22.99,31.2
+174/165,Nidoking IR (Foil),7.99,10.9
+175/165,Psyduck IR (Foil),11.99,16.3
+176/165,Poliwhirl IR (Foil),12.99,17.7
+177/165,Machoke IR (Foil),7.99,10.9
+178/165,Tangela IR (Foil),5.99,8.1
+179/165,Mr Mime IR (Foil),5.99,8.1
+180/165,Omanyte IR (Foil),6.99,9.5
+181/165,Dragonair IR (Foil),20.99,28.5
+182/165,Venusaur EX SR (Foil),16.99,23.1
+183/165,Charizard EX SR (Foil),34.99,47.6
+184/165,Blastoise EX SR (Foil),21.99,29.9
+185/165,Arbok EX SR (Foil),8.49,11.5
+186/165,Ninetails EX SR (Foil),13.99,19.0
+187/165,Wigglytuff EX SR (Foil),9.49,12.9
+188/165,Alakazam EX SR (Foil),11.99,16.3
+189/165,Golem EX SR (Foil),8.49,11.5
+190/165,Kangaskhan EX SR (Foil),9.99,13.6
+191/165,Jynx EX SR (Foil),8.99,12.2
+192/165,Zapdos EX SR (Foil),12.99,17.7
+193/165,Mew EX SR (Foil),19.99,27.2
+194/165,Bill's Transfer SR (Foil),5.99,8.1
+195/165,Daisy's Help SR (Foil),5.99,8.1
+196/165,Erika's Invitation SR (Foil),9.99,13.6
+197/165,Giovanni's Charisma SR (Foil),6.99,9.5
+198/165,Venusaur EX SAR (Foil),47.99,65.2
+199/165,Charizard EX SIR (Foil),134.99,183.5
+200/165,Blastoise EX SIR (Foil),47.99,65.2
+201/165,Alakazam EX SIR (Foil),34.99,47.6
+202/165,Zapdos EX SIR (Foil),41.99,57.1
+203/165,Erika's Invitation SIR (Foil),18.99,25.8
+204/165,Giovanni's Charisma SIR (Foil),12.99,17.7
+205/165,Mew EX UR (Foil),8.49,11.5
+206/165,Switch UR (Foil),6.49,8.8
+207/165,Psychic Energy UR (Foil),7.99,10.9
+SVE En 001,Grass Energy (Foil),1.29,1.8
+SVE En 002,Fire Energy (Foil),0.99,1.3
+SVE En 003,Water Energy (Foil),0.75,1.0
+SVE En 004,Electric Energy (Foil),1.49,2.0
+SVE En 005,Psychic Energy (Foil),0.79,1.1
+SVE En 006,Fighting Energy (Foil),0.75,1.0
+SVE En 007,Dark Energy (Foil),0.79,1.1
+SVE En 008,Metal Energy (Foil),0.69,0.9

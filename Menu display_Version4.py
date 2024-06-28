@@ -553,7 +553,7 @@ class SV03_english:
         namelist = []
         IDlist = []
         for i in range(1, 4):
-            url = 'https://www.trollandtoad.com/pokemon/scarlet-violet-paradox-rift/19725?Keywords=&page-no=' + str(i)
+            url = 'https://www.trollandtoad.com/obsidian-flames-reverse-holo-singles/19670?Keywords=&page-no=' + str(i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, "html.parser")
             price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
@@ -631,6 +631,7 @@ class SV03_english:
                     wrongcounter += 1
                     wronglist.append(df_singles.iloc[singles_counter - 1][1])
                     wronglist.append(df_swdk.iloc[i][1])
+                    print(f"The wrong values from Tnt is {df_singles.iloc[singles_counter-1][1]} and swdk is {df_swdk.iloc[i][1]}.")
                 sgdvalue = df_rh.iloc[rh_counter][2] * usdtosgd
                 if sgdvalue < 1:
                     sgdvalue = 1
@@ -652,6 +653,7 @@ class SV03_english:
                     wrongcounter += 1
                     wronglist.append(df_singles.iloc[singles_counter][1])
                     wronglist.append(df_swdk.iloc[i][1])
+                    print(f"The wrong values from Tnt is {df_singles.iloc[singles_counter][1]} and swdk is {df_swdk.iloc[i][1]}.")
                 sgdvalue = df_singles.iloc[singles_counter][2] * usdtosgd
                 if sgdvalue < 0.5:
                     sgdvalue = 0.5
@@ -2189,13 +2191,13 @@ class controller:
                                 SV45obj = SV45_english(csvexist)
                                 SV45obj.sv45_main()
                                 SV04obj = SV04_english(csvexist)
-                                SV04obj.sv04_main()
+                                #SV04obj.sv04_main()
                                 SV35obj = SV35_english(csvexist)
                                 SV35obj.sv35_main()
                                 SV03obj = SV03_english(csvexist)
                                 SV03obj.sv03_main()
                                 SV02obj = SV02_english(csvexist)
-                                SV02obj.sv02_main()
+                                #SV02obj.sv02_main()
                                 SV01obj = SV01_english(csvexist)
                                 SV01obj.sv01_main()
                                 print("All sets are processed.")
