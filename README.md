@@ -43,22 +43,35 @@ pip install regex
 ```
 
 ## Features
-The main script has a menu for the user to choose which specific set to update.
-The user would have to put the CSV file within the same folder as the script and rename it to the specified naming format.
+# Menu
+The main script is designed using Object Oriented Programming with a simple menu design.  
+  
+This is the initial options to choose between English and Japanese sets.  
+![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/72353abc-20fd-47a6-829a-e3a026acd8ee)  
+  
+If option 2 was chose, English sets will be list out the options.  
+![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/e033194b-07f0-49fe-bb7e-2345a5326cf4)  
+  
+As of the current design, you can choose the options by typing the option number on the left when prompted.  
+In this scenario, "00" is the option to run all of the listed set consecutively.  
+Once you have chosen the sets, another prompt will ask if the CSV file for the chosen set exists.
+![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/dae4aa21-a881-47d3-aa0a-3054b0f5a402)  
+If the CSV file does not exist, a simple CSV file containing the ID, Name and USD price will be generated as demo instead.  
+Once all options are entered, the program will run starting.  
 
 
 ## Current Issues/Future Roadmap
-__1) The website may change its format due to inventory audit, out of stock or minor mistakes.__
-  Future updates will include checks or more error exception to ensure the script is still able to run or alternatives are included.
-  Current issues encountered:
-  Inclusive of Promo cards (Fixed)
-  Separate version of card ID in SV3.5 (Fixed for SV3.5)
-  Duplicated entries
-  Inventory audit
+__1) The website may change its format due to inventory audit, out of stock or minor mistakes.__  
+  Future updates will include checks or more error exception to ensure the script is still able to run or alternatives are included.  
+  Current issues encountered:  
+  Inclusive of Promo cards (Fixed)  
+  Separate version of card ID in SV3.5 (Fixed for SV3.5)  
+  Duplicated entries  
+  Inventory audit  
   
-__2) The codes for each series is an individual class.__
-  Future version can simplify the entire code to a single parent to simplify the code for checking and running.
+__2) The codes for each series is an individual class.__  
+  Future version can simplify the entire code to a single parent to simplify the code for checking and running.  
 
-## Acknowledgements
-This script was just a passion project after learning how to do webscraping through Python using BeautifulSoup4.
-I would like to thank my mentors for the guidance on using OOP to create a controller and to use BS4.
+## Acknowledgements  
+This script was just a passion project after learning how to do webscraping through Python using BeautifulSoup4.  
+I would like to thank my mentors for the guidance on using OOP to create a controller and to use BS4.  
