@@ -313,12 +313,12 @@ ID,Name,Price in USD,Price in SGD
 166/167,Boomerang Energy [Special Energy] [U - Uncommon] (Non-Foil),0.25,0.5
 166/167,Boomerang Energy [Special Energy] [U - Uncommon] (Reverse Holo),0.25,1.0
 167/167,Legacy Energy [Special Energy] [AS - ACE SPEC] (Foil),3.99,5.4
-168/167,Pinsir [Grass] [IR - Illustration Rare] (Foil),7.99,10.9
+168/167,Pinsir [Grass] [IR - Illustration Rare] (Foil),7.99,10.8
 169/167,Sunflora [Grass] [IR - Illustration Rare] (Foil),3.99,5.4
 170/167,Dipplin [Grass] [IR - Illustration Rare] (Foil),4.99,6.8
 171/167,Poltchageist [Grass] [IR - Illustration Rare] (Foil),3.49,4.7
 172/167,Torkoal [Fire] [IR - Illustration Rare] (Foil),2.99,4.1
-173/167,Infernape [Fire] [IR - Illustration Rare] (Foil),7.99,10.9
+173/167,Infernape [Fire] [IR - Illustration Rare] (Foil),7.99,10.8
 174/167,Froslass [Water] [IR - Illustration Rare] (Foil),5.99,8.1
 175/167,Phione [Water] [IR - Illustration Rare] (Foil),3.99,5.4
 176/167,Cramorant [Water] [IR - Illustration Rare] (Foil),2.49,3.4
@@ -332,10 +332,10 @@ ID,Name,Price in USD,Price in SGD
 184/167,Lairon [Metal] [IR - Illustration Rare] (Foil),3.49,4.7
 185/167,Applin [Dragon] [IR - Illustration Rare] (Foil),4.99,6.8
 186/167,Tatsugiri [Dragon] [IR - Illustration Rare] (Foil),13.99,19.0
-187/167,Chansey [Colorless] [IR - Illustration Rare] (Foil),19.99,27.2
-188/167,Eevee [Colorless] [IR - Illustration Rare] (Foil),44.99,61.1
+187/167,Chansey [Colorless] [IR - Illustration Rare] (Foil),19.99,27.1
+188/167,Eevee [Colorless] [IR - Illustration Rare] (Foil),44.99,61.0
 189/167,Sinistcha ex [Grass] [UR - Ultra Rare] (Foil),2.29,3.1
-190/167,Teal Mask Ogerpon ex [Grass] [UR - Ultra Rare] (Foil),14.99,20.4
+190/167,Teal Mask Ogerpon ex [Grass] [UR - Ultra Rare] (Foil),14.99,20.3
 191/167,Magcargo ex [Fire] [UR - Ultra Rare] (Foil),2.49,3.4
 192/167,Hearthflame Mask Ogerpon ex [Fire] [UR - Ultra Rare] (Foil),3.99,5.4
 193/167,Palafin ex [Water] [UR - Ultra Rare] (Foil),2.99,4.1
@@ -346,7 +346,7 @@ ID,Name,Price in USD,Price in SGD
 198/167,Greninja ex [Fighting] [UR - Ultra Rare] (Foil),8.99,12.2
 199/167,Cornerstone Mask Ogerpon ex [Fighting] [UR - Ultra Rare] (Foil),5.99,8.1
 200/167,Dragapult ex [Dragon] [UR - Ultra Rare] (Foil),15.99,21.7
-201/167,Blissey ex [Colorless] [UR - Ultra Rare] (Foil),5.49,7.5
+201/167,Blissey ex [Colorless] [UR - Ultra Rare] (Foil),5.49,7.4
 202/167,Bloodmoon Ursaluna ex [Colorless] [UR - Ultra Rare] (Foil),6.49,8.8
 203/167,Caretaker [Supporter] [UR - Ultra Rare] (Foil),1.99,2.7
 204/167,Carmine [Supporter] [UR - Ultra Rare] (Foil),10.99,14.9
@@ -355,20 +355,20 @@ ID,Name,Price in USD,Price in SGD
 207/167,Lana's Aid [Supporter] [UR - Ultra Rare] (Foil),5.99,8.1
 208/167,Lucian [Supporter] [UR - Ultra Rare] (Foil),2.49,3.4
 209/167,Perrin [Supporter] [UR - Ultra Rare] (Foil),6.49,8.8
-210/167,Sinistcha ex [Grass] [SIR - Special Illustration Rare] (Foil),24.99,34.0
-211/167,Teal Mask Ogerpon ex [Grass] [SIR - Special Illustration Rare] (Foil),54.99,74.7
-212/167,Hearthflame Mask Ogerpon ex [Fire] [SIR - Special Illustration Rare] (Foil),21.99,29.9
-213/167,Wellspring Mask Ogerpon ex [Water] [SIR - Special Illustration Rare] (Foil),29.99,40.8
-214/167,Greninja ex [Fighting] [SIR - Special Illustration Rare] (Foil),204.99,278.6
+210/167,Sinistcha ex [Grass] [SIR - Special Illustration Rare] (Foil),24.99,33.9
+211/167,Teal Mask Ogerpon ex [Grass] [SIR - Special Illustration Rare] (Foil),54.99,74.6
+212/167,Hearthflame Mask Ogerpon ex [Fire] [SIR - Special Illustration Rare] (Foil),21.99,29.8
+213/167,Wellspring Mask Ogerpon ex [Water] [SIR - Special Illustration Rare] (Foil),29.99,40.7
+214/167,Greninja ex [Fighting] [SIR - Special Illustration Rare] (Foil),204.99,278.1
 215/167,Cornerstone Mask Ogerpon ex [Fighting] [SIR - Special Illustration Rare] (Foil),22.99,31.2
-216/167,Bloodmoon Ursaluna ex [Colorless] [SIR - Special Illustration Rare] (Foil),59.99,81.5
-217/167,Carmine [Supporter] [SIR - Special Illustration Rare] (Foil),109.99,149.5
-218/167,Kieran [Supporter] [SIR - Special Illustration Rare] (Foil),44.99,61.1
-219/167,Lana's Aid [Supporter] [SIR - Special Illustration Rare] (Foil),35.99,48.9
-220/167,Perrin [Supporter] [SIR - Special Illustration Rare] (Foil),79.99,108.7
-221/167,Teal Mask Ogerpon ex [Grass] [HR - Hyper Rare] (Foil),21.99,29.9
-222/167,Bloodmoon Ursaluna ex [Colorless] [HR - Hyper Rare] (Foil),14.99,20.4
-223/167,Buddy-Buddy Poffin [Item] [HR - Hyper Rare] (Foil),49.99,67.9
+216/167,Bloodmoon Ursaluna ex [Colorless] [SIR - Special Illustration Rare] (Foil),59.99,81.4
+217/167,Carmine [Supporter] [SIR - Special Illustration Rare] (Foil),109.99,149.2
+218/167,Kieran [Supporter] [SIR - Special Illustration Rare] (Foil),44.99,61.0
+219/167,Lana's Aid [Supporter] [SIR - Special Illustration Rare] (Foil),35.99,48.8
+220/167,Perrin [Supporter] [SIR - Special Illustration Rare] (Foil),79.99,108.5
+221/167,Teal Mask Ogerpon ex [Grass] [HR - Hyper Rare] (Foil),21.99,29.8
+222/167,Bloodmoon Ursaluna ex [Colorless] [HR - Hyper Rare] (Foil),14.99,20.3
+223/167,Buddy-Buddy Poffin [Item] [HR - Hyper Rare] (Foil),49.99,67.8
 224/167,Enhanced Hammer [Item] [HR - Hyper Rare] (Foil),9.99,13.6
 225/167,Rescue Board [Pokemon Tool] [HR - Hyper Rare] (Foil),15.99,21.7
 226/167,Luminous Energy [Special Energy] [HR - Hyper Rare] (Foil),9.99,13.6

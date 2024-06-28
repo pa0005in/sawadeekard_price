@@ -174,7 +174,7 @@ ID,Name,Price in USD,Price in SGD
 091/165,Cloyster U (Non-Foil),0.49,0.7
 091/165,Cloyster U (Reverse Holo),0.39,1.0
 092/165,Ghastly C (Non-Foil),0.25,0.5
-092/165,Ghastly C (Reverse Holo),0.49,1.0
+092/165,Ghastly C (Reverse Holo),0.3,1.0
 093/165,Haunter U (Non-Foil),0.25,0.5
 093/165,Haunter U (Reverse Holo),0.59,1.0
 094/165,Gengar R (Foil),0.39,0.5
@@ -188,7 +188,7 @@ ID,Name,Price in USD,Price in SGD
 098/165,Krabby C (Non-Foil),0.25,0.5
 098/165,Krabby C (Reverse Holo),0.39,1.0
 099/165,Kingler U (Non-Foil),0.25,0.5
-099/165,Kingler U (Reverse Holo),1.99,2.7
+099/165,Kingler U (Reverse Holo),1.69,2.3
 100/165,Voltorb C (Non-Foil),0.25,0.5
 100/165,Voltorb C (Reverse Holo),0.39,1.0
 101/165,Electrode R (Foil),0.49,0.7
@@ -318,24 +318,24 @@ ID,Name,Price in USD,Price in SGD
 165/165,Rigid Band U (Non-Foil),0.49,0.7
 165/165,Rigid Band U (Reverse Holo),0.99,1.3
 166/165,Bulbasaur IR (Foil),23.99,32.6
-167/165,Ivysaur IR (Foil),21.99,29.9
+167/165,Ivysaur IR (Foil),21.99,29.8
 168/165,Charmander IR (Foil),30.99,42.1
-169/165,Charmeleon IR (Foil),24.99,34.0
-170/165,Squirtle IR (Foil),29.99,40.8
+169/165,Charmeleon IR (Foil),24.99,33.9
+170/165,Squirtle IR (Foil),29.99,40.7
 171/165,Wartotle IR (Foil),20.99,28.5
 172/165,Caterpie IR (Foil),7.49,10.2
 173/165,Pikachu IR (Foil),22.99,31.2
-174/165,Nidoking IR (Foil),7.99,10.9
+174/165,Nidoking IR (Foil),7.99,10.8
 175/165,Psyduck IR (Foil),11.99,16.3
-176/165,Poliwhirl IR (Foil),12.99,17.7
-177/165,Machoke IR (Foil),7.99,10.9
+176/165,Poliwhirl IR (Foil),12.99,17.6
+177/165,Machoke IR (Foil),7.99,10.8
 178/165,Tangela IR (Foil),5.99,8.1
 179/165,Mr Mime IR (Foil),5.99,8.1
 180/165,Omanyte IR (Foil),6.99,9.5
 181/165,Dragonair IR (Foil),20.99,28.5
 182/165,Venusaur EX SR (Foil),16.99,23.1
-183/165,Charizard EX SR (Foil),34.99,47.6
-184/165,Blastoise EX SR (Foil),21.99,29.9
+183/165,Charizard EX SR (Foil),34.99,47.5
+184/165,Blastoise EX SR (Foil),21.99,29.8
 185/165,Arbok EX SR (Foil),8.49,11.5
 186/165,Ninetails EX SR (Foil),13.99,19.0
 187/165,Wigglytuff EX SR (Foil),9.49,12.9
@@ -343,22 +343,22 @@ ID,Name,Price in USD,Price in SGD
 189/165,Golem EX SR (Foil),8.49,11.5
 190/165,Kangaskhan EX SR (Foil),9.99,13.6
 191/165,Jynx EX SR (Foil),8.99,12.2
-192/165,Zapdos EX SR (Foil),12.99,17.7
-193/165,Mew EX SR (Foil),19.99,27.2
+192/165,Zapdos EX SR (Foil),12.99,17.6
+193/165,Mew EX SR (Foil),19.99,27.1
 194/165,Bill's Transfer SR (Foil),5.99,8.1
 195/165,Daisy's Help SR (Foil),5.99,8.1
 196/165,Erika's Invitation SR (Foil),9.99,13.6
 197/165,Giovanni's Charisma SR (Foil),6.99,9.5
-198/165,Venusaur EX SAR (Foil),47.99,65.2
-199/165,Charizard EX SIR (Foil),134.99,183.5
-200/165,Blastoise EX SIR (Foil),47.99,65.2
-201/165,Alakazam EX SIR (Foil),34.99,47.6
-202/165,Zapdos EX SIR (Foil),41.99,57.1
+198/165,Venusaur EX SAR (Foil),47.99,65.1
+199/165,Charizard EX SIR (Foil),134.99,183.2
+200/165,Blastoise EX SIR (Foil),47.99,65.1
+201/165,Alakazam EX SIR (Foil),34.99,47.5
+202/165,Zapdos EX SIR (Foil),41.99,57.0
 203/165,Erika's Invitation SIR (Foil),18.99,25.8
-204/165,Giovanni's Charisma SIR (Foil),12.99,17.7
+204/165,Giovanni's Charisma SIR (Foil),12.99,17.6
 205/165,Mew EX UR (Foil),8.49,11.5
 206/165,Switch UR (Foil),6.49,8.8
-207/165,Psychic Energy UR (Foil),7.99,10.9
+207/165,Psychic Energy UR (Foil),7.99,10.8
 SVE En 001,Grass Energy (Foil),1.29,1.8
 SVE En 002,Fire Energy (Foil),0.99,1.3
 SVE En 003,Water Energy (Foil),0.75,1.0
