@@ -43,4 +43,22 @@ pip install regex
 ```
 
 ## Features
-The main script 
+The main script has a menu for the user to choose which specific set to update.
+The user would have to put the CSV file within the same folder as the script and rename it to the specified naming format.
+
+
+## Current Issues/Future Roadmap
+__1) The website may change its format due to inventory audit, out of stock or minor mistakes.__
+  Future updates will include checks or more error exception to ensure the script is still able to run or alternatives are included.
+  Current issues encountered:
+  Inclusive of Promo cards (Fixed)
+  Separate version of card ID in SV3.5 (Fixed for SV3.5)
+  Duplicated entries
+  Inventory audit
+  
+__2) The codes for each series is an individual class.__
+  Future version can simplify the entire code to a single parent to simplify the code for checking and running.
+
+## Acknowledgements
+This script was just a passion project after learning how to do webscraping through Python using BeautifulSoup4.
+I would like to thank my mentors for the guidance on using OOP to create a controller and to use BS4.
