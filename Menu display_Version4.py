@@ -32,6 +32,9 @@ Created on Thu Nov 16 04:24:31 2023
 #Updated sorting algorithm for swdk_sv35 to account for holo energy cards and to remove multiple blank spaces in between words
 #Updated xerates.com scraping
 #=============
+#To resolve:
+#SV02: inventory audit so price cannot be extracted
+#SV04: remove duplicated card in df_swdk
 
 
 import pandas as pd
