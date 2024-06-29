@@ -49,7 +49,7 @@ The main script is designed using Object Oriented Programming with a simple menu
 This is the initial options to choose between English and Japanese sets.  
 ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/72353abc-20fd-47a6-829a-e3a026acd8ee)  
   
-If option 2 was chose, English sets will be list out the options.  
+If option 2 was chosen, options for English sets will be listed.  
 ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/e033194b-07f0-49fe-bb7e-2345a5326cf4)  
   
 As of the current design, you can choose the options by typing the option number on the left when prompted.  
