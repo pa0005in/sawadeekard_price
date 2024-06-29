@@ -5,35 +5,12 @@ Created on Thu Nov 16 04:24:31 2023
 @author: khin_
 """
 #=========================================================================
-#Version 1.1
-#Created the base structure of the menu using OOP
-#Created initial options for Japanese and English sets
-#Inserted options for SV2a 151 for Japanese and S12a VSU for Japanese
-#Succesfully imported SV2a 151 script to run
-#=========================================================================
-#Version 1.2
-#Inserted SV2a_main script into current script
-#Inserted options for SV06 twilight masquerade for English
-#Inserted options for run all (to be finished)
-#Inserted SV06 twilight masquerade for English into current script
-#SV06 script includes automated feature to do the shopify csv and to create a changelog for prices
-#=========================================================================
-#Version 1.3
-#Inserted SV05 temporal forces for English
-#Changed TnT scraping method to account for multiple prices for a single card, always use first option
-#Included self.name to reflect current set, so _main will not have to be updated
-#=========================================================================
-#Version 1.4
-#Inserted self.csvexist for non-shopify modes (simplemerge will be given instead)
-#Inserted csvexist query for user
-#Inserted full set list of all 8 SV sets
-#Inserted jp_151_main
-#Inserted SV4.5, SV04,SV3.5,SV03,SV02,SV01
-#Updated sorting algorithm for swdk_sv35 to account for holo energy cards and to remove multiple blank spaces in between words
-#Updated xerates.com scraping
+#Version 2.0
+#inheritance to make code neater
 #=============
 #To resolve:
 #SV02: inventory audit so price cannot be extracted
+#Try check for price, exception made when price not found
 #SV04: remove duplicated card in df_swdk
 
 
@@ -64,6 +41,226 @@ def csvlist(setlist):
 #Set a custom exception to be raised when it is necessary to exit the application
 class ExitException(Exception):
     pass
+
+#Parent class
+class ScarletViolet:
+    def __init__(self, setkey, csvexist=False):
+        print(f"{setkey} Loading...")
+        self.name = setkey + "_english"
+        self.csvexist = csvexist
+
+    def swdk(self,swdkurl,setnamereplace,setsize):
+        newlist = []
+        namelist = []
+        IDlist = []
+
+        for i in range(1, 20):  # page range
+            url = swdkurl + "?page=" + str(i)
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, 'html.parser')
+
+            data = soup.find_all("h3", class_="card__heading h5")
+
+            for each in data:
+                each = str(each)
+                holder1 = re.split('>', each)
+                holder2 = re.split('<', holder1[2].strip())
+                newlist.append(holder2[0].strip())
+
+        for i in range(len(newlist)):
+            #     # newlist[i]=re.search(r"^([).*())$",newlist[i])
+            newlist[i] = newlist[i].replace('\t', " ")
+            newlist[i] = newlist[i].replace(setnamereplace, "")
+            newlist[i] = newlist[i].strip()
+            # holder = newlist[i].split(" [")
+            # newlist[i] = holder[0]
+
+        for i in range(len(newlist)):
+            holder = newlist[i].split(setsize+ " ")
+            IDlist.append(holder[0] + setsize)
+            namelist.append(holder[1])
+
+        df_swdk = pd.DataFrame({"ID": IDlist, "Name": namelist})
+        df_swdk.sort_values(["ID", "Name"], ascending=True, inplace=True)
+        df_swdk.reset_index(drop=True, inplace=True)
+        return (df_swdk)
+
+    def tnt(self,rh_url,singles_url):
+        pricelist = []
+        namelist = []
+        IDlist = []
+        for i in range(1, 5):
+            url = rh_url +'?Keywords=&page-no=' + str(i)
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, "html.parser")
+            price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
+            for each in price:
+                each = str(each)
+                priceholder0 = re.split("col-2 text-center p-1", each)
+                priceholder1 = re.split(">", priceholder0[3])
+                priceholder2 = re.split("<", priceholder1[1])
+                priceholder3 = priceholder2[0].replace("$", "")
+                priceholder3 = priceholder3.strip()
+                pricelist.append(float(priceholder3))
+            name = soup.find_all('a', class_="card-text")
+            for each in name:
+                each = str(each)
+                nameholder1 = re.split(">", each)
+                nameholder2 = re.split("<", nameholder1[1])
+                nameholder3 = re.split("- ", nameholder2[0])
+                namelist.append(nameholder3[0].strip())
+                IDlist.append(nameholder3[1].strip())
+        df_sv01_rh = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
+        df_sv01_rh.sort_values(["ID"], ascending=True, inplace=True)
+        df_sv01_rh.reset_index(drop=True, inplace=True)
+
+        pricelist = []
+        namelist = []
+        IDlist = []
+        promocounter = 0
+        for i in range(1, 6):
+            url = singles_url+'?Keywords=&page-no=' + str(i)
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, "html.parser")
+            price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
+            for each in price:
+                each = str(each)
+                if re.search("Promo", each):
+                    pass
+                else:
+                    priceholder0 = re.split("col-2 text-center p-1", each)
+                    priceholder1 = re.split(">", priceholder0[3])
+                    priceholder2 = re.split("<", priceholder1[1])
+                    priceholder3 = priceholder2[0].replace("$", "")
+                    priceholder3 = priceholder3.strip()
+                    pricelist.append(float(priceholder3))
+            name = soup.find_all('a', class_="card-text")
+            for each in name:
+                each = str(each)
+                if re.search("Promo", each):  # promo cards were added
+                    promocounter += 1
+                else:
+                    nameholder1 = re.split(">", each)
+                    nameholder2 = re.split("<", nameholder1[1])
+                    nameholder3 = re.split("- ", nameholder2[0])
+                    namelist.append(nameholder3[0].strip())
+                    IDlist.append(nameholder3[1].strip())
+        #print(f"Number of price is {len(pricelist)}, ID is {len(IDlist)} and name is {len(namelist)}.")
+        df_singles = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
+        df_singles.sort_values(["ID"], ascending=True, inplace=True)
+        df_singles.reset_index(drop=True, inplace=True)
+        return df_rh, df_singles
+
+    def merge(self, df_swdk, df_rh, df_singles):
+        df_merged = pd.DataFrame(columns=['ID', 'Name', 'Price in USD'])
+        rh_counter = 0
+        singles_counter = 0
+        correctcounter = 0
+        wrongcounter = 0
+        wronglist = []
+        rates = ScarletViolet().xe_rates()
+        usdtosgd = float(rates)
+        for i in range(len(df_swdk)):
+            if re.search('Reverse Holo', df_swdk.iloc[i][1]):
+                if re.search(df_singles.iloc[singles_counter - 1][1], df_swdk.iloc[i][1]):
+                    correctcounter += 1
+                else:
+                    wrongcounter += 1
+                    wronglist.append(df_singles.iloc[singles_counter - 1][1])
+                    wronglist.append(df_swdk.iloc[i][1])
+                sgdvalue = df_rh.iloc[rh_counter][2] * usdtosgd
+                if sgdvalue < 1:
+                    sgdvalue = 1
+                else:
+                    sgdvalue = round(sgdvalue * 10) / 10
+                new_row = {
+                    'ID': df_swdk.iloc[i][0],
+                    'Name': df_swdk.iloc[i][1],
+                    'Price in USD': df_rh.iloc[rh_counter][2],
+                    'Price in SGD': sgdvalue
+                }
+                new_row = pd.DataFrame(new_row, index=[0])
+                df_merged = pd.concat([df_merged, new_row], ignore_index=True)
+                rh_counter += 1
+            else:
+                if re.search(df_singles.iloc[singles_counter][1], df_swdk.iloc[i][1]):
+                    correctcounter += 1
+                else:
+                    wrongcounter += 1
+                    wronglist.append(df_singles.iloc[singles_counter][1])
+                    wronglist.append(df_swdk.iloc[i][1])
+                sgdvalue = df_singles.iloc[singles_counter][2] * usdtosgd
+                if sgdvalue < 0.5:
+                    sgdvalue = 0.5
+                else:
+                    sgdvalue = round(sgdvalue * 10) / 10
+                new_row = {
+                    'ID': df_swdk.iloc[i][0],
+                    'Name': df_swdk.iloc[i][1],
+                    'Price in USD': df_singles.iloc[singles_counter][2],
+                    'Price in SGD': sgdvalue
+                }
+                new_row = pd.DataFrame(new_row, index=[0])
+                df_merged = pd.concat([df_merged, new_row], ignore_index=True)
+                singles_counter += 1
+        # print(f"The number of correct entries are {correctcounter} and the number of wrong entries are {wrongcounter}.")
+        # print(wronglist)
+        return df_merged
+
+    def shopify_sv01(self, productcsv="products_export_1 (3).csv"):
+        df_shopify = pd.read_csv(productcsv)
+        df_shopify.sort_values(["Title"], ascending=True, inplace=True)
+        df_shopify.reset_index(drop=True, inplace=True)
+        return df_shopify
+
+    def shopify_merge(self, df_swdk, df_shopify):
+        df_changelog = pd.DataFrame(columns=['Before', 'Change', 'After'])
+        # aftercheck = []
+        for i in range(len(df_shopify)):
+            holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+            new_row = {
+                'Before': df_shopify.iloc[i][20],
+                'Change': holder,
+                'After': df_swdk.iloc[i][3]
+            }
+            new_row = pd.DataFrame(new_row, index=[0])
+            df_changelog = pd.concat([df_changelog, new_row], ignore_index=True)
+        df_shopify['Variant Price'] = df_swdk['Price in SGD']
+        # for i in range(len(df_shopify)):
+        #     holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+        #     aftercheck.append(holder)
+        return df_shopify, df_changelog
+
+    def xe_rates(self):
+        # USD to SGD
+        url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        ratedata = soup.find_all('div', style='margin-top:24px')
+        for each in ratedata:
+            each = str(each)
+            holder1 = re.split(">", each)
+            holder21 = re.split("<", holder1[6])
+            holder22 = re.split("<", holder1[7])
+            rates = holder21[0] + holder22[0]
+        return rates
+
+    def sv01_main(self, filename=""):
+        print(f"Shopify file is {filename}.")
+        swdk_name = SV01_english().swdk_sv01()
+        tnt_rh, tnt_singles = SV01_english().tnt_sv01()
+        # print(f"Number of rows for swdk is {swdk_name.shape[0]}, rh is {tnt_rh.shape[0]} and singles is {tnt_singles.shape[0]}")
+        simplemerge = SV01_english().sv01_merge(swdk_name, tnt_rh, tnt_singles)
+        dttm = datetime.now()
+        if self.csvexist:
+            shpfy_name = SV01_english().shopify_sv01(filename)  # include error handling here
+            finalmerge, changelog = SV01_english().shopify_merge(simplemerge, shpfy_name)
+            filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
+            finalmerge.to_csv(filename, index=False)
+            changelog.to_csv(f"Changelog {self.name}.csv", index=False)
+        else:
+            simplemerge.to_csv(f"{self.name} Merged {dttm.strftime('%y%m%d')}.csv", index=False)
+        print(f"{self.name} completed")
 
 #SV01 imported / page
 class SV01_english:
