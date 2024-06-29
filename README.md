@@ -54,7 +54,7 @@ If option 2 was chose, English sets will be list out the options.
   
 As of the current design, you can choose the options by typing the option number on the left when prompted.  
 In this scenario, "00" is the option to run all of the listed set consecutively.  
-Once you have chosen the sets, another prompt will ask if the CSV file for the chosen set exists.
+Once you have chosen the sets, another prompt will ask if the CSV file for the chosen set exists.  
 ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/dae4aa21-a881-47d3-aa0a-3054b0f5a402)  
 If the CSV file does not exist, a simple CSV file containing the ID, Name and USD price will be generated as demo instead.  
 Once all options are entered, the program will run starting.  
@@ -64,10 +64,12 @@ Once all options are entered, the program will run starting.
 __1) The website may change its format due to inventory audit, out of stock or minor mistakes.__  
   Future updates will include checks or more error exception to ensure the script is still able to run or alternatives are included.  
   Current issues encountered:  
-  Inclusive of Promo cards (Fixed)  
-  Separate version of card ID in SV3.5 (Fixed for SV3.5)  
+  Inclusive of Holo Energy cards with different ID (e.g. SVE001) (Fixed for SV01 in Version 1.4)  
+  Inclusive of Promo cards (Fixed in Version 1.4)  
+  Separate version of card ID in SV3.5 (Fixed for SV3.5 in Version 1.4)  
   Duplicated entries  
   Inventory audit  
+  Galar Gallery (#GG0x) and Trainer Gallery (#TG0x) cannot be read by the script  
   
 __2) The codes for each series is an individual class.__  
   Future version can simplify the entire code to a single parent to simplify the code for checking and running.  
