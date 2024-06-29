@@ -64,12 +64,17 @@ Once all options are entered, the program will run starting.
 __1) The website may change its format due to inventory audit, out of stock or minor mistakes.__  
   Future updates will include checks or more error exception to ensure the script is still able to run or alternatives are included.  
   Current issues encountered:  
-  Inclusive of Holo Energy cards with different ID (e.g. SVE001) (Fixed for SV01 in Version 1.4)  
   Inclusive of Promo cards (Fixed in Version 1.4)  
+  ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/704bc55f-bfcb-43e5-8f60-65e8b2d41e3e)  
   Separate version of card ID in SV3.5 (Fixed for SV3.5 in Version 1.4)  
-  Duplicated entries  
+  ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/9181c5da-5b3b-46a4-8d21-cdbdf15391d8)  
+  Duplicated entries from website  
+  ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/98d154c8-785c-407b-8974-50b36b37f89c)  
   Inventory audit  
+  ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/4485c1f1-1ddb-4622-9e26-02c32485ce05)  
   Galar Gallery (#GG0x) and Trainer Gallery (#TG0x) cannot be read by the script  
+  ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/a0da95e0-7ac4-4826-b1a7-336d002d9bf4)  
+
   
 __2) The codes for each series is an individual class.__  
   Future version can simplify the entire code to a single parent to simplify the code for checking and running.  
