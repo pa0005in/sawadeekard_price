@@ -64,7 +64,7 @@ The main script will look for the CSV within the same folder to read and update.
 Once the Shopify CSV file has been found, the script will match the scraped data with the corresponding entry within the Shopify data and update accordingly.  
 When the update has been commpleted, a new CSV file will be generated with the name "xxxx_english/japanese Shopify yy:mm:dd" (e.g. SV04_english Shopify 240601").
   
-A changelog will also be generated with 3 columns \["Before","Change","After\] with the name "Changelog xxxx_english/japanese".  
+A changelog will also be generated with 3 columns \["Before","Change","After"\] with the name "Changelog xxxx_english/japanese".  
 ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/9ca1bc29-981d-4b3a-9d86-64a9ff633585)  
 The changelog records the prices changed within the CSV file to let the user be aware of the price changes.  
 The user can then change the updated CSV file if he is not satisfied with the price change.  
