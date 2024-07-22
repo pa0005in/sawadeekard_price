@@ -141,9 +141,9 @@ tntsingles_page = {
 
 #Name to replace for sawadeekard website
 setnamereplace = {
-    "SV01": "",
-    "SV02": "",
-    "SV03": "",
+    "SV01": "[ENG] SV01 Scarlet Violet Base Set: ",
+    "SV02": "[ENG] SV02 Paldea Evolved: ",
+    "SV03": "[ENG] SV03 Obsidian Flames: ",
     "SV3.5": "[ENG] SV3.5 151: ",
     "SV04": "",
     "SV4.5": "",
