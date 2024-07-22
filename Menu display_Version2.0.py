@@ -139,6 +139,18 @@ tntsingles_page = {
     "SV06":
 }
 
+#Name to replace for sawadeekard website
+setnamereplace = {
+    "SV01": "",
+    "SV02": "",
+    "SV03": "",
+    "SV3.5": "[ENG] SV3.5 151: ",
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06": ""
+}
+
 #Parent class
 class ScarletViolet:
     def __init__(self, setkey, csvexist=False):
@@ -168,7 +180,7 @@ class ScarletViolet:
         for i in range(len(newlist)):
             #     # newlist[i]=re.search(r"^([).*())$",newlist[i])
             newlist[i] = newlist[i].replace('\t', " ")
-            newlist[i] = newlist[i].replace("[ENG] "+setnamereplace+": ", "")
+            newlist[i] = newlist[i].replace(setnamereplace[self.setkey], "")
             newlist[i] = newlist[i].strip()
             # holder = newlist[i].split(" [")
             # newlist[i] = holder[0]
