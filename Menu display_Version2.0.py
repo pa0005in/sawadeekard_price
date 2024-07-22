@@ -85,10 +85,10 @@ setsize = {
     "SV02": 193,
     "SV03": 197,
     "SV3.5": 165,
-    "SV04": ,
-    "SV4.5": ,
-    "SV05": ,
-    "SV06":
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06":""
 }
 
 #Url for tntrh website
@@ -108,11 +108,11 @@ tntrh_page = {
     "SV01": 5,
     "SV02": 4,
     "SV03": 4,
-    "SV3.5": ,
-    "SV04": ,
-    "SV4.5": ,
-    "SV05": ,
-    "SV06":
+    "SV3.5": "",
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06": ""
 }
 
 #Url for tntsingles website
@@ -132,11 +132,11 @@ tntsingles_page = {
     "SV01": 6,
     "SV02": 6,
     "SV03": 5,
-    "SV3.5": ,
-    "SV04": ,
-    "SV4.5": ,
-    "SV05": ,
-    "SV06":
+    "SV3.5": "",
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06": ""
 }
 
 #Name to replace for sawadeekard website
