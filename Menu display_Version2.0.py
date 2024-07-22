@@ -22,9 +22,6 @@ import os
 import re
 import requests
 from bs4 import BeautifulSoup
-#from Sawadeekard_151 import swdk_main
-#from Yuyutei_151 import yyt_main
-#import Japanese_151_price
 
 #adding csv file reading 2 versions (singular and entire list)
 def csvfile(setname):
@@ -42,12 +39,113 @@ def csvlist(setlist):
 class ExitException(Exception):
     pass
 
+#yes/no checking
+def yesnochk(shpfychoice,choiceflag):
+    if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match("YES", shpfychoice.upper()):
+        csvexist = True
+        print(f"The option is {csvexist}.")
+        print("Final CSV file is ready for Shopify upload.")
+        choiceflag = True
+    elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO", shpfychoice.upper()):
+        csvexist = False
+        print(f"The option is {csvexist}.")
+        print("Final CSV file cannot be uploaded.")
+        choiceflag = True
+    else:
+        print("UNACCEPTABLE INPUT!\n")
+    return(csvexist, choiceflag)
+
+#Url for swdk website
+swdkurl = {
+    "SV01": "https://sawadeekard.com/collections/eng-sv01-scarlet-violet-base-set",
+    "SV02": "https://sawadeekard.com/collections/eng-scarlet-violet-paldea-evolved",
+    "SV03": "https://sawadeekard.com/collections/eng-scarlet-violet-sv03-obsidian-flames",
+    "SV3.5": "https://sawadeekard.com/collections/eng-scarlet-violet-sv3-5-pokemon-151",
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06": ""
+}
+
+#Last page for swdk website
+swdkurl_page = {
+    "SV01": 20,
+    "SV02": 20,
+    "SV03": 18,
+    "SV3.5": 17,
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06": ""
+}
+
+#set size of each set
+setsize = {
+    "SV01": 198,
+    "SV02": 193,
+    "SV03": 197,
+    "SV3.5": 165,
+    "SV04": ,
+    "SV4.5": ,
+    "SV05": ,
+    "SV06":
+}
+
+#Url for tntrh website
+tntrh = {
+    "SV01": "https://www.trollandtoad.com/pokemon/scarlet-violet-base-set-reverse-holo-singles/19465",
+    "SV02": "https://www.trollandtoad.com/pokemon/scarlet-violet-paldea-evolved/19616",
+    "SV03": "https://www.trollandtoad.com/obsidian-flames-reverse-holo-singles/19670",
+    "SV3.5": "",
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06": ""
+}
+
+#Last page for tntrh website
+tntrh_page = {
+    "SV01": 5,
+    "SV02": 4,
+    "SV03": 4,
+    "SV3.5": ,
+    "SV04": ,
+    "SV4.5": ,
+    "SV05": ,
+    "SV06":
+}
+
+#Url for tntsingles website
+tntsingles = {
+    "SV01": "https://www.trollandtoad.com/pokemon/scarlet-violet-base-set-reverse-holo-singles/19467",
+    "SV02": "https://www.trollandtoad.com/pokemon/scarlet-violet-paldea-evolved/19618",
+    "SV03": "https://www.trollandtoad.com/pokemon/scarlet-violet-obsidian-flame/19669",
+    "SV3.5": "",
+    "SV04": "",
+    "SV4.5": "",
+    "SV05": "",
+    "SV06": ""
+}
+
+#Last page for tntsingles website
+tntsingles_page = {
+    "SV01": 6,
+    "SV02": 6,
+    "SV03": 5,
+    "SV3.5": ,
+    "SV04": ,
+    "SV4.5": ,
+    "SV05": ,
+    "SV06":
+}
+
 #Parent class
 class ScarletViolet:
     def __init__(self, setkey, csvexist=False):
         print(f"{setkey} Loading...")
         self.name = setkey + "_english"
         self.csvexist = csvexist
+        self.setkey = setkey
 
     def swdk(self,swdkurl,setnamereplace,setsize):
         newlist = []
@@ -55,7 +153,7 @@ class ScarletViolet:
         IDlist = []
 
         for i in range(1, 20):  # page range
-            url = swdkurl + "?page=" + str(i)
+            url = swdkurl[self.setkey] + "?page=" + str(i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -70,14 +168,14 @@ class ScarletViolet:
         for i in range(len(newlist)):
             #     # newlist[i]=re.search(r"^([).*())$",newlist[i])
             newlist[i] = newlist[i].replace('\t', " ")
-            newlist[i] = newlist[i].replace(setnamereplace, "")
+            newlist[i] = newlist[i].replace("[ENG] "+setnamereplace+": ", "")
             newlist[i] = newlist[i].strip()
             # holder = newlist[i].split(" [")
             # newlist[i] = holder[0]
 
         for i in range(len(newlist)):
-            holder = newlist[i].split(setsize+ " ")
-            IDlist.append(holder[0] + setsize)
+            holder = newlist[i].split("/"+setsize+ " ")
+            IDlist.append(holder[0] + "/" +setsize)
             namelist.append(holder[1])
 
         df_swdk = pd.DataFrame({"ID": IDlist, "Name": namelist})
@@ -90,18 +188,21 @@ class ScarletViolet:
         namelist = []
         IDlist = []
         for i in range(1, 5):
-            url = rh_url +'?Keywords=&page-no=' + str(i)
+            url = rh_url[self.setkey] +'?Keywords=&page-no=' + str(i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, "html.parser")
             price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
             for each in price:
-                each = str(each)
-                priceholder0 = re.split("col-2 text-center p-1", each)
-                priceholder1 = re.split(">", priceholder0[3])
-                priceholder2 = re.split("<", priceholder1[1])
-                priceholder3 = priceholder2[0].replace("$", "")
-                priceholder3 = priceholder3.strip()
-                pricelist.append(float(priceholder3))
+                try:
+                    each = str(each)
+                    priceholder0 = re.split("col-2 text-center p-1", each)
+                    priceholder1 = re.split(">", priceholder0[3])
+                    priceholder2 = re.split("<", priceholder1[1])
+                    priceholder3 = priceholder2[0].replace("$", "")
+                    priceholder3 = priceholder3.strip()
+                    pricelist.append(float(priceholder3))
+                except:
+                    pricelist.append(-1.00)
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
@@ -110,16 +211,16 @@ class ScarletViolet:
                 nameholder3 = re.split("- ", nameholder2[0])
                 namelist.append(nameholder3[0].strip())
                 IDlist.append(nameholder3[1].strip())
-        df_sv01_rh = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
-        df_sv01_rh.sort_values(["ID"], ascending=True, inplace=True)
-        df_sv01_rh.reset_index(drop=True, inplace=True)
+        df_rh = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
+        df_rh.sort_values(["ID"], ascending=True, inplace=True)
+        df_rh.reset_index(drop=True, inplace=True)
 
         pricelist = []
         namelist = []
         IDlist = []
         promocounter = 0
         for i in range(1, 6):
-            url = singles_url+'?Keywords=&page-no=' + str(i)
+            url = singles_url[self.setkey]+'?Keywords=&page-no=' + str(i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, "html.parser")
             price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
@@ -128,12 +229,15 @@ class ScarletViolet:
                 if re.search("Promo", each):
                     pass
                 else:
-                    priceholder0 = re.split("col-2 text-center p-1", each)
-                    priceholder1 = re.split(">", priceholder0[3])
-                    priceholder2 = re.split("<", priceholder1[1])
-                    priceholder3 = priceholder2[0].replace("$", "")
-                    priceholder3 = priceholder3.strip()
-                    pricelist.append(float(priceholder3))
+                    try:
+                        priceholder0 = re.split("col-2 text-center p-1", each)
+                        priceholder1 = re.split(">", priceholder0[3])
+                        priceholder2 = re.split("<", priceholder1[1])
+                        priceholder3 = priceholder2[0].replace("$", "")
+                        priceholder3 = priceholder3.strip()
+                        pricelist.append(float(priceholder3))
+                    except:
+                        pricelist.append(-1.00)
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
@@ -158,7 +262,7 @@ class ScarletViolet:
         correctcounter = 0
         wrongcounter = 0
         wronglist = []
-        rates = ScarletViolet().xe_rates()
+        rates = ScarletViolet.xe_rates()
         usdtosgd = float(rates)
         for i in range(len(df_swdk)):
             if re.search('Reverse Holo', df_swdk.iloc[i][1]):
@@ -168,8 +272,7 @@ class ScarletViolet:
                     wrongcounter += 1
                     wronglist.append(df_singles.iloc[singles_counter - 1][1])
                     wronglist.append(df_swdk.iloc[i][1])
-                sgdvalue = df_rh.iloc[rh_counter][2] * usdtosgd
-                if sgdvalue < 1:
+                if sgdvalue < 1 and sgdvalue > 0:
                     sgdvalue = 1
                 else:
                     sgdvalue = round(sgdvalue * 10) / 10
@@ -190,7 +293,7 @@ class ScarletViolet:
                     wronglist.append(df_singles.iloc[singles_counter][1])
                     wronglist.append(df_swdk.iloc[i][1])
                 sgdvalue = df_singles.iloc[singles_counter][2] * usdtosgd
-                if sgdvalue < 0.5:
+                if sgdvalue < 0.5 and sgdvalue > 0.00:
                     sgdvalue = 0.5
                 else:
                     sgdvalue = round(sgdvalue * 10) / 10
@@ -207,12 +310,12 @@ class ScarletViolet:
         # print(wronglist)
         return df_merged
 
-    def shopify_sv01(self, productcsv="products_export_1 (3).csv"):
+    def shopify_sv(self, productcsv="products_export_1 (3).csv"):
         df_shopify = pd.read_csv(productcsv)
         df_shopify.sort_values(["Title"], ascending=True, inplace=True)
         df_shopify.reset_index(drop=True, inplace=True)
         return df_shopify
-
+#look to check for price = 0, do no changes if new price is 0
     def shopify_merge(self, df_swdk, df_shopify):
         df_changelog = pd.DataFrame(columns=['Before', 'Change', 'After'])
         # aftercheck = []
@@ -245,16 +348,16 @@ class ScarletViolet:
             rates = holder21[0] + holder22[0]
         return rates
 
-    def sv01_main(self, filename=""):
+    def sv_main(self, filename=""):
         print(f"Shopify file is {filename}.")
-        swdk_name = SV01_english().swdk_sv01()
-        tnt_rh, tnt_singles = SV01_english().tnt_sv01()
+        swdk_name = ScarletViolet.swdk()
+        tnt_rh, tnt_singles = ScarletViolet.tnt()
         # print(f"Number of rows for swdk is {swdk_name.shape[0]}, rh is {tnt_rh.shape[0]} and singles is {tnt_singles.shape[0]}")
-        simplemerge = SV01_english().sv01_merge(swdk_name, tnt_rh, tnt_singles)
+        simplemerge = ScarletViolet.merge(swdk_name, tnt_rh, tnt_singles)
         dttm = datetime.now()
         if self.csvexist:
-            shpfy_name = SV01_english().shopify_sv01(filename)  # include error handling here
-            finalmerge, changelog = SV01_english().shopify_merge(simplemerge, shpfy_name)
+            shpfy_name = ScarletViolet.shopify_sv(filename)  # include error handling here
+            finalmerge, changelog = ScarletViolet.shopify_merge(simplemerge, shpfy_name)
             filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
             finalmerge.to_csv(filename, index=False)
             changelog.to_csv(f"Changelog {self.name}.csv", index=False)
@@ -2311,7 +2414,7 @@ class controller:
                         'SV06': "SV06 Twilight Masquerade",
                         'SV05': "SV05 Temporal Forces",
                         'SV4.5': "SV4.5 Paldean Fates",
-                        'SV04': "SV03 Paradox Rift",
+                        'SV04': "SV04 Paradox Rift",
                         'SV3.5': "SV3.5 Scarlet Violet 151",
                         'SV03': "SV03 Obsidian Flames",
                         'SV02': "SV02 Paldea Evolved",
@@ -2339,20 +2442,7 @@ class controller:
                             # To check if shopify csv file exists
                             while choiceflag == False:
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
-                                if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match(
-                                        "YES", shpfychoice.upper()):
-                                    csvexist = True
-                                    print(f"The option is {csvexist}.")
-                                    print("Final CSV file is ready for Shopify upload.")
-                                    choiceflag = True
-                                elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO",
-                                                                                                           shpfychoice.upper()):
-                                    csvexist = False
-                                    print(f"The option is {csvexist}.")
-                                    print("Final CSV file is cannot be uploaded.")
-                                    choiceflag = True
-                                else:
-                                    print("UNACCEPTABLE INPUT!\n")
+                                csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             csvdict['SV06'] = 'products_export_1 (3).csv'
                             sv06obj = SV06_english(csvexist=csvexist)
                             sv06obj.sv06_main(filename = csvdict['SV06'])
@@ -2363,18 +2453,7 @@ class controller:
                             # To check if shopify csv file exists
                             while choiceflag == False:
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
-                                if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match("YES", shpfychoice.upper()):
-                                    csvexist = True
-                                    print(f"The option is {csvexist}.")
-                                    print("Final CSV file is ready for Shopify upload.")
-                                    choiceflag = True
-                                elif shpfychoice.upper() == "N" or shpfychoice.upper() == "NO" or re.match("NO", shpfychoice.upper()):
-                                    csvexist = False
-                                    print(f"The option is {csvexist}.")
-                                    print("Final CSV file is cannot be uploaded.")
-                                    choiceflag = True
-                                else:
-                                    print("UNACCEPTABLE INPUT!\n")
+                                csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             if csvexist:
                                 for each in setdict:
                                     print("Please copy the file name directly, but .csv is not needed.")
