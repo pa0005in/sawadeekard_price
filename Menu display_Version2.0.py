@@ -17,6 +17,7 @@ Created on Thu Nov 16 04:24:31 2023
 import pandas as pd
 import sys
 import math
+import numpy as np
 from datetime import datetime, timedelta
 import os
 import re
@@ -39,7 +40,7 @@ def csvlist(setlist):
 class ExitException(Exception):
     pass
 
-#yes/no checking
+#yes/no checking for user inputs
 def yesnochk(shpfychoice,choiceflag):
     if shpfychoice.upper() == "Y" or shpfychoice.upper() == "YES" or shpfychoice.upper() == "YE" or re.match("YES", shpfychoice.upper()):
         csvexist = True
@@ -61,10 +62,10 @@ swdkurl = {
     "SV02": "https://sawadeekard.com/collections/eng-scarlet-violet-paldea-evolved",
     "SV03": "https://sawadeekard.com/collections/eng-scarlet-violet-sv03-obsidian-flames",
     "SV3.5": "https://sawadeekard.com/collections/eng-scarlet-violet-sv3-5-pokemon-151",
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06": ""
+    "SV04": "https://sawadeekard.com/collections/eng-scarlet-violet-sv04-paradox-rift",
+    "SV4.5": "https://sawadeekard.com/collections/eng-scarlet-violet-sv4-5-paldean-fates",
+    "SV05": "https://sawadeekard.com/collections/eng-scarlet-violet-sv05-temporal-forces",
+    "SV06": "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade"
 }
 
 #Last page for swdk website
@@ -73,70 +74,10 @@ swdkurl_page = {
     "SV02": 20,
     "SV03": 18,
     "SV3.5": 17,
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06": ""
-}
-
-#set size of each set
-setsize = {
-    "SV01": 198,
-    "SV02": 193,
-    "SV03": 197,
-    "SV3.5": 165,
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06":""
-}
-
-#Url for tntrh website
-tntrh = {
-    "SV01": "https://www.trollandtoad.com/pokemon/scarlet-violet-base-set-reverse-holo-singles/19465",
-    "SV02": "https://www.trollandtoad.com/pokemon/scarlet-violet-paldea-evolved/19616",
-    "SV03": "https://www.trollandtoad.com/obsidian-flames-reverse-holo-singles/19670",
-    "SV3.5": "",
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06": ""
-}
-
-#Last page for tntrh website
-tntrh_page = {
-    "SV01": 5,
-    "SV02": 4,
-    "SV03": 4,
-    "SV3.5": "",
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06": ""
-}
-
-#Url for tntsingles website
-tntsingles = {
-    "SV01": "https://www.trollandtoad.com/pokemon/scarlet-violet-base-set-reverse-holo-singles/19467",
-    "SV02": "https://www.trollandtoad.com/pokemon/scarlet-violet-paldea-evolved/19618",
-    "SV03": "https://www.trollandtoad.com/pokemon/scarlet-violet-obsidian-flame/19669",
-    "SV3.5": "",
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06": ""
-}
-
-#Last page for tntsingles website
-tntsingles_page = {
-    "SV01": 6,
-    "SV02": 6,
-    "SV03": 5,
-    "SV3.5": "",
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06": ""
+    "SV04": 19,
+    "SV4.5": 15,
+    "SV05": 16,
+    "SV06": 17
 }
 
 #Name to replace for sawadeekard website
@@ -145,10 +86,70 @@ setnamereplace = {
     "SV02": "[ENG] SV02 Paldea Evolved: ",
     "SV03": "[ENG] SV03 Obsidian Flames: ",
     "SV3.5": "[ENG] SV3.5 151: ",
-    "SV04": "",
-    "SV4.5": "",
-    "SV05": "",
-    "SV06": ""
+    "SV04": "[ENG] SV04 Paradox Rift: ",
+    "SV4.5": "[ENG] Pokemon SV4.5 Paldean Fates: ",
+    "SV05": "[ENG] SV05 Temporal Forces: ",
+    "SV06": "[ENG] SV06 Twilight Masquerade: "
+}
+
+#set size of each set
+setsize = {
+    "SV01": "198",
+    "SV02": "193",
+    "SV03": "197",
+    "SV3.5": "165",
+    "SV04": "182",
+    "SV4.5": "091",
+    "SV05": "162",
+    "SV06": "167"
+}
+
+#Url for tntrh website
+tntrh = {
+    "SV01": "https://www.trollandtoad.com/pokemon/scarlet-violet-base-set-reverse-holo-singles/19465",
+    "SV02": "https://www.trollandtoad.com/pokemon/scarlet-violet-paldea-evolved/19616",
+    "SV03": "https://www.trollandtoad.com/obsidian-flames-reverse-holo-singles/19670",
+    "SV3.5": "https://www.trollandtoad.com/pokemon/scarlet-violet-151/19702",
+    "SV04": "https://www.trollandtoad.com/pokemon/scarlet-violet-paradox-rift/19725",
+    "SV4.5": "https://www.trollandtoad.com/pokemon/paldean-fates/19795",
+    "SV05": "https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19895",
+    "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19923"
+}
+
+#Last page for tntrh website
+tntrh_page = {
+    "SV01": 5,
+    "SV02": 4,
+    "SV03": 4,
+    "SV3.5": 4,
+    "SV04": 4,
+    "SV4.5": 3,
+    "SV05": 4,
+    "SV06": 4
+}
+
+#Url for tntsingles website
+tntsingles = {
+    "SV01": "https://www.trollandtoad.com/pokemon/scarlet-violet-base-set-reverse-holo-singles/19467",
+    "SV02": "https://www.trollandtoad.com/pokemon/scarlet-violet-paldea-evolved/19618",
+    "SV03": "https://www.trollandtoad.com/pokemon/scarlet-violet-obsidian-flame/19669",
+    "SV3.5": "https://www.trollandtoad.com/pokemon/scarlet-violet-151/19701",
+    "SV04": "https://www.trollandtoad.com/pokemon/scarlet-violet-paradox-rift/19726",
+    "SV4.5": "https://www.trollandtoad.com/pokemon/paldean-fates/19797",
+    "SV05": "https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19897",
+    "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925"
+}
+
+#Last page for tntsingles website
+tntsingles_page = {
+    "SV01": 6,
+    "SV02": 6,
+    "SV03": 5,
+    "SV3.5": 5,
+    "SV04": 6,
+    "SV4.5": 6,
+    "SV05": 5,
+    "SV06": 5
 }
 
 #Parent class
@@ -159,12 +160,12 @@ class ScarletViolet:
         self.csvexist = csvexist
         self.setkey = setkey
 
-    def swdk(self,swdkurl,setnamereplace,setsize):
+    def swdk(self,swdkurl,swdkurl_page,setnamereplace,setsize):
         newlist = []
         namelist = []
         IDlist = []
 
-        for i in range(1, 20):  # page range
+        for i in range(1, swdkurl_page[self.setkey]):  # page range
             url = swdkurl[self.setkey] + "?page=" + str(i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, 'html.parser')
@@ -186,8 +187,8 @@ class ScarletViolet:
             # newlist[i] = holder[0]
 
         for i in range(len(newlist)):
-            holder = newlist[i].split("/"+setsize+ " ")
-            IDlist.append(holder[0] + "/" +setsize)
+            holder = newlist[i].split("/"+setsize[self.setkey]+ " ")
+            IDlist.append(holder[0] + "/" +setsize[self.setkey])
             namelist.append(holder[1])
 
         df_swdk = pd.DataFrame({"ID": IDlist, "Name": namelist})
@@ -195,11 +196,11 @@ class ScarletViolet:
         df_swdk.reset_index(drop=True, inplace=True)
         return (df_swdk)
 
-    def tnt(self,rh_url,singles_url):
+    def tnt(self,rh_url,rh_page,singles_url,singles_page):
         pricelist = []
         namelist = []
         IDlist = []
-        for i in range(1, 5):
+        for i in range(1, rh_page[self.setkey]):
             url = rh_url[self.setkey] +'?Keywords=&page-no=' + str(i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, "html.parser")
@@ -214,7 +215,7 @@ class ScarletViolet:
                     priceholder3 = priceholder3.strip()
                     pricelist.append(float(priceholder3))
                 except:
-                    pricelist.append(-1.00)
+                    pricelist.append(np.nan)
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
@@ -231,7 +232,7 @@ class ScarletViolet:
         namelist = []
         IDlist = []
         promocounter = 0
-        for i in range(1, 6):
+        for i in range(1, singles_page[self.setkey]):
             url = singles_url[self.setkey]+'?Keywords=&page-no=' + str(i)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, "html.parser")
@@ -249,7 +250,7 @@ class ScarletViolet:
                         priceholder3 = priceholder3.strip()
                         pricelist.append(float(priceholder3))
                     except:
-                        pricelist.append(-1.00)
+                        pricelist.append(np.nan)
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
@@ -274,7 +275,7 @@ class ScarletViolet:
         correctcounter = 0
         wrongcounter = 0
         wronglist = []
-        rates = ScarletViolet.xe_rates()
+        rates = ScarletViolet.xe_rates(self)
         usdtosgd = float(rates)
         for i in range(len(df_swdk)):
             if re.search('Reverse Holo', df_swdk.iloc[i][1]):
@@ -284,10 +285,14 @@ class ScarletViolet:
                     wrongcounter += 1
                     wronglist.append(df_singles.iloc[singles_counter - 1][1])
                     wronglist.append(df_swdk.iloc[i][1])
-                if sgdvalue < 1 and sgdvalue > 0:
-                    sgdvalue = 1
-                else:
-                    sgdvalue = round(sgdvalue * 10) / 10
+                try: #checking for NaN values
+                    sgdvalue = df_rh.iloc[rh_counter][2] * usdtosgd
+                    if sgdvalue < 1:
+                        sgdvalue = 1
+                    else:
+                        sgdvalue = round(sgdvalue * 10) / 10
+                except: #reverting to previous price if current price unavailable
+                    sgdvalue = np.nan
                 new_row = {
                     'ID': df_swdk.iloc[i][0],
                     'Name': df_swdk.iloc[i][1],
@@ -304,11 +309,14 @@ class ScarletViolet:
                     wrongcounter += 1
                     wronglist.append(df_singles.iloc[singles_counter][1])
                     wronglist.append(df_swdk.iloc[i][1])
-                sgdvalue = df_singles.iloc[singles_counter][2] * usdtosgd
-                if sgdvalue < 0.5 and sgdvalue > 0.00:
-                    sgdvalue = 0.5
-                else:
-                    sgdvalue = round(sgdvalue * 10) / 10
+                try:
+                    sgdvalue = df_singles.iloc[singles_counter][2] * usdtosgd
+                    if sgdvalue < 0.5:
+                        sgdvalue = 0.5
+                    else:
+                        sgdvalue = round(sgdvalue * 10) / 10
+                except:
+                    sgdvalue = np.nan
                 new_row = {
                     'ID': df_swdk.iloc[i][0],
                     'Name': df_swdk.iloc[i][1],
@@ -332,12 +340,20 @@ class ScarletViolet:
         df_changelog = pd.DataFrame(columns=['Before', 'Change', 'After'])
         # aftercheck = []
         for i in range(len(df_shopify)):
-            holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
-            new_row = {
-                'Before': df_shopify.iloc[i][20],
-                'Change': holder,
-                'After': df_swdk.iloc[i][3]
-            }
+            try:
+                holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+                new_row = {
+                    'Before': df_shopify.iloc[i][20],
+                    'Change': holder,
+                    'After': df_swdk.iloc[i][3]
+                }
+            except:
+                holder = np.nan
+                new_row = {
+                    'Before': df_shopify.iloc[i][20],
+                    'Change': holder,
+                    'After': df_shopify.iloc[i][20]
+                }
             new_row = pd.DataFrame(new_row, index=[0])
             df_changelog = pd.concat([df_changelog, new_row], ignore_index=True)
         df_shopify['Variant Price'] = df_swdk['Price in SGD']
@@ -361,15 +377,15 @@ class ScarletViolet:
         return rates
 
     def sv_main(self, filename=""):
-        print(f"Shopify file is {filename}.")
-        swdk_name = ScarletViolet.swdk()
-        tnt_rh, tnt_singles = ScarletViolet.tnt()
+        #print(f"Shopify file is {filename}.")
+        swdk_name = ScarletViolet.swdk(self,swdkurl = swdkurl,swdkurl_page = swdkurl_page,setnamereplace = setnamereplace, setsize = setsize)
+        tnt_rh, tnt_singles = ScarletViolet.tnt(self,rh_url = tntrh,rh_page = tntrh_page,singles_url= tntsingles,singles_page=tntsingles_page)
         # print(f"Number of rows for swdk is {swdk_name.shape[0]}, rh is {tnt_rh.shape[0]} and singles is {tnt_singles.shape[0]}")
-        simplemerge = ScarletViolet.merge(swdk_name, tnt_rh, tnt_singles)
+        simplemerge = ScarletViolet.merge(self,swdk_name, tnt_rh, tnt_singles)
         dttm = datetime.now()
         if self.csvexist:
-            shpfy_name = ScarletViolet.shopify_sv(filename)  # include error handling here
-            finalmerge, changelog = ScarletViolet.shopify_merge(simplemerge, shpfy_name)
+            shpfy_name = ScarletViolet.shopify_sv(self,filename)  # include error handling here
+            finalmerge, changelog = ScarletViolet.shopify_merge(self,simplemerge, shpfy_name)
             filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
             finalmerge.to_csv(filename, index=False)
             changelog.to_csv(f"Changelog {self.name}.csv", index=False)
@@ -1945,7 +1961,7 @@ class SV06_english:
         print("SV06 Loading...")
         self.name = "SV06_english"
         self.csvexist = csvexist
-        
+
     def swdk_sv06(self):
         #url = "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade"
         newlist = []
@@ -2012,7 +2028,7 @@ class SV06_english:
         df_sv06_rh = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
         df_sv06_rh.sort_values(["ID"], ascending=True, inplace=True)
         df_sv06_rh.reset_index(drop = True,inplace=True)
-        
+
         pricelist = []
         namelist = []
         IDlist = []
@@ -2475,22 +2491,9 @@ class controller:
                                     csvdict[each]=csvholder
                                     print(csvdict[each])
                             else:
-                                SV06obj = SV06_english(csvexist)
-                                SV06obj.sv06_main()
-                                SV05obj = SV05_english(csvexist)
-                                SV05obj.sv05_main()
-                                SV45obj = SV45_english(csvexist)
-                                SV45obj.sv45_main()
-                                SV04obj = SV04_english(csvexist)
-                                #SV04obj.sv04_main()
-                                SV35obj = SV35_english(csvexist)
-                                SV35obj.sv35_main()
-                                SV03obj = SV03_english(csvexist)
-                                SV03obj.sv03_main()
-                                SV02obj = SV02_english(csvexist)
-                                #SV02obj.sv02_main()
-                                SV01obj = SV01_english(csvexist)
-                                SV01obj.sv01_main()
+                                for key in setnamereplace:
+                                    sv_holder = ScarletViolet(setkey = key, csvexist = csvexist)
+                                    sv_holder.sv_main()
                                 print("All sets are processed.")
                         elif choice.lower() == 'x':
                             break
