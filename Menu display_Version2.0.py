@@ -7,6 +7,8 @@ Created on Thu Nov 16 04:24:31 2023
 #=========================================================================
 #Version 2.0
 #inheritance to make code neater
+#Resolved: SV02 non-price issue
+#Resolved: SV04 duplicate issue
 #=============
 #To resolve:
 #SV02: inventory audit so price cannot be extracted
@@ -187,11 +189,22 @@ class ScarletViolet:
             # newlist[i] = holder[0]
 
         for i in range(len(newlist)):
-            holder = newlist[i].split("/"+setsize[self.setkey]+ " ")
-            IDlist.append(holder[0] + "/" +setsize[self.setkey])
-            namelist.append(holder[1])
+            if re.search("SVE", newlist[i]): #checking for holo energy cards for SV3.5
+                ID = re.search(r"\d+", newlist[i]).group(0)
+                holder = newlist[i].split(ID)
+                IDlist.append('SVE En ' + ID)
+                holder2 = holder[1].replace('\t', ' ')
+                holder2 = " ".join(holder2.split())
+                namelist.append(holder2.strip())
+            else:
+                holder = newlist[i].split("/"+setsize[self.setkey]+ " ")
+                IDlist.append(holder[0] + "/" +setsize[self.setkey])
+                holder2 = holder[1].replace('\t', ' ')
+                holder2 = " ".join(holder2.split())
+                namelist.append(holder2)
 
         df_swdk = pd.DataFrame({"ID": IDlist, "Name": namelist})
+        df_swdk.drop_duplicates(["Name"], keep="first", inplace=True)
         df_swdk.sort_values(["ID", "Name"], ascending=True, inplace=True)
         df_swdk.reset_index(drop=True, inplace=True)
         return (df_swdk)
@@ -208,22 +221,28 @@ class ScarletViolet:
             for each in price:
                 try:
                     each = str(each)
-                    priceholder0 = re.split("col-2 text-center p-1", each)
-                    priceholder1 = re.split(">", priceholder0[3])
-                    priceholder2 = re.split("<", priceholder1[1])
-                    priceholder3 = priceholder2[0].replace("$", "")
-                    priceholder3 = priceholder3.strip()
-                    pricelist.append(float(priceholder3))
+                    if re.search("Promo", each):
+                        pass
+                    else:
+                        priceholder0 = re.split("col-2 text-center p-1", each)
+                        priceholder1 = re.split(">", priceholder0[3])
+                        priceholder2 = re.split("<", priceholder1[1])
+                        priceholder3 = priceholder2[0].replace("$", "")
+                        priceholder3 = priceholder3.strip()
+                        pricelist.append(float(priceholder3))
                 except:
                     pricelist.append(np.nan)
             name = soup.find_all('a', class_="card-text")
             for each in name:
                 each = str(each)
-                nameholder1 = re.split(">", each)
-                nameholder2 = re.split("<", nameholder1[1])
-                nameholder3 = re.split("- ", nameholder2[0])
-                namelist.append(nameholder3[0].strip())
-                IDlist.append(nameholder3[1].strip())
+                if re.search("Promo", each):  # promo cards were added
+                    pass
+                else:
+                    nameholder1 = re.split(">", each)
+                    nameholder2 = re.split("<", nameholder1[1])
+                    nameholder3 = re.split("- ", nameholder2[0])
+                    namelist.append(nameholder3[0].strip())
+                    IDlist.append(nameholder3[1].strip())
         df_rh = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
         df_rh.sort_values(["ID"], ascending=True, inplace=True)
         df_rh.reset_index(drop=True, inplace=True)
@@ -255,7 +274,7 @@ class ScarletViolet:
             for each in name:
                 each = str(each)
                 if re.search("Promo", each):  # promo cards were added
-                    promocounter += 1
+                    pass
                 else:
                     nameholder1 = re.split(">", each)
                     nameholder2 = re.split("<", nameholder1[1])
