@@ -20,6 +20,7 @@ Created on Thu Nov 16 04:24:31 2023
 #To be added: SV6.5 (currently unavailable at 30 Jul 2024)
 #To be added: Other previous series (Sun & Moon, Sword and Shield)
 #To be added: Menu options/updates with the new neater code
+#Considering: Inserting the urls and pages as dataframe to collate
 
 
 import pandas as pd
@@ -682,7 +683,16 @@ class controller:
                     sys.exit()
             elif choice == '2':
                 try:
-                    csvdict = {}#{"SV06":"products_export_1 (3).csv"}
+                    csvdict = {
+                        'SV06': "ENG SV06 TWM",
+                        'SV05': "ENG SV05 TEF",
+                        'SV4.5': "ENG SV4.5 PAF",
+                        'SV04': "ENG SV04 PAR",
+                        'SV3.5': "ENG SV3.5 MEW",
+                        'SV03': "ENG SV03 OBF",
+                        'SV02': "ENG SV02 PAL",
+                        'SV01': "ENG SV01 SV1"
+                    }
                     setdict = {
                         'SV06': "SV06 Twilight Masquerade",
                         'SV05': "SV05 Temporal Forces",
@@ -691,7 +701,8 @@ class controller:
                         'SV3.5': "SV3.5 Scarlet Violet 151",
                         'SV03': "SV03 Obsidian Flames",
                         'SV02': "SV02 Paldea Evolved",
-                        'SV01': "SV01 Scarlet & Violet Base set"}
+                        'SV01': "SV01 Scarlet & Violet Base set"
+                    }
                     #} #manual include set names
                     objdict ={}
 
