@@ -362,6 +362,7 @@ class ScarletViolet:
         df_shopify = pd.read_csv(productcsv)
         df_shopify.sort_values(["Title"], ascending=True, inplace=True)
         df_shopify.reset_index(drop=True, inplace=True)
+        print(df_shopify)
         return df_shopify
 #look to check for price = 0, do no changes if new price is 0
     def shopify_merge(self, df_swdk, df_shopify):
@@ -369,18 +370,18 @@ class ScarletViolet:
         # aftercheck = []
         for i in range(len(df_shopify)):
             try:
-                holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+                holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][23]
                 new_row = {
-                    'Before': df_shopify.iloc[i][20],
+                    'Before': df_shopify.iloc[i][23],
                     'Change': holder,
                     'After': df_swdk.iloc[i][3]
                 }
             except:
                 holder = np.nan
                 new_row = {
-                    'Before': df_shopify.iloc[i][20],
+                    'Before': df_shopify.iloc[i][23],
                     'Change': holder,
-                    'After': df_shopify.iloc[i][20]
+                    'After': df_shopify.iloc[i][23]
                 }
             new_row = pd.DataFrame(new_row, index=[0])
             df_changelog = pd.concat([df_changelog, new_row], ignore_index=True)
@@ -684,14 +685,14 @@ class controller:
             elif choice == '2':
                 try:
                     csvdict = {
-                        'SV06': "ENG SV06 TWM",
-                        'SV05': "ENG SV05 TEF",
-                        'SV4.5': "ENG SV4.5 PAF",
-                        'SV04': "ENG SV04 PAR",
-                        'SV3.5': "ENG SV3.5 MEW",
-                        'SV03': "ENG SV03 OBF",
-                        'SV02': "ENG SV02 PAL",
-                        'SV01': "ENG SV01 SV1"
+                        'SV06': "ENG SV06 TWM.csv",
+                        'SV05': "ENG SV05 TEF.csv",
+                        'SV4.5': "ENG SV4.5 PAF.csv",
+                        'SV04': "ENG SV04 PAR.csv",
+                        'SV3.5': "ENG SV3.5 MEW.csv",
+                        'SV03': "ENG SV03 OBF.csv",
+                        'SV02': "ENG SV02 PAL.csv",
+                        'SV01': "ENG SV01 SV1.csv"
                     }
                     setdict = {
                         'SV06': "SV06 Twilight Masquerade",
@@ -723,28 +724,24 @@ class controller:
                         choice = choice.strip()
                         choiceflag = False
                         if choice == '1':
+                            key = 'SV06'
                             # To check if shopify csv file exists
                             while choiceflag == False:
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                                 csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
-                            csvdict['SV06'] = 'products_export_1 (3).csv'
-                            sv06obj = ScarletViolet(setkey = 'SV06', csvexist = csvexist)
-                            sv06obj.main()#filename = csvdict['SV06'])
+                            sv06obj = ScarletViolet(setkey = key, csvexist = csvexist)
+                            sv06obj.sv_main(filename = csvdict[key])#filename = csvdict['SV06'])
                         elif choice == "00":
                             # To check if shopify csv file exists
                             while choiceflag == False:
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                                 csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             if csvexist:
-                                for each in setdict:
-                                    print("Please copy the file name directly, but .csv is not needed.")
-                                    print("E.g. products_export_1 (3).csv just write 'products_export_1 (3)'\n")
-                                    csvholder = input(f"What is the csv file name for {setdict[each]}: ")
-                                    csvholder = csvholder + ".csv"
-                                    csvdict[each]=csvholder
-                                    print(csvdict[each])
+                                for key in setdict:
+                                    sv_holder = ScarletViolet(setkey = key, csvexist = csvexist)
+                                    sv_holder.sv_main(filename = csvdict[key])
                             else:
-                                for key in setnamereplace:
+                                for key in setdict:
                                     sv_holder = ScarletViolet(setkey = key, csvexist = csvexist)
                                     sv_holder.sv_main()
                                 print("All sets are processed.")
