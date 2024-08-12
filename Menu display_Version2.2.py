@@ -24,6 +24,11 @@ Created on Thu Nov 16 04:24:31 2023
 #To be added: Other previous series (Sun & Moon, Sword and Shield)
 #To be added: Menu options/updates with the new neater code
 #Considering: Inserting the urls and pages as dataframe to collate
+#===========================================================================
+#Version 2.2
+#Resolved Website formatting issue due to missing picture
+#Added error checks to inform user of errors in CSV file and website
+#Removed csvfile functions (using fixed file names)
 
 
 import pandas as pd
@@ -35,18 +40,6 @@ import os
 import re
 import requests
 from bs4 import BeautifulSoup
-
-#adding csv file reading 2 versions (singular and entire list)
-def csvfile(setname):
-    csvname = input(f"What is the csv file name for {setname}?")
-    return csvname
-
-def csvlist(setlist):
-    namelist = []
-    for setname in setlist:
-        csvname = input(f"What is the csv file name for {setname}?")
-        namelist.append(csvname)
-    return namelist
 
 #Set a custom exception to be raised when it is necessary to exit the application
 class ExitException(Exception):
@@ -173,10 +166,14 @@ class ScarletViolet:
         self.name = setkey + "_english"
         self.csvexist = csvexist
         self.setkey = setkey
+        self.shpfy_dupe = False
+        self.nanflag = False
+        self.df_nan = pd.DataFrame(columns=['ID', 'Name'])
 
     def swdk(self,swdkurl,swdkurl_page,setnamereplace,setsize):
         newlist = []
         namelist = []
+        testlist = []
         IDlist = []
 
         for i in range(1, swdkurl_page[self.setkey]):  # page range
@@ -184,13 +181,17 @@ class ScarletViolet:
             page = requests.get(url)
             soup = BeautifulSoup(page.content, 'html.parser')
 
-            data = soup.find_all("h3", class_="card__heading h5")
-
+            data = soup.find_all("h3", class_="card__heading")
             for each in data:
                 each = str(each)
-                holder1 = re.split('>', each)
-                holder2 = re.split('<', holder1[2].strip())
-                newlist.append(holder2[0].strip())
+                if re.search('[ENG]', each):
+                    holder1 = re.split('>', each)
+                    holder2 = re.split('<', holder1[2].strip())
+                    testlist.append(holder2[0].strip())
+
+        for i in range(len(testlist)):
+            if testlist[i - 1] != testlist[i]:
+                newlist.append(testlist[i])
 
         for i in range(len(newlist)):
             #     # newlist[i]=re.search(r"^([).*())$",newlist[i])
@@ -324,6 +325,13 @@ class ScarletViolet:
                         sgdvalue = round(sgdvalue * 10) / 10
                 except: #reverting to previous price if current price unavailable
                     sgdvalue = np.nan
+                    self.nanflag = True
+                    nan_row = {
+                        'ID':df_swdk.iloc[i][0],
+                        'Name':df_swdk.iloc[i][1]
+                    }
+                    nan_row = pd.DataFrame(nan_row,index = [0])
+                    self.df_nan = pd.concat([self.df_nan, nan_row],ignore_index=True)
                 new_row = {
                     'ID': df_swdk.iloc[i][0],
                     'Name': df_swdk.iloc[i][1],
@@ -364,8 +372,11 @@ class ScarletViolet:
     def shopify_sv(self, productcsv=""):
         df_shopify = pd.read_csv(productcsv)
         #df_shopify = df_shopify[~df_shopify.Handle.str.contains("copy-of-")]
+        if df_shopify.Title.nunique() != len(df_shopify.index):
+            self.shpfy_dupe = True
+            self.df_dupe = df_shopify[df_shopify.Title.duplicated(keep = 'first')]
         df_shopify.sort_values(["Title"], ascending=True, inplace=True)
-        print(df_shopify.groupby(df_shopify.Title.tolist(),as_index=False).size())
+        df_shopify.drop_duplicates(['Title'], keep='first', inplace=True)
         df_shopify.reset_index(drop=True, inplace=True)
         #print(df_shopify)
         return df_shopify
@@ -374,8 +385,8 @@ class ScarletViolet:
         df_changelog = pd.DataFrame(columns=['ID','Shopify Name','Sawadeekard Name','Before', 'Change','After'])
         # aftercheck = []
         for i in range(len(df_shopify)):
-            textsplit = re.split("\t",df_shopify.iloc[i][1])
-            print(f"Shopify: {textsplit[3]} Sawadeekard: {df_swdk.iloc[i][0], df_swdk.iloc[i][1]}.")
+            #textsplit = re.split("\t",df_shopify.iloc[i][1])
+            #print(f"Shopify: {textsplit[3]} Sawadeekard: {df_swdk.iloc[i][0], df_swdk.iloc[i][1]}.")
             try:
                 holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][23]
                 new_row = {
@@ -419,20 +430,27 @@ class ScarletViolet:
         return rates
 
     def sv_main(self, filename=""):
-        #print(f"Shopify file is {filename}.")
         swdk_name = ScarletViolet.swdk(self,swdkurl = swdkurl,swdkurl_page = swdkurl_page,setnamereplace = setnamereplace, setsize = setsize)
         tnt_rh, tnt_singles = ScarletViolet.tnt(self,rh_url = tntrh,rh_page = tntrh_page,singles_url= tntsingles,singles_page=tntsingles_page)
-        # print(f"Number of rows for swdk is {swdk_name.shape[0]}, rh is {tnt_rh.shape[0]} and singles is {tnt_singles.shape[0]}")
         simplemerge = ScarletViolet.merge(self,swdk_name, tnt_rh, tnt_singles)
         dttm = datetime.now()
         if self.csvexist:
             shpfy_name = ScarletViolet.shopify_sv(self,filename)  # include error handling here
+            # Check if there are repeated listings
             finalmerge, changelog = ScarletViolet.shopify_merge(self,simplemerge, shpfy_name)
             filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
             finalmerge.to_csv(filename, index=False)
-            changelog.to_csv(f"Changelog {self.name}.csv", index=False)
+            changelog.to_csv(f"Changelog {self.name}.csv", index=False,na_rep="")
         else:
             simplemerge.to_csv(f"{self.name} Merged {dttm.strftime('%y%m%d')}.csv", index=False)
+        if self.shpfy_dupe == True:
+            print("The following entries are duplicated in the Sawadeekard website:")
+            print(f"{self.df_dupe.Title}")
+            print("But has been removed in the final CSV.")
+        if self.nanflag == True:
+            print("The following entries are not updated as no price was found on TnT:")
+            print(f"{self.df_nan}")
+            print("So the price is unchanged.")
         print(f"{self.name} completed")
 
 ### Japanese Sets
