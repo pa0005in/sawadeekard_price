@@ -69,7 +69,16 @@ A changelog will also be generated with 3 columns \["Before","Change","After"\] 
 The changelog records the prices changed within the CSV file to let the user be aware of the price changes.  
 The user can then change the updated CSV file if he is not satisfied with the price change.  
 
-## Current Issues/Future Roadmap
+## Future Roadmap  
+__1) Inserting older series such as Sword and Shield Series__  
+  This series has a few sets with additional cards known separately as Galarian Gallery (GG) or Trainer Gallery (TG).  
+  To properly identify and include them into the set list during scraping.  
+
+__2) Holo Energy with no ID number tagged__  
+  Troll and Toad did not provide ID number in the names of specific Energy cards when it should be included.  
+  Alternatives will be considered on how to include them into the set list.  
+  
+## Past Issues (Resolved)
 __1) The website may change its format due to inventory audit, out of stock or minor mistakes.__  
   Future updates will include checks or more error exception to ensure the script is still able to run or alternatives are included.  
   Current issues encountered:  
@@ -83,10 +92,15 @@ __1) The website may change its format due to inventory audit, out of stock or m
   ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/4485c1f1-1ddb-4622-9e26-02c32485ce05)  
   Galar Gallery (#GG0x) and Trainer Gallery (#TG0x) cannot be read by the script  
   ![image](https://github.com/pa0005in/sawadeekard_price/assets/142402904/a0da95e0-7ac4-4826-b1a7-336d002d9bf4)  
-
+  __Resolved in Version 2.0__  
+  Current solution will remove the repeated entry upon detection by checking for the same ID and Title.  
+  The removed entry will be declared and printed out to let the user know that a repeated entry was detected.  
+  For items that do not have a price due to inventory audit, the price will remain as per previous pricing.  
   
 __2) The codes for each series is an individual class.__  
   Future version can simplify the entire code to a single parent to simplify the code for checking and running.  
+  ___Resolved in Version 2.0__  
+  Currently all Scarlet Violet Series will be able to use the same parent code with minor changes to url, number of pages for each series and string containing the set name to replace.  
 
 ## Acknowledgements  
 This script was just a passion project after learning how to do webscraping through Python using BeautifulSoup4.  
