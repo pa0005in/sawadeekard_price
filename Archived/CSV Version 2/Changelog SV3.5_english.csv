@@ -13,7 +13,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 007/165,[ENG]	SV3.5	151:	007/165	Squirtle	C	(Reverse Holo),Squirtle C (Reverse Holo),2.0,-0.8,1.2
 008/165,[ENG]	SV3.5	151:	008/165	Wartotle	U	(Non-Foil),Wartotle U (Non-Foil),0.5,0.0,0.5
 008/165,[ENG]	SV3.5	151:	008/165	Wartotle	U	(Reverse Holo),Wartotle U (Reverse Holo),1.5,-0.30000000000000004,1.2
-009/165,[ENG]	SV3.5	151:	009/165	Blastoise EX	RR	(Foil),Blastoise EX RR (Foil),5.0,,
+009/165,[ENG]	SV3.5	151:	009/165	Blastoise EX	RR	(Foil),Blastoise EX RR (Foil),5.0,-0.40000000000000036,4.6
 010/165,[ENG]	SV3.5	151:	010/165	Caterpie	C	(Non-Foil),Caterpie C (Non-Foil),0.5,0.0,0.5
 010/165,[ENG]	SV3.5	151:	010/165	Caterpie	C	(Reverse Holo),Caterpie C (Reverse Holo),1.0,0.0,1.0
 011/165,[ENG]	SV3.5	151:	011/165	Metapod	C	(Non-Foil),Metapod C (Non-Foil),0.5,0.0,0.5
@@ -36,23 +36,23 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 019/165,[ENG]	SV3.5	151:	019/165	Rattata		C	(Reverse Holo),Rattata C (Reverse Holo),1.0,0.0,1.0
 020/165,[ENG]	SV3.5	151:	020/165	Raticate	U	(Non-Foil),Raticate U (Non-Foil),0.5,0.0,0.5
 020/165,[ENG]	SV3.5	151:	020/165	Raticate	U	(Reverse Holo),Raticate U (Reverse Holo),1.0,0.0,1.0
-021/165,[ENG]	SV3.5	151:	021/165	Spearow	C	(Non-Foil),Spearow C (Non-Foil),0.5,0.0,0.5
-021/165,[ENG]	SV3.5	151:	021/165	Spearow	 C	(Reverse Holo),Spearow C (Reverse Holo),1.0,0.30000000000000004,1.3
+021/165,[ENG]	SV3.5	151:	021/165	Spearow	 C	(Reverse Holo),Spearow C (Non-Foil),1.0,-0.5,0.5
+021/165,[ENG]	SV3.5	151:	021/165	Spearow	C	(Non-Foil),Spearow C (Reverse Holo),0.5,0.8,1.3
 022/165,[ENG]	SV3.5	151:	022/165	Fearow	U	(Non-Foil),Fearow U (Non-Foil),0.5,0.09999999999999998,0.6
 022/165,[ENG]	SV3.5	151:	022/165	Fearow	U	(Reverse Holo),Fearow U (Reverse Holo),1.0,0.0,1.0
 023/165,[ENG]	SV3.5	151:	023/165	Ekans		C	(Non-Foil),Ekans C (Non-Foil),0.5,0.0,0.5
 023/165,[ENG]	SV3.5	151:	023/165	Ekans		C	(Reverse Holo),Ekans C (Reverse Holo),1.0,0.0,1.0
 024/165,[ENG]	SV3.5	151:	024/165	Arbok EX	RR	(Foil),Arbok EX RR (Foil),4.0,-1.4,2.6
 025/165,[ENG]	SV3.5	151:	025/165	Pikachu	C	(Non-Foil),Pikachu C (Non-Foil),0.5,0.0,0.5
-025/165,[ENG]	SV3.5	151:	025/165	Pikachu	C	(Reverse Holo),Pikachu C (Reverse Holo),2.0,-1.0,1.0
+025/165,[ENG]	SV3.5	151:	025/165	Pikachu	C	(Reverse Holo),Pikachu C (Reverse Holo),2.0,-0.8,1.2
 026/165,[ENG]	SV3.5	151:	026/165	Raichu		R	(Foil),Raichu R (Foil),0.8,0.0,0.8
 026/165,[ENG]	SV3.5	151:	026/165	Raichu		R	(Reverse Holo),Raichu R (Reverse Holo),2.0,-0.30000000000000004,1.7
 027/165,[ENG]	SV3.5	151:	027/165	Sandshrew	C	(Non-Foil),Sandshrew C (Non-Foil),0.5,0.0,0.5
 027/165,[ENG]	SV3.5	151:	027/165	Sandshrew	C	(Reverse Holo),Sandshrew C (Reverse Holo),1.0,0.0,1.0
-028/165,[ENG]	SV3.5	151:	028/165	Sandslash	U	(Non-Foil),Sandslash U (Non-Foil),0.5,0.09999999999999998,0.6
+028/165,[ENG]	SV3.5	151:	028/165	Sandslash	U	(Non-Foil),Sandslash U (Non-Foil),0.5,0.0,0.5
 028/165,[ENG]	SV3.5	151:	028/165	Sandslash	U	(Reverse Holo),Sandslash U (Reverse Holo),1.0,0.0,1.0
 029/165,[ENG]	SV3.5	151:	029/165	Nidoran ♀	C	(Non-Foil),Nidoran ♀ C (Non-Foil),0.5,0.0,0.5
-029/165,[ENG]	SV3.5	151:	029/165	Nidoran ♀	C	(Reverse Holo),Nidoran ♀ C (Reverse Holo),2.5,-0.3999999999999999,2.1
+029/165,[ENG]	SV3.5	151:	029/165	Nidoran ♀	C	(Reverse Holo),Nidoran ♀ C (Reverse Holo),2.5,-0.8,1.7
 030/165,[ENG]	SV3.5	151:	030/165	Nidorina	U	(Non-Foil),Nidorina U (Non-Foil),0.5,0.0,0.5
 030/165,[ENG]	SV3.5	151:	030/165	Nidorina	U	(Reverse Holo),Nidorina U (Reverse Holo),1.0,0.0,1.0
 031/165,[ENG]	SV3.5	151:	031/165	Nidoqueen	U	(Non-Foil),Nidoqueen U (Non-Foil),0.5,0.09999999999999998,0.6
@@ -89,7 +89,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 047/165,[ENG]	SV3.5	151:	047/165	Parasect 	U	(Reverse Holo),Parasect U (Reverse Holo),1.0,0.0,1.0
 048/165,[ENG]	SV3.5	151:	048/165	Venonat	C	(Non-Foil),Venonat C (Non-Foil),0.5,0.0,0.5
 048/165,[ENG]	SV3.5	151:	048/165	Venonat	C	(Reverse Holo),Venonat C (Reverse Holo),1.0,0.0,1.0
-049/165,[ENG]	SV3.5	151:	049/165	Venomoth	U	(Non-Foil),Venomoth U (Non-Foil),0.5,0.0,0.5
+049/165,[ENG]	SV3.5	151:	049/165	Venomoth	U	(Non-Foil),Venomoth U (Non-Foil),0.5,0.09999999999999998,0.6
 049/165,[ENG]	SV3.5	151:	049/165	Venomoth	U	(Reverse Holo),Venomoth U (Reverse Holo),1.0,0.0,1.0
 050/165,[ENG]	SV3.5	151:	050/165	Diglett		C	(Non-Foil),Diglett C (Non-Foil),0.5,0.0,0.5
 050/165,[ENG]	SV3.5	151:	050/165	Diglett		C	(Reverse Holo),Diglett C (Reverse Holo),1.0,0.0,1.0
@@ -117,7 +117,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 061/165,[ENG]	SV3.5	151:	061/165	Poliwhirl	C	(Reverse Holo),Poliwhirl C (Reverse Holo),2.5,-0.3999999999999999,2.1
 062/165,[ENG]	SV3.5	151:	062/165	Poliwrath	U	(Non-Foil),Poliwrath U (Non-Foil),0.5,0.09999999999999998,0.6
 062/165,[ENG]	SV3.5	151:	062/165	Poliwrath	U	(Reverse Holo),Poliwrath U (Reverse Holo),1.0,0.0,1.0
-063/165,[ENG]	SV3.5	151:	063/165	Abra		C	(Non-Foil),Abra C (Non-Foil),0.5,0.09999999999999998,0.6
+063/165,[ENG]	SV3.5	151:	063/165	Abra		C	(Non-Foil),Abra C (Non-Foil),0.5,0.30000000000000004,0.8
 063/165,[ENG]	SV3.5	151:	063/165	Abra		C	(Reverse Holo),Abra C (Reverse Holo),1.0,0.0,1.0
 064/165,[ENG]	SV3.5	151:	064/165	Kadabra	U	(Non-Foil),Kadabra U (Non-Foil),0.5,0.09999999999999998,0.6
 064/165,[ENG]	SV3.5	151:	064/165	Kadabra	U	(Reverse Holo),Kadabra U (Reverse Holo),1.5,-0.5,1.0
@@ -143,8 +143,8 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 075/165,[ENG]	SV3.5	151:	075/165	Graveller	U	(Non-Foil),Graveller U (Non-Foil),0.5,0.0,0.5
 075/165,[ENG]	SV3.5	151:	075/165	Graveller	U	(Reverse Holo),Graveller U (Reverse Holo),2.0,-1.0,1.0
 076/165,[ENG]	SV3.5	151:	076/165	Golem EX	RR	(Foil),Golem EX RR (Foil),3.0,-1.0,2.0
-077/165,[ENG]	SV3.5	151:	077/165	Ponyta	C	(Non-Foil),Ponyta C (Non-Foil),0.5,0.0,0.5
-077/165,[ENG]	SV3.5	151:	077/165	Ponyta		C	(Reverse Holo),Ponyta C (Reverse Holo),1.0,0.0,1.0
+077/165,[ENG]	SV3.5	151:	077/165	Ponyta		C	(Reverse Holo),Ponyta C (Non-Foil),1.0,-0.5,0.5
+077/165,[ENG]	SV3.5	151:	077/165	Ponyta	C	(Non-Foil),Ponyta C (Reverse Holo),0.5,0.5,1.0
 078/165,[ENG]	SV3.5	151:	078/165	Rapidash	U	(Non-Foil),Rapidash U (Non-Foil),0.5,0.0,0.5
 078/165,[ENG]	SV3.5	151:	078/165	Rapidash	U	(Reverse Holo),Rapidash U (Reverse Holo),1.0,0.0,1.0
 079/165,[ENG]	SV3.5	151:	079/165	Slowpoke	C	(Non-Foil),Slowpoke C (Non-Foil),0.5,0.0,0.5
@@ -178,9 +178,9 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 093/165,[ENG]	SV3.5	151:	093/165	Haunter	U	(Non-Foil),Haunter U (Non-Foil),0.5,0.0,0.5
 093/165,[ENG]	SV3.5	151:	093/165	Haunter	U	(Reverse Holo),Haunter U (Reverse Holo),1.0,0.0,1.0
 094/165,[ENG]	SV3.5	151:	094/165	Gengar	R	(Foil),Gengar R (Foil),0.8,-0.30000000000000004,0.5
-094/165,[ENG]	SV3.5	151:	094/165	Gengar	R	(Reverse Holo),Gengar R (Reverse Holo),2.5,-0.7,1.8
-095/165,[ENG]	SV3.5	151:	095/165	Onix		U	(Reverse Holo),Onix U (Non-Foil),1.0,-0.5,0.5
-095/165,[ENG]	SV3.5	151:	095/165	Onix		U	(Non-Foil),Onix U (Reverse Holo),0.5,0.8999999999999999,1.4
+094/165,[ENG]	SV3.5	151:	094/165	Gengar	R	(Reverse Holo),Gengar R (Reverse Holo),2.5,-1.2,1.3
+095/165,[ENG]	SV3.5	151:	095/165	Onix		U	(Non-Foil),Onix U (Non-Foil),0.5,0.0,0.5
+095/165,[ENG]	SV3.5	151:	095/165	Onix		U	(Reverse Holo),Onix U (Reverse Holo),1.0,0.6000000000000001,1.6
 096/165,[ENG]	SV3.5	151:	096/165	Drowzee	 C	(Non-Foil),Drowzee C (Non-Foil),0.5,0.0,0.5
 096/165,[ENG]	SV3.5	151:	096/165	Drowzee	C	(Reverse Holo),Drowzee C (Reverse Holo),1.0,0.0,1.0
 097/165,[ENG]	SV3.5	151:	097/165	Hypno		U	(Non-Foil),Hypno U (Non-Foil),0.5,0.0,0.5
@@ -202,7 +202,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 105/165,[ENG]	SV3.5	151:	105/165	Marowak	R	(Foil),Marowak R (Foil),0.8,-0.30000000000000004,0.5
 105/165,[ENG]	SV3.5	151:	105/165	Marowak	R	(Reverse Holo),Marowak R (Reverse Holo),2.0,-0.3999999999999999,1.6
 106/165,[ENG]	SV3.5	151:	106/165	Hitmonlee	U	(Non-Foil),Hitmonlee U (Non-Foil),0.5,0.09999999999999998,0.6
-106/165,[ENG]	SV3.5	151:	106/165	Hitmonlee	U	(Reverse Holo),Hitmonlee U (Reverse Holo),1.0,0.19999999999999996,1.2
+106/165,[ENG]	SV3.5	151:	106/165	Hitmonlee	U	(Reverse Holo),Hitmonlee U (Reverse Holo),1.0,0.30000000000000004,1.3
 107/165,[ENG]	SV3.5	151:	107/165	Hitmonchan	U	(Non-Foil),Hitmonchan U (Non-Foil),0.5,0.0,0.5
 107/165,[ENG]	SV3.5	151:	107/165	Hitmonchan	U	(Reverse Holo),Hitmonchan U (Reverse Holo),1.0,0.7,1.7
 108/165,[ENG]	SV3.5	151:	108/165	Lickitung	C	(Non-Foil),Lickitung C (Non-Foil),0.5,0.0,0.5
@@ -219,7 +219,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 113/165,[ENG]	SV3.5	151:	113/165	Chansey	R	(Reverse Holo),Chansey R (Reverse Holo),1.0,0.3999999999999999,1.4
 114/165,[ENG]	SV3.5	151:	114/165	Tangela	C	(Non-Foil),Tangela C (Non-Foil),0.5,0.0,0.5
 114/165,[ENG]	SV3.5	151:	114/165	Tangela	C	(Reverse Holo),Tangela C (Reverse Holo),1.0,0.0,1.0
-115/165,[ENG]	SV3.5	151:	115/165	Kangaskhan EX	RR	(Foil),Kangaskhan EX RR (Foil),3.0,-1.6,1.4
+115/165,[ENG]	SV3.5	151:	115/165	Kangaskhan EX	RR	(Foil),Kangaskhan EX RR (Foil),3.0,-0.6000000000000001,2.4
 116/165,[ENG]	SV3.5	151:	116/165	Horsea		C	(Non-Foil),Horsea C (Non-Foil),0.5,0.0,0.5
 116/165,[ENG]	SV3.5	151:	116/165	Horsea		C	(Reverse Holo),Horsea C (Reverse Holo),1.0,0.0,1.0
 117/165,[ENG]	SV3.5	151:	117/165	Seadra		U	(Non-Foil),Seadra U (Non-Foil),0.5,0.0,0.5
@@ -234,7 +234,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 121/165,[ENG]	SV3.5	151:	121/165	Starmie	R	(Reverse Holo),Starmie R (Reverse Holo),1.0,0.19999999999999996,1.2
 122/165,[ENG]	SV3.5	151:	122/165	Mr Mime	R	(Foil),Mr Mime R (Foil),0.8,-0.30000000000000004,0.5
 122/165,[ENG]	SV3.5	151:	122/165	Mr Mime	R	(Reverse Holo),Mr Mime R (Reverse Holo),1.0,0.30000000000000004,1.3
-123/165,[ENG]	SV3.5	151:	123/165	Scyther	U	(Non-Foil),Scyther U (Non-Foil),0.5,0.0,0.5
+123/165,[ENG]	SV3.5	151:	123/165	Scyther	U	(Non-Foil),Scyther U (Non-Foil),0.5,0.09999999999999998,0.6
 123/165,[ENG]	SV3.5	151:	123/165	Scyther	U	(Reverse Holo),Scyther U (Reverse Holo),5.0,-2.8,2.2
 124/165,[ENG]	SV3.5	151:	124/165	Jinx EX	RR	(Foil),Jinx EX RR (Foil),3.0,-0.3999999999999999,2.6
 125/165,[ENG]	SV3.5	151:	125/165	Electabuzz	C	(Non-Foil),Electabuzz C (Non-Foil),0.5,0.0,0.5
@@ -258,9 +258,9 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 134/165,[ENG]	SV3.5	151:	134/165	Vaporeon	R	(Foil),Vaporeon R (Foil),0.8,0.09999999999999998,0.9
 134/165,[ENG]	SV3.5	151:	134/165	Vaporeon	R	(Reverse Holo),Vaporeon R (Reverse Holo),2.0,0.10000000000000009,2.1
 135/165,[ENG]	SV3.5	151:	135/165	Jolteon		R	(Foil),Jolteon R (Foil),0.8,-0.30000000000000004,0.5
-135/165,[ENG]	SV3.5	151:	135/165	Jolteon		R	(Reverse Holo),Jolteon R (Reverse Holo),2.0,-1.0,1.0
+135/165,[ENG]	SV3.5	151:	135/165	Jolteon		R	(Reverse Holo),Jolteon R (Reverse Holo),2.0,-0.6000000000000001,1.4
 136/165,[ENG]	SV3.5	151:	136/165	Flareon	R	(Foil),Flareon R (Foil),0.8,0.09999999999999998,0.9
-136/165,[ENG]	SV3.5	151:	136/165	Flareon	R	(Reverse Holo),Flareon R (Reverse Holo),2.0,-0.30000000000000004,1.7
+136/165,[ENG]	SV3.5	151:	136/165	Flareon	R	(Reverse Holo),Flareon R (Reverse Holo),2.0,-0.7,1.3
 137/165,[ENG]	SV3.5	151:	137/165	Porygon	C	(Non-Foil),Porygon C (Non-Foil),0.5,0.0,0.5
 137/165,[ENG]	SV3.5	151:	137/165	Porygon	C	(Reverse Holo),Porygon C (Reverse Holo),1.0,0.0,1.0
 138/165,[ENG]	SV3.5	151:	138/165	Omanyte	U	(Non-Foil),Omanyte U (Non-Foil),0.5,0.09999999999999998,0.6
@@ -274,7 +274,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 142/165,[ENG]	SV3.5	151:	142/165	Aerodactyl	R	(Foil),Aerodactyl R (Foil),0.8,0.09999999999999998,0.9
 142/165,[ENG]	SV3.5	151:	142/165	Aerodactyl	R	(Reverse Holo),Aerodactyl R (Reverse Holo),2.0,-0.6000000000000001,1.4
 143/165,[ENG]	SV3.5	151:	143/165	Snorlax	U	(Non-Foil),Snorlax U (Non-Foil),0.5,0.0,0.5
-143/165,[ENG]	SV3.5	151:	143/165	Snorlax	U	(Reverse Holo),Snorlax U (Reverse Holo),2.5,0.0,2.5
+143/165,[ENG]	SV3.5	151:	143/165	Snorlax	U	(Reverse Holo),Snorlax U (Reverse Holo),2.5,-0.5,2.0
 144/165,[ENG]	SV3.5	151:	144/165	Articuno	R	(Foil),Articuno R (Foil),0.8,0.0,0.8
 144/165,[ENG]	SV3.5	151:	144/165	Articuno	R	(Reverse Holo),Articuno R (Reverse Holo),1.5,-0.10000000000000009,1.4
 145/165,[ENG]	SV3.5	151:	145/165	Zapdos EX	RR	(Foil),Zapdos EX RR (Foil),3.0,-0.6000000000000001,2.4
@@ -296,19 +296,19 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 154/165,[ENG]	SV3.5	151:	154/165	Antique Old Amber	C	(Non-Foil),Antique Old Amber C (Non-Foil),0.5,0.0,0.5
 154/165,[ENG]	SV3.5	151:	154/165	Antique Old Amber	C	(Reverse Holo),Antique Old Amber C (Reverse Holo),1.0,0.3999999999999999,1.4
 155/165,[ENG]	SV3.5	151:	155/165	Big Air Balloon	C	(Non-Foil),Big Air Balloon C (Non-Foil),0.5,0.0,0.5
-155/165,[ENG]	SV3.5	151:	155/165	Big Air Balloon	C	(Reverse Holo),Big Air Balloon C (Reverse Holo),2.0,-0.7,1.3
+155/165,[ENG]	SV3.5	151:	155/165	Big Air Balloon	C	(Reverse Holo),Big Air Balloon C (Reverse Holo),2.0,-0.6000000000000001,1.4
 156/165,[ENG]	SV3.5	151:	156/165	Bill's Transfer	C	(Non-Foil),Bill's Transfer C (Non-Foil),0.5,0.0,0.5
 156/165,[ENG]	SV3.5	151:	156/165	Bill's Transfer	C	(Reverse Holo),Bill's Transfer C (Reverse Holo),1.0,0.19999999999999996,1.2
 157/165,[ENG]	SV3.5	151:	157/165	Cycling Road	U	(Non-Foil),Cycling Road U (Non-Foil),0.5,0.0,0.5
 157/165,[ENG]	SV3.5	151:	157/165	Cycling Road	U	(Reverse Holo),Cycling Road U (Reverse Holo),2.0,-0.6000000000000001,1.4
 158/165,[ENG]	SV3.5	151:	158/165	Daisy's Help	U	(Non-Foil),Daisy's Help U (Non-Foil),0.5,0.0,0.5
-158/165,[ENG]	SV3.5	151:	158/165	Daisy's Help	U	(Reverse Holo),Daisy's Help U (Reverse Holo),1.5,-0.5,1.0
+158/165,[ENG]	SV3.5	151:	158/165	Daisy's Help	U	(Reverse Holo),Daisy's Help U (Reverse Holo),1.5,0.19999999999999996,1.7
 159/165,[ENG]	SV3.5	151:	159/165	Energy Sticker		U	(Non-Foil),Energy Sticker U (Non-Foil),0.5,0.09999999999999998,0.6
 159/165,[ENG]	SV3.5	151:	159/165	Energy Sticker		U	(Reverse Holo),Energy Sticker U (Reverse Holo),1.5,0.19999999999999996,1.7
 160/165,[ENG]	SV3.5	151:	160/165	Erika's Invitation	U	(Non-Foil),Erika's Invitation U (Non-Foil),0.5,0.5,1.0
 160/165,[ENG]	SV3.5	151:	160/165	Erika's Invitation	U	(Reverse Holo),Erika's Invitation U (Reverse Holo),4.0,-3.0,1.0
 161/165,[ENG]	SV3.5	151:	161/165	Giovanni's Charisma	U	(Non-Foil),Giovanni's Charisma U (Non-Foil),0.5,0.09999999999999998,0.6
-161/165,[ENG]	SV3.5	151:	161/165	Giovanni's Charisma	U	(Reverse Holo),Giovanni's Charisma U (Reverse Holo),1.5,-0.19999999999999996,1.3
+161/165,[ENG]	SV3.5	151:	161/165	Giovanni's Charisma	U	(Reverse Holo),Giovanni's Charisma U (Reverse Holo),1.5,0.19999999999999996,1.7
 162/165,[ENG]	SV3.5	151:	162/165	Grabber	U	(Non-Foil),Grabber U (Non-Foil),0.5,0.0,0.5
 162/165,[ENG]	SV3.5	151:	162/165	Grabber	U	(Reverse Holo),Grabber U (Reverse Holo),2.0,-0.30000000000000004,1.7
 163/165,[ENG]	SV3.5	151:	163/165	Leftovers	U	(Non-Foil),Leftovers U (Non-Foil),0.5,0.0,0.5
@@ -316,7 +316,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 164/165,[ENG]	SV3.5	151:	164/165	Protective Goggles	U	(Non-Foil),Protective Goggles U (Non-Foil),0.5,0.09999999999999998,0.6
 164/165,[ENG]	SV3.5	151:	164/165	Protective Goggles	U	(Reverse Holo),Protective Goggles U (Reverse Holo),2.0,-0.8,1.2
 165/165,[ENG]	SV3.5	151:	165/165	Rigid Band	U	(Non-Foil),Rigid Band U (Non-Foil),0.5,0.0,0.5
-165/165,[ENG]	SV3.5	151:	165/165	Rigid Band	U	(Reverse Holo),Rigid Band U (Reverse Holo),1.0,0.3999999999999999,1.4
+165/165,[ENG]	SV3.5	151:	165/165	Rigid Band	U	(Reverse Holo),Rigid Band U (Reverse Holo),1.0,0.6000000000000001,1.6
 166/165,[ENG]	SV3.5	151:	166/165	Bulbasaur	IR	(Foil),Bulbasaur IR (Foil),35.0,-3.1999999999999993,31.8
 167/165,[ENG]	SV3.5	151:	167/165	Ivysaur		IR	(Foil),Ivysaur IR (Foil),27.0,-0.5,26.5
 168/165,[ENG]	SV3.5	151:	168/165	Charmander	IR	(Foil),Charmander IR (Foil),45.0,-2.6000000000000014,42.4
@@ -327,11 +327,11 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 173/165,[ENG]	SV3.5	151:	173/165	Pikachu	IR	(Foil),Pikachu IR (Foil),28.0,-0.1999999999999993,27.8
 174/165,[ENG]	SV3.5	151:	174/165	Nidoking	IR	(Foil),Nidoking IR (Foil),14.0,-0.8000000000000007,13.2
 175/165,[ENG]	SV3.5	151:	175/165	Psyduck	IR	(Foil),Psyduck IR (Foil),15.0,0.9000000000000004,15.9
-176/165,[ENG]	SV3.5	151:	176/165	Poliwhirl	IR	(Foil),Poliwhirl IR (Foil),18.0,-4.1,13.9
+176/165,[ENG]	SV3.5	151:	176/165	Poliwhirl	IR	(Foil),Poliwhirl IR (Foil),18.0,-3.4000000000000004,14.6
 177/165,[ENG]	SV3.5	151:	177/165	Machoke	IR	(Foil),Machoke IR (Foil),13.0,-2.4000000000000004,10.6
 178/165,[ENG]	SV3.5	151:	178/165	Tangela	IR	(Foil),Tangela IR (Foil),10.0,0.5999999999999996,10.6
 179/165,[ENG]	SV3.5	151:	179/165	Mr Mime	IR	(Foil),Mr Mime IR (Foil),10.0,-2.0999999999999996,7.9
-180/165,[ENG]	SV3.5	151:	180/165	Omanyte	IR	(Foil),Omanyte IR (Foil),10.5,-1.9000000000000004,8.6
+180/165,[ENG]	SV3.5	151:	180/165	Omanyte	IR	(Foil),Omanyte IR (Foil),10.5,-1.1999999999999993,9.3
 181/165,[ENG]	SV3.5	151:	181/165	Dragonair	IR	(Foil),Dragonair IR (Foil),27.0,-0.5,26.5
 182/165,[ENG]	SV3.5	151:	182/165	Venusaur EX	SR	(Foil),Venusaur EX SR (Foil),27.0,-5.800000000000001,21.2
 183/165,[ENG]	SV3.5	151:	183/165	Charizard EX	SR	(Foil),Charizard EX SR (Foil),60.0,-13.600000000000001,46.4
@@ -350,8 +350,8 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 196/165,[ENG]	SV3.5	151:	196/165	Erika's Invitation	SR	(Foil),Erika's Invitation SR (Foil),22.0,-8.8,13.2
 197/165,[ENG]	SV3.5	151:	197/165	Giovanni's Charisma	SR	(Foil),Giovanni's Charisma SR (Foil),12.5,-3.1999999999999993,9.3
 198/165,[ENG]	SV3.5	151:	198/165	Venusaur EX	SAR	(Foil),Venusaur EX SAR (Foil),68.0,-4.399999999999999,63.6
-199/165,[ENG]	SV3.5	151:	199/165	Charizard EX	SIR	(Foil),Charizard EX SIR (Foil),188.0,-15.699999999999989,172.3
-200/165,[ENG]	SV3.5	151:	200/165	Blastoise EX	SIR	(Foil),Blastoise EX SIR (Foil),78.0,-11.700000000000003,66.3
+199/165,[ENG]	SV3.5	151:	199/165	Charizard EX	SIR	(Foil),Charizard EX SIR (Foil),188.0,-15.800000000000011,172.2
+200/165,[ENG]	SV3.5	151:	200/165	Blastoise EX	SIR	(Foil),Blastoise EX SIR (Foil),78.0,-11.799999999999997,66.2
 201/165,[ENG]	SV3.5	151:	201/165	Alakazam EX	SIR	(Foil),Alakazam EX SIR (Foil),48.0,-1.6000000000000014,46.4
 202/165,[ENG]	SV3.5	151:	202/165	Zapdos EX	SIR	(Foil),Zapdos EX SIR (Foil),60.0,-7.0,53.0
 203/165,[ENG]	SV3.5	151:	203/165	Erika's Invitation	SIR	(Foil),Erika's Invitation SIR (Foil),55.0,-29.8,25.2
@@ -361,8 +361,8 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 207/165,[ENG]	SV3.5	151:	207/165	Psychic Energy	UR	(Foil),Psychic Energy UR (Foil),10.0,-1.4000000000000004,8.6
 SVE En 001,[ENG]	SV3.5	151:	SVE En 001	Grass Energy		(Foil),Grass Energy (Foil),1.0,0.0,1.0
 SVE En 002,[ENG]	SV3.5	151:	SVE En 002	Fire Energy		(Foil),Fire Energy (Foil),1.0,0.19999999999999996,1.2
-SVE En 003,[ENG]	SV3.5	151:	SVE En 003	Water Energy		(Foil),Water Energy (Foil),1.0,0.19999999999999996,1.2
-SVE En 004,[ENG]	SV3.5	151:	SVE En 004	Electric Energy		(Foil),Electric Energy (Foil),1.0,0.19999999999999996,1.2
+SVE En 003,[ENG]	SV3.5	151:	SVE En 003	Water Energy		(Foil),Water Energy (Foil),1.0,0.0,1.0
+SVE En 004,[ENG]	SV3.5	151:	SVE En 004	Electric Energy		(Foil),Electric Energy (Foil),1.0,0.0,1.0
 SVE En 005,[ENG]	SV3.5	151:	SVE En 005	Psychic Energy		(Foil),Psychic Energy (Foil),1.0,0.3999999999999999,1.4
 SVE En 006,[ENG]	SV3.5	151:	SVE En 006	Fighting Energy		(Foil),Fighting Energy (Foil),1.0,0.0,1.0
 SVE En 007,[ENG]	SV3.5	151:	SVE En 007	Dark Energy		(Foil),Dark Energy (Foil),1.0,0.19999999999999996,1.2

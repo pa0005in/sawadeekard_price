@@ -28,7 +28,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 015/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	015/091	Armarouge	[Fire]	[R - Rare]	(Reverse Holo),Armarouge [Fire] [R - Rare] (Reverse Holo),1.0,0.0,1.0
 016/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	016/091	Lapras	[Water]	[C - Common]	(Non-Foil),Lapras [Water] [C - Common] (Non-Foil),0.5,0.0,0.5
 016/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	016/091	Lapras	[Water]	[C - Common]	(Reverse Holo),Lapras [Water] [C - Common] (Reverse Holo),1.0,0.0,1.0
-017/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	017/091	Frigibax	[Water]	[C - Common]	(Non-Foil),Frigibax [Water] [C - Common] (Non-Foil),0.5,0.0,0.5
+017/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	017/091	Frigibax	[Water]	[C - Common]	(Non-Foil),Frigibax [Water] [C - Common] (Non-Foil),0.5,0.09999999999999998,0.6
 017/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	017/091	Frigibax	[Water]	[C - Common]	(Reverse Holo),Frigibax [Water] [C - Common] (Reverse Holo),1.0,0.0,1.0
 018/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	018/091	Pikachu	[Lightning]	[C - Common]	(Non-Foil),Pikachu [Lightning] [C - Common] (Non-Foil),0.5,0.0,0.5
 018/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	018/091	Pikachu	[Lightning]	[C - Common]	(Reverse Holo),Pikachu [Lightning] [C - Common] (Reverse Holo),2.0,-1.0,1.0
@@ -100,13 +100,13 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 052/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	052/091	Grapploct	[Fighting]	[U - Uncommon]	(Non-Foil),Grapploct [Fighting] [U - Uncommon] (Non-Foil),0.5,0.0,0.5
 052/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	052/091	Grapploct	[Fighting]	[U - Uncommon]	(Reverse Holo),Grapploct [Fighting] [U - Uncommon] (Reverse Holo),1.0,0.0,1.0
 053/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	053/091	Great Tusk ex	[Fighting]	[RR - Double Rare]	(Foil),Great Tusk ex [Fighting] [RR - Double Rare] (Foil),0.5,1.5,2.0
-054/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	054/091	Charizard ex	[Darkness]	[RR - Double Rare]	(Foil),Charizard ex [Darkness] [RR - Double Rare] (Foil),0.5,5.5,6.0
+054/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	054/091	Charizard ex	[Darkness]	[RR - Double Rare]	(Foil),Charizard ex [Darkness] [RR - Double Rare] (Foil),0.5,5.4,5.9
 055/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	055/091	Gastly	[Darkness]	[C - Common]	(Non-Foil),Gastly [Darkness] [C - Common] (Non-Foil),0.6,0.0,0.6
 055/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	055/091	Gastly	[Darkness]	[C - Common]	(Reverse Holo),Gastly [Darkness] [C - Common] (Reverse Holo),1.0,0.0,1.0
 056/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	056/091	Haunter	[Darkness]	[C - Common]	(Non-Foil),Haunter [Darkness] [C - Common] (Non-Foil),0.6,-0.09999999999999998,0.5
 056/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	056/091	Haunter	[Darkness]	[C - Common]	(Reverse Holo),Haunter [Darkness] [C - Common] (Reverse Holo),1.0,0.0,1.0
 057/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	057/091	Gengar	[Darkness]	[U - Uncommon]	(Non-Foil),Gengar [Darkness] [U - Uncommon] (Non-Foil),0.8,-0.30000000000000004,0.5
-057/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	057/091	Gengar	[Darkness]	[U - Uncommon]	(Reverse Holo),Gengar [Darkness] [U - Uncommon] (Reverse Holo),1.0,0.30000000000000004,1.3
+057/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	057/091	Gengar	[Darkness]	[U - Uncommon]	(Reverse Holo),Gengar [Darkness] [U - Uncommon] (Reverse Holo),1.0,0.3999999999999999,1.4
 058/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	058/091	Paldean Wooper	[Darkness]	[C - Common]	(Non-Foil),Paldean Wooper [Darkness] [C - Common] (Non-Foil),0.5,0.0,0.5
 058/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	058/091	Paldean Wooper	[Darkness]	[C - Common]	(Reverse Holo),Paldean Wooper [Darkness] [C - Common] (Reverse Holo),1.0,0.0,1.0
 059/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	059/091	Paldean Clodsire ex	[Darkness]	[RR - Double Rare]	(Foil),Paldean Clodsire ex [Darkness] [RR - Double Rare] (Foil),0.5,1.5,2.0
@@ -125,7 +125,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 066/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	066/091	Iron Threads ex	[Metal]	[RR - Double Rare]	(Foil),Iron Threads ex [Metal] [RR - Double Rare] (Foil),0.5,1.5,2.0
 067/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	067/091	Gholdengo	[Metal]	[R - Rare]	(Foil),Gholdengo [Metal] [R - Rare] (Foil),0.5,0.0,0.5
 067/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	067/091	Gholdengo	[Metal]	[R - Rare]	(Reverse Holo),Gholdengo [Metal] [R - Rare] (Reverse Holo),1.0,0.0,1.0
-068/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	068/091	Noibat	[Dragon]	[C - Common]	(Non-Foil),Noibat [Dragon] [C - Common] (Non-Foil),0.5,0.09999999999999998,0.6
+068/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	068/091	Noibat	[Dragon]	[C - Common]	(Non-Foil),Noibat [Dragon] [C - Common] (Non-Foil),0.5,0.0,0.5
 068/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	068/091	Noibat	[Dragon]	[C - Common]	(Reverse Holo),Noibat [Dragon] [C - Common] (Reverse Holo),1.0,0.0,1.0
 069/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	069/091	Noivern ex	[Dragon]	[RR - Double Rare]	(Foil),Noivern ex [Dragon] [RR - Double Rare] (Foil),0.5,1.5,2.0
 070/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	070/091	Cyclizar	[Dragon]	[R - Rare]	(Foil),Cyclizar [Dragon] [R - Rare] (Foil),0.5,0.0,0.5
@@ -139,7 +139,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 074/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	074/091	Maushold	[Colorless]	[U - Uncommon]	(Non-Foil),Maushold [Colorless] [U - Uncommon] (Non-Foil),0.5,0.0,0.5
 074/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	074/091	Maushold	[Colorless]	[U - Uncommon]	(Reverse Holo),Maushold [Colorless] [U - Uncommon] (Reverse Holo),1.0,0.0,1.0
 075/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	075/091	Squawkabilly ex	[Colorless]	[RR - Double Rare]	(Foil),Squawkabilly ex [Colorless] [RR - Double Rare] (Foil),0.5,1.5,2.0
-076/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	076/091	Artazon	[Stadium]	[U - Uncommon]	(Non-Foil),Artazon [Stadium] [U - Uncommon] (Non-Foil),0.8,-0.20000000000000007,0.6
+076/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	076/091	Artazon	[Stadium]	[U - Uncommon]	(Non-Foil),Artazon [Stadium] [U - Uncommon] (Non-Foil),0.8,-0.30000000000000004,0.5
 076/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	076/091	Artazon	[Stadium]	[U - Uncommon]	(Reverse Holo),Artazon [Stadium] [U - Uncommon] (Reverse Holo),2.0,-1.0,1.0
 077/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	077/091	Artticus	[Supporter]	[U - Uncommon]	(Non-Foil),Artticus [Supporter] [U - Uncommon] (Non-Foil),0.5,0.0,0.5
 077/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	077/091	Artticus	[Supporter]	[U - Uncommon]	(Reverse Holo),Artticus [Supporter] [U - Uncommon] (Reverse Holo),1.0,0.0,1.0
@@ -148,7 +148,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 079/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	079/091	Electric Generator	[Item]	[U - Uncommon]	(Non-Foil),Electric Generator [Item] [U - Uncommon] (Non-Foil),0.6,-0.09999999999999998,0.5
 079/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	079/091	Electric Generator	[Item]	[U - Uncommon]	(Reverse Holo),Electric Generator [Item] [U - Uncommon] (Reverse Holo),1.0,0.0,1.0
 080/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	080/091	Iono	[Supporter]	[U - Uncommon]	(Non-Foil),Iono [Supporter] [U - Uncommon] (Non-Foil),4.0,-3.5,0.5
-080/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	080/091	Iono	[Supporter]	[U - Uncommon]	(Reverse Holo),Iono [Supporter] [U - Uncommon] (Reverse Holo),4.5,-3.5,1.0
+080/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	080/091	Iono	[Supporter]	[U - Uncommon]	(Reverse Holo),Iono [Supporter] [U - Uncommon] (Reverse Holo),4.5,-3.3,1.2
 081/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	081/091	Moonlit Hill	[Stadium]	[U - Uncommon]	(Non-Foil),Moonlit Hill [Stadium] [U - Uncommon] (Non-Foil),0.5,0.0,0.5
 081/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	081/091	Moonlit Hill	[Stadium]	[U - Uncommon]	(Reverse Holo),Moonlit Hill [Stadium] [U - Uncommon] (Reverse Holo),1.0,0.0,1.0
 082/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	082/091	Nemona	[Supporter]	[C - Common]	(Non-Foil),Nemona [Supporter] [C - Common] (Non-Foil),0.5,0.0,0.5
@@ -227,8 +227,8 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 145/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	145/091	Wattrel	[Lightning]	[SR - Shiny Rare]	(Foil),Wattrel [Lightning] [SR - Shiny Rare] (Foil),0.5,4.8,5.3
 146/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	146/091	Kilowattrel	[Lightning]	[SR - Shiny Rare]	(Foil),Kilowattrel [Lightning] [SR - Shiny Rare] (Foil),0.5,2.8,3.3
 147/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	147/091	Wigglytuff	[Psychic]	[SR - Shiny Rare]	(Foil),Wigglytuff [Psychic] [SR - Shiny Rare] (Foil),0.5,3.5,4.0
-148/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	148/091	Abra	[Psychic]	[SR - Shiny Rare]	(Foil),Abra [Psychic] [SR - Shiny Rare] (Foil),0.5,5.5,6.0
-149/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	149/091	Kadabra	[Psychic]	[SR - Shiny Rare]	(Foil),Kadabra [Psychic] [SR - Shiny Rare] (Foil),0.5,5.5,6.0
+148/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	148/091	Abra	[Psychic]	[SR - Shiny Rare]	(Foil),Abra [Psychic] [SR - Shiny Rare] (Foil),0.5,5.4,5.9
+149/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	149/091	Kadabra	[Psychic]	[SR - Shiny Rare]	(Foil),Kadabra [Psychic] [SR - Shiny Rare] (Foil),0.5,5.4,5.9
 150/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	150/091	Cleffa	[Psychic]	[SR - Shiny Rare]	(Foil),Cleffa [Psychic] [SR - Shiny Rare] (Foil),0.5,3.8,4.3
 151/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	151/091	Natu	[Psychic]	[SR - Shiny Rare]	(Foil),Natu [Psychic] [SR - Shiny Rare] (Foil),0.5,10.1,10.6
 152/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	152/091	Xatu	[Psychic]	[SR - Shiny Rare]	(Foil),Xatu [Psychic] [SR - Shiny Rare] (Foil),0.5,10.1,10.6
@@ -286,10 +286,10 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 204/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	204/091	Pelipper	[Colorless]	[SR - Shiny Rare]	(Foil),Pelipper [Colorless] [SR - Shiny Rare] (Foil),0.5,1.5,2.0
 205/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	205/091	Skwovet	[Colorless]	[SR - Shiny Rare]	(Foil),Skwovet [Colorless] [SR - Shiny Rare] (Foil),0.5,4.1,4.6
 206/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	206/091	Greedent	[Colorless]	[SR - Shiny Rare]	(Foil),Greedent [Colorless] [SR - Shiny Rare] (Foil),0.5,1.5,2.0
-207/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	207/091	Lechonk	[Colorless]	[SR - Shiny Rare]	(Foil),Lechonk [Colorless] [SR - Shiny Rare] (Foil),0.5,5.5,6.0
+207/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	207/091	Lechonk	[Colorless]	[SR - Shiny Rare]	(Foil),Lechonk [Colorless] [SR - Shiny Rare] (Foil),0.5,5.4,5.9
 208/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	208/091	Oinkolonge	[Colorless]	[SR - Shiny Rare]	(Foil),Oinkolonge [Colorless] [SR - Shiny Rare] (Foil),0.5,2.1,2.6
-209/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	209/091	Tandemaus	[Colorless]	[SR - Shiny Rare]	(Foil),Tandemaus [Colorless] [SR - Shiny Rare] (Foil),0.5,5.5,6.0
-210/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	210/091	Maushold	[Colorless]	[SR - Shiny Rare]	(Foil),Maushold [Colorless] [SR - Shiny Rare] (Foil),0.5,5.5,6.0
+209/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	209/091	Tandemaus	[Colorless]	[SR - Shiny Rare]	(Foil),Tandemaus [Colorless] [SR - Shiny Rare] (Foil),0.5,5.4,5.9
+210/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	210/091	Maushold	[Colorless]	[SR - Shiny Rare]	(Foil),Maushold [Colorless] [SR - Shiny Rare] (Foil),0.5,5.4,5.9
 211/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	211/091	Flamigo	[Colorless]	[SR - Shiny Rare]	(Foil),Flamigo [Colorless] [SR - Shiny Rare] (Foil),0.5,6.1,6.6
 212/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	212/091	Forrestress ex	[Grass]	[SUR - Shiny Ultra Rare]	(Foil),Forrestress ex [Grass] [SUR - Shiny Ultra Rare] (Foil),0.5,1.5,2.0
 213/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	213/091	Toedscruel ex	[Grass]	[SUR - Shiny Ultra Rare]	(Foil),Toedscruel ex [Grass] [SUR - Shiny Ultra Rare] (Foil),0.5,1.5,2.0
@@ -311,9 +311,9 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 229/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	229/091	Nemona	[Supporter]	[UR - Ultra Rare]	(Foil),Nemona [Supporter] [UR - Ultra Rare] (Foil),0.5,0.8,1.3
 230/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	230/091	Paldean Student	[Supporter]	[UR - Ultra Rare]	(Foil),Paldean Student [Supporter] [UR - Ultra Rare] (Foil),0.5,0.5,1.0
 231/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	231/091	Paldean Student	[Supporter]	[UR - Ultra Rare]	(Foil),Paldean Student [Supporter] [UR - Ultra Rare] (Foil),0.5,1.5,2.0
-232/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	232/091	Mew ex	[Psychic]	[SIR - Special Illustration Rare]	(Foil),Mew ex [Psychic] [SIR - Special Illustration Rare] (Foil),0.5,132.0,132.5
-233/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	233/091	Gardevoir ex	[Psychic]	[SIR - Special Illustration Rare]	(Foil),Gardevoir ex [Psychic] [SIR - Special Illustration Rare] (Foil),0.5,65.8,66.3
-234/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	234/091	Charizard ex	[Darkness]	[SIR - Special Illustration Rare]	(Foil),Charizard ex [Darkness] [SIR - Special Illustration Rare] (Foil),0.5,171.8,172.3
+232/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	232/091	Mew ex	[Psychic]	[SIR - Special Illustration Rare]	(Foil),Mew ex [Psychic] [SIR - Special Illustration Rare] (Foil),0.5,131.9,132.4
+233/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	233/091	Gardevoir ex	[Psychic]	[SIR - Special Illustration Rare]	(Foil),Gardevoir ex [Psychic] [SIR - Special Illustration Rare] (Foil),0.5,65.7,66.2
+234/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	234/091	Charizard ex	[Darkness]	[SIR - Special Illustration Rare]	(Foil),Charizard ex [Darkness] [SIR - Special Illustration Rare] (Foil),0.5,171.7,172.2
 235/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	235/091	Arven	[Supporter]	[SIR - Special Illustration Rare]	(Foil),Arven [Supporter] [SIR - Special Illustration Rare] (Foil),0.5,19.4,19.9
 236/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	236/091	Clive	[Supporter]	[SIR - Special Illustration Rare]	(Foil),Clive [Supporter] [SIR - Special Illustration Rare] (Foil),0.5,11.4,11.9
 237/091,[ENG]	Pokemon	SV4.5	Paldean Fates:	237/091	Iono	[Supporter]	[SIR - Special Illustration Rare]	(Foil),Iono [Supporter] [SIR - Special Illustration Rare] (Foil),0.5,39.2,39.7

@@ -182,7 +182,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 094/198,[ENG] SV01 Scarlet Violet Base Set: 094/198 Dedenne C (Reverse Holo),Dedenne C (Reverse Holo),1.0,0.0,1.0
 095/198,[ENG] SV01 Scarlet Violet Base Set: 095/198 Dedenne C (Non-Foil),Dedenne C (Non-Foil),0.5,0.0,0.5
 095/198,[ENG] SV01 Scarlet Violet Base Set: 095/198 Dedenne C (Reverse Holo),Dedenne C (Reverse Holo),1.0,0.0,1.0
-096/198,[ENG] SV01 Scarlet Violet Base Set: 096/198 Klefki R (Foil),Klefki R (Foil),0.6,0.7000000000000001,1.3
+096/198,[ENG] SV01 Scarlet Violet Base Set: 096/198 Klefki R (Foil),Klefki R (Foil),0.6,0.30000000000000004,0.9
 096/198,[ENG] SV01 Scarlet Violet Base Set: 096/198 Klefki R (Reverse Holo),Klefki R (Reverse Holo),1.3,-0.10000000000000009,1.2
 097/198,[ENG] SV01 Scarlet Violet Base Set: 097/198 Fidough C (Non-Foil),Fidough C (Non-Foil),0.6,-0.09999999999999998,0.5
 097/198,[ENG] SV01 Scarlet Violet Base Set: 097/198 Fidough C (Reverse Holo),Fidough C (Reverse Holo),1.0,0.0,1.0
@@ -326,7 +326,7 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 169/198,[ENG] SV01 Scarlet Violet Base Set: 169/198 Defiance Band U (Non-Foil),Defiance Band U (Non-Foil),0.5,0.4,0.9
 169/198,[ENG] SV01 Scarlet Violet Base Set: 169/198 Defiance Band U (Reverse Holo),Defiance Band U (Reverse Holo),1.0,0.3999999999999999,1.4
 170/198,[ENG] SV01 Scarlet Violet Base Set: 170/198 Electric Generator U (Non-Foil),Electric Generator U (Non-Foil),0.5,0.0,0.5
-170/198,[ENG] SV01 Scarlet Violet Base Set: 170/198 Electric Generator U (Reverse Holo),Electric Generator U (Reverse Holo),1.2,-0.19999999999999996,1.0
+170/198,[ENG] SV01 Scarlet Violet Base Set: 170/198 Electric Generator U (Reverse Holo),Electric Generator U (Reverse Holo),1.2,0.10000000000000009,1.3
 171/198,[ENG] SV01 Scarlet Violet Base Set: 171/198 Energy Retrieval C (Non-Foil),Energy Retrieval C (Non-Foil),0.5,0.4,0.9
 171/198,[ENG] SV01 Scarlet Violet Base Set: 171/198 Energy Retrieval C (Reverse Holo),Energy Retrieval C (Reverse Holo),1.0,0.19999999999999996,1.2
 172/198,[ENG] SV01 Scarlet Violet Base Set: 172/198 Energy Search C (Non-Foil),Energy Search C (Non-Foil),0.6,0.0,0.6
@@ -390,18 +390,18 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 203/198,[ENG] SV01 Scarlet Violet Base Set: 203/198 Armarouge IR (Foil),Armarouge IR (Foil),9.0,-1.0999999999999996,7.9
 204/198,[ENG] SV01 Scarlet Violet Base Set: 204/198 Slowpoke IR (Foil),Slowpoke IR (Foil),14.0,-0.8000000000000007,13.2
 205/198,[ENG] SV01 Scarlet Violet Base Set: 205/198 Clauncher IR (Foil),Clauncher IR (Foil),5.0,-2.0,3.0
-206/198,[ENG] SV01 Scarlet Violet Base Set: 206/198 Wiglett IR (Foil),Wiglett IR (Foil),7.0,-1.0,6.0
+206/198,[ENG] SV01 Scarlet Violet Base Set: 206/198 Wiglett IR (Foil),Wiglett IR (Foil),7.0,-1.0999999999999996,5.9
 207/198,[ENG] SV01 Scarlet Violet Base Set: 207/198 Dondozo IR (Foil),Dondozo IR (Foil),7.0,-0.40000000000000036,6.6
 208/198,[ENG] SV01 Scarlet Violet Base Set: 208/198 Pachirisu IR (Foil),Pachirisu IR (Foil),6.0,-1.4000000000000004,4.6
 209/198,[ENG] SV01 Scarlet Violet Base Set: 209/198 Pawmot IR (Foil),Pawmot IR (Foil),5.0,-1.0,4.0
 210/198,[ENG] SV01 Scarlet Violet Base Set: 210/198 Drowzee IR (Foil),Drowzee IR (Foil),11.0,2.1999999999999993,13.2
 211/198,[ENG] SV01 Scarlet Violet Base Set: 211/198 Ralts IR (Foil),Ralts IR (Foil),18.0,1.8999999999999986,19.9
 212/198,[ENG] SV01 Scarlet Violet Base Set: 212/198 Kirlia IR (Foil),Kirlia IR (Foil),16.0,1.1999999999999993,17.2
-213/198,[ENG] SV01 Scarlet Violet Base Set: 213/198 Fidough IR (Foil),Fidough IR (Foil),6.0,0.0,6.0
+213/198,[ENG] SV01 Scarlet Violet Base Set: 213/198 Fidough IR (Foil),Fidough IR (Foil),6.0,-0.09999999999999964,5.9
 214/198,[ENG] SV01 Scarlet Violet Base Set: 214/198 Greavard IR (Foil),Greavard IR (Foil),7.0,-0.40000000000000036,6.6
 215/198,[ENG] SV01 Scarlet Violet Base Set: 215/198 Riolu IR (Foil),Riolu IR (Foil),13.0,0.1999999999999993,13.2
 216/198,[ENG] SV01 Scarlet Violet Base Set: 216/198 Sandile IR (Foil),Sandile IR (Foil),6.0,-1.4000000000000004,4.6
-217/198,[ENG] SV01 Scarlet Violet Base Set: 217/198 Klawf IR (Foil),Klawf IR (Foil),5.0,-1.7000000000000002,3.3
+217/198,[ENG] SV01 Scarlet Violet Base Set: 217/198 Klawf IR (Foil),Klawf IR (Foil),5.0,-2.0,3.0
 218/198,[ENG] SV01 Scarlet Violet Base Set: 218/198 Mabosstiff IR (Foil),Mabosstiff IR (Foil),6.0,-2.0,4.0
 219/198,[ENG] SV01 Scarlet Violet Base Set: 219/198 Bombirdier IR (Foil),Bombirdier IR (Foil),5.0,-2.0,3.0
 220/198,[ENG] SV01 Scarlet Violet Base Set: 220/198 Kingambit IR (Foil),Kingambit IR (Foil),6.0,0.5999999999999996,6.6
@@ -409,10 +409,10 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 222/198,[ENG] SV01 Scarlet Violet Base Set: 222/198 Skwovet IR (Foil),Skwovet IR (Foil),5.5,1.0999999999999996,6.6
 223/198,[ENG] SV01 Scarlet Violet Base Set: 223/198 Spidops EX SR (Foil),Spidops EX SR (Foil),3.5,-1.5,2.0
 224/198,[ENG] SV01 Scarlet Violet Base Set: 224/198 Arcanine EX SR (Foil),Arcanine EX SR (Foil),12.0,-2.6999999999999993,9.3
-225/198,[ENG] SV01 Scarlet Violet Base Set: 225/198 Gyarados EX SR (Foil),Gyarados EX SR (Foil),12.0,-6.0,6.0
+225/198,[ENG] SV01 Scarlet Violet Base Set: 225/198 Gyarados EX SR (Foil),Gyarados EX SR (Foil),12.0,-6.1,5.9
 226/198,[ENG] SV01 Scarlet Violet Base Set: 226/198 Magnezone EX SR (Foil),Magnezone EX SR (Foil),3.5,-1.1,2.4
 227/198,[ENG] SV01 Scarlet Violet Base Set: 227/198 Miraidon EX SR (Foil),Miraidon EX SR (Foil),8.0,-4.0,4.0
-228/198,[ENG] SV01 Scarlet Violet Base Set: 228/198 Gardevoir EX SR (Foil),Gardevoir EX SR (Foil),10.0,-4.0,6.0
+228/198,[ENG] SV01 Scarlet Violet Base Set: 228/198 Gardevoir EX SR (Foil),Gardevoir EX SR (Foil),10.0,-4.1,5.9
 229/198,[ENG] SV01 Scarlet Violet Base Set: 229/198 Banette EX SR (Foil),Banette EX SR (Foil),3.5,0.5,4.0
 230/198,[ENG] SV01 Scarlet Violet Base Set: 230/198 Great Tusk EX SR (Foil),Great Tusk EX SR (Foil),3.5,-1.1,2.4
 231/198,[ENG] SV01 Scarlet Violet Base Set: 231/198 Koraidon EX SR (Foil),Koraidon EX SR (Foil),7.0,-4.4,2.6
@@ -438,8 +438,8 @@ ID,Shopify Name,Sawadeekard Name,Before,Change,After
 251/198,[ENG] SV01 Scarlet Violet Base Set: 251/198 Miriam SIR (Foil),Miriam SIR (Foil),80.6,-40.89999999999999,39.7
 252/198,[ENG] SV01 Scarlet Violet Base Set: 252/198 Penny SIR (Foil),Penny SIR (Foil),15.6,-5.0,10.6
 253/198,[ENG] SV01 Scarlet Violet Base Set: 253/198 Miraidon EX HR (Foil),Miraidon EX HR (Foil),15.0,-6.4,8.6
-254/198,[ENG] SV01 Scarlet Violet Base Set: 254/198 Koraidon EX HR (Foil),Koraidon EX HR (Foil),13.0,-5.7,7.3
+254/198,[ENG] SV01 Scarlet Violet Base Set: 254/198 Koraidon EX HR (Foil),Koraidon EX HR (Foil),13.0,-5.1,7.9
 255/198,[ENG] SV01 Scarlet Violet Base Set: 255/198 Nest Ball HR (Foil),Nest Ball HR (Foil),22.0,-0.8000000000000007,21.2
 256/198,[ENG] SV01 Scarlet Violet Base Set: 256/198 Rare Candy HR (Foil),Rare Candy HR (Foil),20.0,-2.8000000000000007,17.2
 257/198,[ENG] SV01 Scarlet Violet Base Set: 257/198 Basic Lightning Energy HR (Foil),Basic Lightning Energy HR (Foil),10.0,-2.0999999999999996,7.9
-258/198,[ENG] SV01 Scarlet Violet Base Set: 258/198 Basic Fighting Energy HR (Foil),Basic Fighting Energy HR (Foil),8.0,-2.0,6.0
+258/198,[ENG] SV01 Scarlet Violet Base Set: 258/198 Basic Fighting Energy HR (Foil),Basic Fighting Energy HR (Foil),8.0,-2.0999999999999996,5.9
