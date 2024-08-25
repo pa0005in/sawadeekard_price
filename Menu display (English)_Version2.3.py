@@ -1171,7 +1171,6 @@ class controller:
                             print("This is done!")
                 except ExitException():
                     sys.exit()
-            elif choice == '2':
             elif choice.lower() == 'x':
                 break
 
