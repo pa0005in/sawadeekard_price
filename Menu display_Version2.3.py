@@ -29,6 +29,12 @@ Created on Thu Nov 16 04:24:31 2023
 #Resolved Website formatting issue due to missing picture
 #Added error checks to inform user of errors in CSV file and website
 #Removed csvfile functions (using fixed file names)
+#updated all iloc to be .iloc[x,y] from .iloc[x][y]
+#===========================================================================
+#Version 2.3
+#Updated Japanese set codes
+#Adjusted initial menu for SV series, SWSH series and Japanese instead of English and Japanese
+
 
 
 import pandas as pd
@@ -72,7 +78,8 @@ swdkurl = {
     "SV04": "https://sawadeekard.com/collections/eng-scarlet-violet-sv04-paradox-rift",
     "SV4.5": "https://sawadeekard.com/collections/eng-scarlet-violet-sv4-5-paldean-fates",
     "SV05": "https://sawadeekard.com/collections/eng-scarlet-violet-sv05-temporal-forces",
-    "SV06": "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade"
+    "SV06": "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade",
+    "SWSH12.5": "https://sawadeekard.com/collections/eng-swsh-12-5-crown-zenith"
 }
 
 #Last page for swdk website
@@ -84,7 +91,8 @@ swdkurl_page = {
     "SV04": 19,
     "SV4.5": 15,
     "SV05": 16,
-    "SV06": 17
+    "SV06": 17,
+    "SWSH12.5": 16
 }
 
 #Name to replace for sawadeekard website
@@ -96,7 +104,8 @@ setnamereplace = {
     "SV04": "[ENG] SV04 Paradox Rift: ",
     "SV4.5": "[ENG] Pokemon SV4.5 Paldean Fates: ",
     "SV05": "[ENG] SV05 Temporal Forces: ",
-    "SV06": "[ENG] SV06 Twilight Masquerade: "
+    "SV06": "[ENG] SV06 Twilight Masquerade: ",
+    "SWSH12.5": "[ENG] SWSH12 Crown Zenith: ",
 }
 
 #set size of each set
@@ -108,7 +117,9 @@ setsize = {
     "SV04": "182",
     "SV4.5": "091",
     "SV05": "162",
-    "SV06": "167"
+    "SV06": "167",
+    "SWSH12.5": "159",
+    "SWSH12.5GG": "GG70",
 }
 
 #Url for tntrh website
@@ -120,7 +131,8 @@ tntrh = {
     "SV04": "https://www.trollandtoad.com/pokemon/scarlet-violet-paradox-rift/19725",
     "SV4.5": "https://www.trollandtoad.com/pokemon/paldean-fates/19795",
     "SV05": "https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19895",
-    "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19923"
+    "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19923",
+    "SWSH12.5" : "https://www.trollandtoad.com/crown-zenith-singles/19428"
 }
 
 #Last page for tntrh website
@@ -132,7 +144,8 @@ tntrh_page = {
     "SV04": 4,
     "SV4.5": 3,
     "SV05": 4,
-    "SV06": 4
+    "SV06": 4,
+    "SWSH12.5": 3
 }
 
 #Url for tntsingles website
@@ -144,7 +157,8 @@ tntsingles = {
     "SV04": "https://www.trollandtoad.com/pokemon/scarlet-violet-paradox-rift/19726",
     "SV4.5": "https://www.trollandtoad.com/pokemon/paldean-fates/19797",
     "SV05": "https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19897",
-    "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925"
+    "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925",
+    "SWSH12.5": "https://www.trollandtoad.com/crown-zenith-singles/19429"
 }
 
 #Last page for tntsingles website
@@ -156,7 +170,20 @@ tntsingles_page = {
     "SV04": 6,
     "SV4.5": 6,
     "SV05": 5,
-    "SV06": 5
+    "SV06": 5,
+    "SWSH12.5": 5
+}
+
+#Elemenetal order for energy cards
+energycard = {
+    "grass": -7,
+    "fire": -6,
+    "water": -5,
+    "electric": -4,
+    "psychic": -3,
+    "fighting": -2,
+    "dark": -1,
+    "steel": 0
 }
 
 #Parent class
@@ -310,15 +337,15 @@ class ScarletViolet:
         rates = ScarletViolet.xe_rates(self)
         usdtosgd = float(rates)
         for i in range(len(df_swdk)):
-            if re.search('Reverse Holo', df_swdk.iloc[i][1]):
-                if re.search(df_singles.iloc[singles_counter - 1][1], df_swdk.iloc[i][1]):
+            if re.search('Reverse Holo', df_swdk.iloc[i,1]):
+                if re.search(df_singles.iloc[singles_counter - 1,1], df_swdk.iloc[i,1]):
                     correctcounter += 1
                 else:
                     wrongcounter += 1
-                    wronglist.append(df_singles.iloc[singles_counter - 1][1])
-                    wronglist.append(df_swdk.iloc[i][1])
+                    wronglist.append(df_singles.iloc[singles_counter - 1,1])
+                    wronglist.append(df_swdk.iloc[i,1])
                 try: #checking for NaN values
-                    sgdvalue = df_rh.iloc[rh_counter][2] * usdtosgd
+                    sgdvalue = df_rh.iloc[rh_counter,2] * usdtosgd
                     if sgdvalue < 1:
                         sgdvalue = 1
                     else:
@@ -327,29 +354,29 @@ class ScarletViolet:
                     sgdvalue = np.nan
                     self.nanflag = True
                     nan_row = {
-                        'ID':df_swdk.iloc[i][0],
-                        'Name':df_swdk.iloc[i][1]
+                        'ID':df_swdk.iloc[i,0],
+                        'Name':df_swdk.iloc[i,1]
                     }
                     nan_row = pd.DataFrame(nan_row,index = [0])
                     self.df_nan = pd.concat([self.df_nan, nan_row],ignore_index=True)
                 new_row = {
-                    'ID': df_swdk.iloc[i][0],
-                    'Name': df_swdk.iloc[i][1],
-                    'Price in USD': df_rh.iloc[rh_counter][2],
+                    'ID': df_swdk.iloc[i,0],
+                    'Name': df_swdk.iloc[i,1],
+                    'Price in USD': df_rh.iloc[rh_counter,2],
                     'Price in SGD': sgdvalue
                 }
                 new_row = pd.DataFrame(new_row, index=[0])
                 df_merged = pd.concat([df_merged, new_row], ignore_index=True)
                 rh_counter += 1
             else:
-                if re.search(df_singles.iloc[singles_counter][1], df_swdk.iloc[i][1]):
+                if re.search(df_singles.iloc[singles_counter,1], df_swdk.iloc[i,1]):
                     correctcounter += 1
                 else:
                     wrongcounter += 1
-                    wronglist.append(df_singles.iloc[singles_counter][1])
-                    wronglist.append(df_swdk.iloc[i][1])
+                    wronglist.append(df_singles.iloc[singles_counter,1])
+                    wronglist.append(df_swdk.iloc[i,1])
                 try:
-                    sgdvalue = df_singles.iloc[singles_counter][2] * usdtosgd
+                    sgdvalue = df_singles.iloc[singles_counter,2] * usdtosgd
                     if sgdvalue < 0.5:
                         sgdvalue = 0.5
                     else:
@@ -357,9 +384,9 @@ class ScarletViolet:
                 except:
                     sgdvalue = np.nan
                 new_row = {
-                    'ID': df_swdk.iloc[i][0],
-                    'Name': df_swdk.iloc[i][1],
-                    'Price in USD': df_singles.iloc[singles_counter][2],
+                    'ID': df_swdk.iloc[i,0],
+                    'Name': df_swdk.iloc[i,1],
+                    'Price in USD': df_singles.iloc[singles_counter,2],
                     'Price in SGD': sgdvalue
                 }
                 new_row = pd.DataFrame(new_row, index=[0])
@@ -385,33 +412,33 @@ class ScarletViolet:
         df_changelog = pd.DataFrame(columns=['ID','Shopify Name','Sawadeekard Name','Before', 'Change','After'])
         # aftercheck = []
         for i in range(len(df_shopify)):
-            #textsplit = re.split("\t",df_shopify.iloc[i][1])
-            #print(f"Shopify: {textsplit[3]} Sawadeekard: {df_swdk.iloc[i][0], df_swdk.iloc[i][1]}.")
+            #textsplit = re.split("\t",df_shopify.iloc[i,1])
+            #print(f"Shopify: {textsplit[3]} Sawadeekard: {df_swdk.iloc[i,0], df_swdk.iloc[i,1]}.")
             try:
-                holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][23]
+                holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,23]
                 new_row = {
-                    'ID': df_swdk.iloc[i][0],
-                    'Shopify Name': df_shopify.iloc[i][1],
-                    'Sawadeekard Name': df_swdk.iloc[i][1],
-                    'Before': df_shopify.iloc[i][23],
+                    'ID': df_swdk.iloc[i,0],
+                    'Shopify Name': df_shopify.iloc[i,1],
+                    'Sawadeekard Name': df_swdk.iloc[i,1],
+                    'Before': df_shopify.iloc[i,23],
                     'Change': holder,
-                    'After': df_swdk.iloc[i][3]
+                    'After': df_swdk.iloc[i,3]
                 }
             except:
                 holder = np.nan
                 new_row = {
-                    'ID': df_swdk.iloc[i][0],
-                    'Shopify Name': df_shopify.iloc[i][1],
-                    'Sawadeekard Name': df_swdk.iloc[i][1],
-                    'Before': df_shopify.iloc[i][23],
+                    'ID': df_swdk.iloc[i,0],
+                    'Shopify Name': df_shopify.iloc[i,1],
+                    'Sawadeekard Name': df_swdk.iloc[i,1],
+                    'Before': df_shopify.iloc[i,23],
                     'Change': holder,
-                    'After': df_shopify.iloc[i][23]
+                    'After': df_shopify.iloc[i,23]
                 }
             new_row = pd.DataFrame(new_row, index=[0])
             df_changelog = pd.concat([df_changelog, new_row], ignore_index=True)
         df_shopify['Variant Price'] = df_swdk['Price in SGD']
         # for i in range(len(df_shopify)):
-        #     holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+        #     holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,20]
         #     aftercheck.append(holder)
         return df_shopify, df_changelog
 
@@ -453,13 +480,311 @@ class ScarletViolet:
             print("So the price is unchanged.")
         print(f"{self.name} completed")
 
+#Sword and Shield
+class SwordShield:
+    def __init__(self, setkey, csvexist=False):
+        print(f"{setkey} Loading...")
+        self.name = setkey + "_english"
+        self.csvexist = csvexist
+        self.setkey = setkey
+        self.shpfy_dupe = False
+        self.nanflag = False
+        self.df_nan = pd.DataFrame(columns=['ID', 'Name'])
+
+    def swdk(self,swdkurl,swdkurl_page,setnamereplace,setsize):
+        newlist = []
+        namelist = []
+        testlist = []
+        IDlist = []
+
+        for i in range(1, swdkurl_page[self.setkey]):  # page range
+            url = swdkurl[self.setkey] + "?page=" + str(i)
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, 'html.parser')
+
+            data = soup.find_all("h3", class_="card__heading")
+            for each in data:
+                each = str(each)
+                if re.search('[ENG]', each):
+                    holder1 = re.split('>', each)
+                    holder2 = re.split('<', holder1[2].strip())
+                    testlist.append(holder2[0].strip())
+
+        for i in range(len(testlist)):
+            if testlist[i - 1] != testlist[i]:
+                newlist.append(testlist[i])
+
+        for i in range(len(newlist)):
+            #     # newlist[i]=re.search(r"^([).*())$",newlist[i])
+            newlist[i] = newlist[i].replace('\t', " ")
+            newlist[i] = newlist[i].replace(setnamereplace[self.setkey], "")
+            newlist[i] = newlist[i].strip()
+            # holder = newlist[i].split(" [")
+            # newlist[i] = holder[0]
+
+        for i in range(len(newlist)):
+            if re.search("SVE", newlist[i]): #checking for holo energy cards for SV3.5
+                ID = re.search(r"\d+", newlist[i]).group(0)
+                holder = newlist[i].split(ID)
+                IDlist.append('SVE En ' + ID)
+                holder2 = holder[1].replace('\t', ' ')
+                holder2 = " ".join(holder2.split())
+                namelist.append(holder2.strip())
+            else:
+                holder = newlist[i].split("/"+setsize[self.setkey]+ " ")
+                IDlist.append(holder[0] + "/" +setsize[self.setkey])
+                holder2 = holder[1].replace('\t', ' ')
+                holder2 = " ".join(holder2.split())
+                namelist.append(holder2)
+
+        df_swdk = pd.DataFrame({"ID": IDlist, "Name": namelist})
+        df_swdk.drop_duplicates(["ID","Name"], keep="first", inplace=True)
+        df_swdk.sort_values(["ID", "Name"], ascending=True, inplace=True)
+        df_swdk.reset_index(drop=True, inplace=True)
+        return (df_swdk)
+
+    def tnt(self,rh_url,rh_page,singles_url,singles_page):
+        pricelist = []
+        namelist = []
+        IDlist = []
+        for i in range(1, rh_page[self.setkey]):
+            url = rh_url[self.setkey] +'?Keywords=&page-no=' + str(i)
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, "html.parser")
+            price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
+            for each in price:
+                try:
+                    each = str(each)
+                    if re.search("Promo", each):
+                        pass
+                    else:
+                        priceholder0 = re.split("col-2 text-center p-1", each)
+                        priceholder1 = re.split(">", priceholder0[3])
+                        priceholder2 = re.split("<", priceholder1[1])
+                        priceholder3 = priceholder2[0].replace("$", "")
+                        priceholder3 = priceholder3.strip()
+                        pricelist.append(float(priceholder3))
+                except:
+                    pricelist.append(np.nan)
+            name = soup.find_all('a', class_="card-text")
+            for each in name:
+                each = str(each)
+                if re.search("Promo", each):  # promo cards were added
+                    pass
+                else:
+                    nameholder1 = re.split(">", each)
+                    nameholder2 = re.split("<", nameholder1[1])
+                    nameholder3 = re.split("- ", nameholder2[0])
+                    namelist.append(nameholder3[0].strip())
+                    IDlist.append(nameholder3[1].strip())
+        df_rh = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
+        df_rh.sort_values(["ID"], ascending=True, inplace=True)
+        df_rh.reset_index(drop=True, inplace=True)
+
+        pricelist = []
+        namelist = []
+        IDlist = []
+        promocounter = 0
+        for i in range(1, singles_page[self.setkey]):
+            url = singles_url[self.setkey]+'?Keywords=&page-no=' + str(i)
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, "html.parser")
+            price = soup.find_all('div', class_="product-col col-12 p-0 my-1 mx-sm-1 mw-100")
+            for each in price:
+                each = str(each)
+                if re.search("Promo", each):
+                    pass
+                else:
+                    try:
+                        priceholder0 = re.split("col-2 text-center p-1", each)
+                        priceholder1 = re.split(">", priceholder0[3])
+                        priceholder2 = re.split("<", priceholder1[1])
+                        priceholder3 = priceholder2[0].replace("$", "")
+                        priceholder3 = priceholder3.strip()
+                        pricelist.append(float(priceholder3))
+                    except:
+                        pricelist.append(np.nan)
+            name = soup.find_all('a', class_="card-text")
+            for each in name:
+                each = str(each)
+                if re.search("Promo", each):  # promo cards were added
+                    pass
+                else:
+                    nameholder1 = re.split(">", each)
+                    nameholder2 = re.split("<", nameholder1[1])
+                    nameholder3 = re.split("- ", nameholder2[0])
+                    namelist.append(nameholder3[0].strip())
+                    IDlist.append(nameholder3[1].strip())
+        #print(f"Number of price is {len(pricelist)}, ID is {len(IDlist)} and name is {len(namelist)}.")
+        df_singles = pd.DataFrame({"ID": IDlist, "Name": namelist, "Price in USD": pricelist})
+        df_singles.sort_values(["ID"], ascending=True, inplace=True)
+        df_singles.reset_index(drop=True, inplace=True)
+        return df_rh, df_singles
+
+    def merge(self, df_swdk, df_rh, df_singles):
+        df_merged = pd.DataFrame(columns=['ID', 'Name', 'Price in USD','Price in SGD'])
+        rh_counter = 0
+        singles_counter = 0
+        correctcounter = 0
+        wrongcounter = 0
+        wronglist = []
+        rates = SwordShield.xe_rates(self)
+        usdtosgd = float(rates)
+        for i in range(len(df_swdk)):
+            if re.search('Reverse Holo', df_swdk.iloc[i,1]):
+                if re.search(df_singles.iloc[singles_counter - 1,1], df_swdk.iloc[i,1]):
+                    correctcounter += 1
+                else:
+                    wrongcounter += 1
+                    wronglist.append(df_singles.iloc[singles_counter - 1,1])
+                    wronglist.append(df_swdk.iloc[i,1])
+                try: #checking for NaN values
+                    sgdvalue = df_rh.iloc[rh_counter,2] * usdtosgd
+                    if sgdvalue < 1:
+                        sgdvalue = 1
+                    else:
+                        sgdvalue = round(sgdvalue * 10) / 10
+                except: #reverting to previous price if current price unavailable
+                    sgdvalue = np.nan
+                    self.nanflag = True
+                    nan_row = {
+                        'ID':df_swdk.iloc[i,0],
+                        'Name':df_swdk.iloc[i,1]
+                    }
+                    nan_row = pd.DataFrame(nan_row,index = [0])
+                    self.df_nan = pd.concat([self.df_nan, nan_row],ignore_index=True)
+                new_row = {
+                    'ID': df_swdk.iloc[i,0],
+                    'Name': df_swdk.iloc[i,1],
+                    'Price in USD': df_rh.iloc[rh_counter,2],
+                    'Price in SGD': sgdvalue
+                }
+                new_row = pd.DataFrame(new_row, index=[0])
+                df_merged = pd.concat([df_merged, new_row], ignore_index=True)
+                rh_counter += 1
+            else:
+                if re.search(df_singles.iloc[singles_counter,1], df_swdk.iloc[i,1]):
+                    correctcounter += 1
+                else:
+                    wrongcounter += 1
+                    wronglist.append(df_singles.iloc[singles_counter,1])
+                    wronglist.append(df_swdk.iloc[i,1])
+                try:
+                    sgdvalue = df_singles.iloc[singles_counter,2] * usdtosgd
+                    if sgdvalue < 0.5:
+                        sgdvalue = 0.5
+                    else:
+                        sgdvalue = round(sgdvalue * 10) / 10
+                except:
+                    sgdvalue = np.nan
+                new_row = {
+                    'ID': df_swdk.iloc[i,0],
+                    'Name': df_swdk.iloc[i,1],
+                    'Price in USD': df_singles.iloc[singles_counter,2],
+                    'Price in SGD': sgdvalue
+                }
+                new_row = pd.DataFrame(new_row, index=[0])
+                df_merged = pd.concat([df_merged, new_row], ignore_index=True)
+                singles_counter += 1
+        # print(f"The number of correct entries are {correctcounter} and the number of wrong entries are {wrongcounter}.")
+        # print(wronglist)
+        return df_merged
+
+    def shopify_sv(self, productcsv=""):
+        df_shopify = pd.read_csv(productcsv)
+        #df_shopify = df_shopify[~df_shopify.Handle.str.contains("copy-of-")]
+        if df_shopify.Title.nunique() != len(df_shopify.index):
+            self.shpfy_dupe = True
+            self.df_dupe = df_shopify[df_shopify.Title.duplicated(keep = 'first')]
+        df_shopify.sort_values(["Title"], ascending=True, inplace=True)
+        df_shopify.drop_duplicates(['Title'], keep='first', inplace=True)
+        df_shopify.reset_index(drop=True, inplace=True)
+        #print(df_shopify)
+        return df_shopify
+#look to check for price = 0, do no changes if new price is 0
+    def shopify_merge(self, df_swdk, df_shopify):
+        df_changelog = pd.DataFrame(columns=['ID','Shopify Name','Sawadeekard Name','Before', 'Change','After'])
+        # aftercheck = []
+        for i in range(len(df_shopify)):
+            #textsplit = re.split("\t",df_shopify.iloc[i,1])
+            #print(f"Shopify: {textsplit[3]} Sawadeekard: {df_swdk.iloc[i,0], df_swdk.iloc[i,1]}.")
+            try:
+                holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,23]
+                new_row = {
+                    'ID': df_swdk.iloc[i,0],
+                    'Shopify Name': df_shopify.iloc[i,1],
+                    'Sawadeekard Name': df_swdk.iloc[i,1],
+                    'Before': df_shopify.iloc[i,23],
+                    'Change': holder,
+                    'After': df_swdk.iloc[i,3]
+                }
+            except:
+                holder = np.nan
+                new_row = {
+                    'ID': df_swdk.iloc[i,0],
+                    'Shopify Name': df_shopify.iloc[i,1],
+                    'Sawadeekard Name': df_swdk.iloc[i,1],
+                    'Before': df_shopify.iloc[i,23],
+                    'Change': holder,
+                    'After': df_shopify.iloc[i,23]
+                }
+            new_row = pd.DataFrame(new_row, index=[0])
+            df_changelog = pd.concat([df_changelog, new_row], ignore_index=True)
+        df_shopify['Variant Price'] = df_swdk['Price in SGD']
+        # for i in range(len(df_shopify)):
+        #     holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,20]
+        #     aftercheck.append(holder)
+        return df_shopify, df_changelog
+
+    def xe_rates(self):
+        # USD to SGD
+        url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        ratedata = soup.find_all('div', style='margin-top:24px')
+        for each in ratedata:
+            each = str(each)
+            holder1 = re.split(">", each)
+            holder21 = re.split("<", holder1[6])
+            holder22 = re.split("<", holder1[7])
+            rates = holder21[0] + holder22[0]
+        return rates
+
+    def swsh_main(self, filename=""):
+        swdk_name = SwordShield.swdk(self,swdkurl = swdkurl,swdkurl_page = swdkurl_page,setnamereplace = setnamereplace, setsize = setsize)
+        tnt_rh, tnt_singles = SwordShield.tnt(self,rh_url = tntrh,rh_page = tntrh_page,singles_url= tntsingles,singles_page=tntsingles_page)
+        simplemerge = SwordShield.merge(self,swdk_name, tnt_rh, tnt_singles)
+        dttm = datetime.now()
+        if self.csvexist:
+            shpfy_name = SwordShield.shopify_sv(self,filename)  # include error handling here
+            # Check if there are repeated listings
+            finalmerge, changelog = SwordShield.shopify_merge(self,simplemerge, shpfy_name)
+            filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
+            finalmerge.to_csv(filename, index=False)
+            changelog.to_csv(f"Changelog {self.name}.csv", index=False,na_rep="")
+        else:
+            simplemerge.to_csv(f"{self.name} Merged {dttm.strftime('%y%m%d')}.csv", index=False)
+        if self.shpfy_dupe == True:
+            print("The following entries are duplicated in the Sawadeekard website:")
+            print(f"{self.df_dupe.Title}")
+            print("But has been removed in the final CSV.")
+        if self.nanflag == True:
+            print("The following entries are not updated as no price was found on TnT:")
+            print(f"{self.df_nan}")
+            print("So the price is unchanged.")
+        print(f"{self.name} completed")
+
 ### Japanese Sets
 ## Individual codes
 class SV2a_Japanese():
-    def __init__(self, csvexist = False):
-        print("SV2a Loading...")
+    def __init__(self, setkey, csvexist = False):
+        print(f"{setkey} Loading...")
         self.name = "SV2a_Japanese"
         self.csvexist = csvexist
+        self.setkey = setkey
+        self.shpfy_dupe = False
+        self.nanflag = False
+        self.df_nan = pd.DataFrame(columns=['ID', 'Name'])
 
     #from Sawadeekard_151
     def swdk_main(self):
@@ -567,21 +892,21 @@ class SV2a_Japanese():
         return strvar
 
     def jp_151_merge(self,df_swdk,df_yyt):
-        #df_swdk = SV2a_Japanese().swdk_main()
-        #df_yyt = SV2a_Japanese().yyt_main()
-        rates = SV2a_Japanese().xe_rates()
+        #df_swdk = SV2a_Japanese.swdk_main(self)
+        #df_yyt = SV2a_Japanese.yyt_main(self)
+        rates = SV2a_Japanese.xe_rates(self)
         jpytosgd = float(rates)
 
         df_final = pd.DataFrame(columns=['ID', 'Name', 'Price'])
-        # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5][0]].Name
+        # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5,0]].Name
         for i in range(len(df_yyt.index)):
-            # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5][0]].Name
-            if (len(df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].index) > 1):
-                df_swdk_hold = df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].reset_index(drop=True)
-                df_yyt_hold = df_yyt[df_yyt.ID == df_yyt.iloc[i][0]].reset_index(drop=True)
+            # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5,0]].Name
+            if (len(df_swdk[df_swdk.ID == df_yyt.iloc[i,0]].index) > 1):
+                df_swdk_hold = df_swdk[df_swdk.ID == df_yyt.iloc[i,0]].reset_index(drop=True)
+                df_yyt_hold = df_yyt[df_yyt.ID == df_yyt.iloc[i,0]].reset_index(drop=True)
                 sgdvalue = round(df_yyt.loc[i]['Price in Yen']*10)/10
                 if re.search(r".*マスターボール柄.*", df_yyt.loc[i]['Name']):
-                    namestr = SV2a_Japanese.namechk(r".*Master Ball.*", df_swdk_hold)
+                    namestr = SV2a_Japanese.namechk(self,r".*Master Ball.*", df_swdk_hold)
                     new_row = {
                         'ID': df_yyt.loc[i]['ID'],
                         'Name': namestr,
@@ -589,7 +914,7 @@ class SV2a_Japanese():
                         'Price in SGD': sgdvalue
                     }
                 elif re.search(r".*モンスターボール柄.*", df_yyt.loc[i]['Name']):
-                    namestr = SV2a_Japanese.namechk(r".*Reverse Holo.*", df_swdk_hold)
+                    namestr = SV2a_Japanese.namechk(self,r".*Reverse Holo.*", df_swdk_hold)
                     new_row = {
                         'ID': df_yyt.loc[i]['ID'],
                         'Name': namestr,
@@ -597,14 +922,15 @@ class SV2a_Japanese():
                         'Price in SGD': sgdvalue
                     }
                 else:
-                    namestr = SV2a_Japanese.namechk(r".*Foil.*", df_swdk_hold)
+                    namestr = SV2a_Japanese.namechk(self,r".*Foil.*", df_swdk_hold)
                     new_row = {
                         'ID': df_yyt.loc[i]['ID'],
                         'Name': namestr,
                         'Price in JPY': df_yyt.loc[i]['Price in Yen'],
                         'Price in SGD': sgdvalue
                     }
-            elif (len(df_swdk[df_swdk.ID == df_yyt.iloc[i][0]].index) == 1):
+            elif (len(df_swdk[df_swdk.ID == df_yyt.iloc[i,0]].index
+            ) == 1):
                 new_row = {
                     'ID': df_yyt.loc[i]['ID'],
                     'Name': df_swdk.loc[i]['Name'],
@@ -629,19 +955,20 @@ class SV2a_Japanese():
         df_changelog = pd.DataFrame(columns = ['Before','Change','After'])
         # aftercheck = []
         for i in range(len(df_shopify)):
-            holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+            holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,20]
             new_row = {
-                'Before':df_shopify.iloc[i][20],
+                'Before':df_shopify.iloc[i,20],
                 'Change':holder,
-                'After':df_swdk.iloc[i][3]
+                'After':df_swdk.iloc[i,3]
                 }
             new_row = pd.DataFrame(new_row,index = [0])
             df_changelog = pd.concat([df_changelog,new_row],ignore_index=True)
         df_shopify['Variant Price'] = df_swdk['Price in SGD']
         # for i in range(len(df_shopify)):
-        #     holder = df_swdk.iloc[i][3] - df_shopify.iloc[i][20]
+        #     holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,20]
         #     aftercheck.append(holder)
         return(df_shopify,df_changelog)
+
     def xe_rates(self):
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=JPY&To=SGD'
         page = requests.get(url)
@@ -654,14 +981,15 @@ class SV2a_Japanese():
             holder22 = re.split("<", holder1[7])
             rates = holder21[0] + holder22[0]
         return (rates)
-    def jp_151_main(self,filename = ""):
-        swdk_name = SV2a_Japanese().swdk_main()
-        yyt_list = SV2a_Japanese().yyt_main()
-        simplemerge = SV2a_Japanese().jp_151_merge(swdk_name, yyt_list)
+
+    def jp_main(self, filename = ""):
+        swdk_name = SV2a_Japanese.swdk_main(self)
+        yyt_list = SV2a_Japanese.yyt_main(self)
+        simplemerge = SV2a_Japanese.jp_151_merge(self,swdk_name, yyt_list)
         dttm = datetime.now()
         if self.csvexist:
-            shpfy_name = SV2a_Japanese().shopify_sv2a(filename) #include error handling here
-            finalmerge,changelog = SV2a_Japanese.shopify_merge(simplemerge, shpfy_name)
+            shpfy_name = SV2a_Japanese.shopify_sv2a(self,filename) #include error handling here
+            finalmerge,changelog = SV2a_Japanese.shopify_merge(self,simplemerge, shpfy_name)
             filename = f"{self.name} Shopify {dttm.strftime('%y%m%d')}.csv"
             finalmerge.to_csv(filename,index=False)
             changelog.to_csv(f"Changelog {self.name}.csv",index = False)
@@ -673,7 +1001,7 @@ class controller:
         print('\n============================================')
         print('              Price list')
         print('============================================')
-        
+
     # Set a function that checks if user input is "exit" every time, in order to allow the user to exiy the system anywhere
     def exit_check(self,prompt):
         user_input=input(prompt)
@@ -681,39 +1009,23 @@ class controller:
             print("System terminated. Thank you!")
             raise ExitException()
         return user_input
-    
+
     def main(self):
+        #only included for google colab because the pathway is different from exe
+        gdriveprefix = "/content/drive/MyDrive/Shopify Program/"
         #menu options
         while True:
             #Split by language, Japanese cards will use YYT, English cards are undecided
-            print("1. Japanese Pokemon Cards")
-            print("2. English Pokemon Cards")
+            print("1. Scarlet and Violet Series")
+            print("2. Sword and Shield Series")
+            print("3. Japanese SV2a 151")
             print("X. Exit\n")
-            
+
             #choice obtained using input
             choice = input("What type of cards? \n")
             choice = choice.strip()
-            
-            #option 1 will be Japanese YYT
+
             if choice == '1':
-                try:
-                    while True:
-                        print("1. 151 Pokémon")
-                        print("2. V Star Universe")
-                        print("X. Exit\n")
-                        
-                        choice = input("What set are you interested in? \n")
-                        choice = choice.strip()
-                        if choice == '1':
-                            SV2a_Japanese.jp_151_main()
-                            dttm = datetime.now()
-                            df = pd.read_csv(f"Japanese 151 {dttm.strftime('%y%m%d')}.csv")
-                            print(df)
-                        elif choice.lower() == 'x':
-                            break
-                except ExitException():
-                    sys.exit()
-            elif choice == '2':
                 try:
                     csvdict = {
                         'SV01': "ENG SV01 SV1.csv",
@@ -757,12 +1069,15 @@ class controller:
                         if choice == "00":
                             # To check if shopify csv file exists
                             while choiceflag == False:
+                                print("The required files are:")
+                                for key in csvdict:
+                                    print(f"{csvdict[key]}")
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                                 csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             if csvexist:
                                 for key in setdict:
                                     sv_holder = ScarletViolet(setkey = key, csvexist = csvexist)
-                                    sv_holder.sv_main(filename = csvdict[key])
+                                    sv_holder.sv_main(filename = gdriveprefix + csvdict[key])
                             else:
                                 for key in setdict:
                                     sv_holder = ScarletViolet(setkey = key, csvexist = csvexist)
@@ -789,10 +1104,136 @@ class controller:
                                 key = 'SV06'
                             # To check if shopify csv file exists
                             while choiceflag == False:
+                                print("The required files are:")
+                                print(f"{csvdict[key]}")
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                                 csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             svobj = ScarletViolet(setkey = key, csvexist = csvexist)
-                            svobj.sv_main(filename = csvdict[key])
+                            svobj.sv_main(filename = gdriveprefix + csvdict[key])
+                            print("This is done!")
+                except ExitException():
+                    sys.exit()
+            elif choice == "2":
+                try:
+                    csvdict = {
+                        'CZ': "Crown Zenith",
+                        'ST': "Silver Tempest",
+                        'LO': "Lost Origins",
+                        'PoGo': "Pokemon Go",
+                        'AR': "Astral Radiance",
+                        'BRS': "Brilliant Stars",
+                        'FS': "Fusion Strike",
+                        'Celeb': "Celebrations"
+                    }
+                    setdict = {
+                        'CZ': "Crown Zenith",
+                        'ST': "Silver Tempest",
+                        'LO': "Lost Origins",
+                        'PoGo': "Pokemon Go",
+                        'AR': "Astral Radiance",
+                        'BRS': "Brilliant Stars",
+                        'FS': "Fusion Strike",
+                        'Celeb': "Celebrations"
+                    }
+                    while True:
+                        print(f"1. {setdict['CZ']}")
+                        print(f"2. {setdict['ST']}")
+                        print(f"3. {setdict['LO']}")
+                        print(f"4. {setdict['PoGo']}")
+                        print(f"5. {setdict['AR']}")
+                        print(f"6. {setdict['BRS']}")
+                        print(f"7. {setdict['FS']}")
+                        print(f"8. {setdict['Celeb']}")
+                        print("X. Exit\n")
+
+                        choice = input("What set are you interested in? \n")
+                        choice = choice.strip()
+                        if choice == '00':
+                            while choiceflag == False:
+                                print("The required files are:")
+                                print(f"{csvdict[key]}")
+                                shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
+                                csvexist, choiceflag = yesnochk(shpfychoice, choiceflag)
+                            svobj = ScarletViolet(setkey=key, csvexist=csvexist)
+                            svobj.sv_main(filename=csvdict[key])
+                            print("This is done!")
+                        elif choice.lower() == 'x':
+                            break
+                        else:
+                            if choice == '1':
+                                key = 'CZ'
+                            elif choice == '2':
+                                key = 'ST'
+                            elif choice == '3':
+                                key = 'LO'
+                            elif choice == '4':
+                                key = 'PoGo'
+                            elif choice == '5':
+                                key = 'AR'
+                            elif choice == '6':
+                                key = 'BRS'
+                            elif choice == '7':
+                                key = 'FS'
+                            elif choice == '8':
+                                key = 'Celeb'
+                            # To check if shopify csv file exists
+                            while choiceflag == False:
+                                print("The required files are:")
+                                print(f"{csvdict[key]}")
+                                shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
+                                csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
+                            swshobj = SwordShield(setkey = key, csvexist = csvexist)
+                            swshobj.swsh_main(filename = gdriveprefix+csvdict[key])
+                            print("This is done!")
+                except ExitException():
+                    sys.exit()
+            elif choice == "3":
+                try:
+                    csvdict = {
+                        'SV2a': "JAP SV2a 151.csv"
+                    }
+                    setdict = {
+                        'SV2a': "Pokemon 151"
+                    }
+                    while True:
+                        #options are included manually, but will just be setlist[i]
+                        print(f"1. {setdict['SV2a']}")
+                        print("00. All listed series")
+                        print("X. Exit\n")
+                        #To know which set to scrape
+                        choice = input("What set are you interested in? \n")
+                        choice = choice.strip()
+                        choiceflag = False
+                        if choice == "00":
+                            # To check if shopify csv file exists
+                            while choiceflag == False:
+                                print("The required files are:")
+                                for key in csvdict:
+                                    print(f"{csvdict[key]}")
+                                shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
+                                csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
+                            if csvexist:
+                                for key in setdict:
+                                    jp_holder = SV2a_Japanese(setkey = key, csvexist = csvexist)
+                                    jp_holder.jp_main(filename = gdriveprefix + csvdict[key])
+                            else:
+                                for key in setdict:
+                                    jp_holder = SV2a_Japanese(setkey = key, csvexist = csvexist)
+                                    jp_holder.jp_main()
+                                print("All sets are processed.")
+                        elif choice.lower() == 'x':
+                            break
+                        else:
+                            if choice == '1':
+                                key = 'SV2a'
+                            # To check if shopify csv file exists
+                            while choiceflag == False:
+                                print("The required files are:")
+                                print(f"{csvdict[key]}")
+                                shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
+                                csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
+                            jpobj = SV2a_Japanese(setkey = key, csvexist = csvexist)
+                            jpobj.jp_main(filename = gdriveprefix+csvdict[key])
                             print("This is done!")
                 except ExitException():
                     sys.exit()
