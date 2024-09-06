@@ -33,6 +33,9 @@ Created on Thu Nov 16 04:24:31 2023
 #===========================================================================
 #Version 2.3
 #Updated Japanese set codes
+#--changed jpy to sgd rates to be from 1000:1
+#--changed all column reference to iloc with more confidence of shopify csv structure
+#--added the conversion variable multiplier
 #Adjusted initial menu for SV series, SWSH series and Japanese instead of English and Japanese
 
 
@@ -895,46 +898,46 @@ class SV2a_Japanese():
         #df_swdk = SV2a_Japanese.swdk_main(self)
         #df_yyt = SV2a_Japanese.yyt_main(self)
         rates = SV2a_Japanese.xe_rates(self)
-        jpytosgd = float(rates)
+        jpytosgd = float(rates)/1000
 
-        df_final = pd.DataFrame(columns=['ID', 'Name', 'Price'])
+        df_final = pd.DataFrame(columns=['ID', 'Name', 'Price in JPY', 'Price in SGD'])
         # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5,0]].Name
         for i in range(len(df_yyt.index)):
             # df_yyt.Name = df_swdk[df_swdk.ID==df_yyt.iloc[5,0]].Name
             if (len(df_swdk[df_swdk.ID == df_yyt.iloc[i,0]].index) > 1):
                 df_swdk_hold = df_swdk[df_swdk.ID == df_yyt.iloc[i,0]].reset_index(drop=True)
                 df_yyt_hold = df_yyt[df_yyt.ID == df_yyt.iloc[i,0]].reset_index(drop=True)
-                sgdvalue = round(df_yyt.loc[i]['Price in Yen']*10)/10
-                if re.search(r".*マスターボール柄.*", df_yyt.loc[i]['Name']):
+                sgdvalue = round(df_yyt.iloc[i,2]*jpytosgd*10)/10
+                if re.search(r".*マスターボール柄.*", df_yyt.iloc[i,1]):
                     namestr = SV2a_Japanese.namechk(self,r".*Master Ball.*", df_swdk_hold)
                     new_row = {
-                        'ID': df_yyt.loc[i]['ID'],
+                        'ID': df_yyt.iloc[i,0],
                         'Name': namestr,
-                        'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                        'Price in JPY': df_yyt.iloc[i,2],
                         'Price in SGD': sgdvalue
                     }
-                elif re.search(r".*モンスターボール柄.*", df_yyt.loc[i]['Name']):
+                elif re.search(r".*モンスターボール柄.*", df_yyt.iloc[i,1]):
                     namestr = SV2a_Japanese.namechk(self,r".*Reverse Holo.*", df_swdk_hold)
                     new_row = {
-                        'ID': df_yyt.loc[i]['ID'],
+                        'ID': df_yyt.iloc[i,0],
                         'Name': namestr,
-                        'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                        'Price in JPY': df_yyt.iloc[i,2],
                         'Price in SGD': sgdvalue
                     }
                 else:
                     namestr = SV2a_Japanese.namechk(self,r".*Foil.*", df_swdk_hold)
                     new_row = {
-                        'ID': df_yyt.loc[i]['ID'],
+                        'ID': df_yyt.iloc[i,0],
                         'Name': namestr,
-                        'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                        'Price in JPY': df_yyt.iloc[i,2],
                         'Price in SGD': sgdvalue
                     }
             elif (len(df_swdk[df_swdk.ID == df_yyt.iloc[i,0]].index
             ) == 1):
                 new_row = {
-                    'ID': df_yyt.loc[i]['ID'],
-                    'Name': df_swdk.loc[i]['Name'],
-                    'Price in JPY': df_yyt.loc[i]['Price in Yen'],
+                    'ID': df_yyt.iloc[i,0],
+                    'Name': df_swdk.iloc[i,1],
+                    'Price in JPY': df_yyt.iloc[i,2],
                     'Price in SGD': sgdvalue
                 }
             new_row = pd.DataFrame(new_row, index=[0])
@@ -954,10 +957,12 @@ class SV2a_Japanese():
     def shopify_merge(self,df_swdk,df_shopify):
         df_changelog = pd.DataFrame(columns = ['Before','Change','After'])
         # aftercheck = []
+        df_swdk.sort_values(['Name'], ascending = True, inplace = True)
+        df_swdk.reset_index(drop = True, inplace = True)
         for i in range(len(df_shopify)):
-            holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,20]
+            holder = df_swdk.iloc[i,3] - df_shopify.iloc[i,23]
             new_row = {
-                'Before':df_shopify.iloc[i,20],
+                'Before':df_shopify.iloc[i,23],
                 'Change':holder,
                 'After':df_swdk.iloc[i,3]
                 }
@@ -970,7 +975,7 @@ class SV2a_Japanese():
         return(df_shopify,df_changelog)
 
     def xe_rates(self):
-        url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=JPY&To=SGD'
+        url = 'https://www.xe.com/currencyconverter/convert/?Amount=1000&From=JPY&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
         ratedata = soup.find_all('div', style='margin-top:24px')
@@ -979,7 +984,7 @@ class SV2a_Japanese():
             holder1 = re.split(">", each)
             holder21 = re.split("<", holder1[6])
             holder22 = re.split("<", holder1[7])
-            rates = holder21[0] + holder22[0]
+            rates = (holder21[0] + holder22[0])
         return (rates)
 
     def jp_main(self, filename = ""):
