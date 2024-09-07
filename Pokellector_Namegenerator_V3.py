@@ -14,20 +14,28 @@
 #To do:
 #Adjusted Naming convention following SV4.5 from Sawadeekard website E.g [ENG] SV05 Temporal Forces: 186/162 Iron Leaves ex [Grass] [UR - Ultra Rare] (Foil)
 #============================================================
-#Version 3
+#Version 3 [UPDATE]
 #To obtain information through multi webscraping #Test for time
 
 import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
+import time
 
 def SV35_main():
     url = input("Please type the pokellector link (including https://): ")
+    if url[-1] != "/":
+        url = url + "/"
+        print(url)
     urlflag = False
     while urlflag == False:
         try:
             page = requests.get(url)
+            if re.search("/jp.",url):
+                engorjap = "[JAP]"
+            else:
+                engorjap = "[ENG]"
             urlflag = True
         except:
             print("Just copy and paste the website from browser please...\n")
@@ -47,6 +55,10 @@ def SV35_main():
             print("How big is the set in this series: ")
             setcount = input("e.g. xxx/135 -> type 135, xxx/162 -> type 162\n")
 
+    print("What code would you like to use: ")
+    setcode = input("e.g. SV4.5 -> type SV4.5, SWSH09 -> type SWSH09\n")
+
+    timestart = time.time()
     iconset = soup.find_all(class_="icon set")
     for each in iconset:
         each = str(each)
@@ -70,41 +82,103 @@ def SV35_main():
         #changing tag
         line = re.sub(pattern1,'',line) 
         line = re.sub(pattern2,'',line)
-        if re.search("ex<",line) or IDcounter > setcount: #only 1 set for ex
-            #matching ID with "#<digit> - " format
-            ID = re.match(pattern3,line)
-            if ID:
-                ID = ID.group(0) #returning the matched string which is the actual ID
-                ID = re.sub(pattern35,'', ID)
-                ID = re.sub("#", '',ID)
-                IDlist.append(ID.zfill(3)+"/"+str(setcount))
-            line = re.sub(pattern3,'',line)
-            line = re.sub(pattern4,'',line)
-            namelist.append(str(line))
-            IDcounter += 1
-        else:
-            # matching ID with "#<digit> - " format
-            ID = re.match(pattern3, line)
-            if ID:
-                ID = ID.group(0)  # returning the matched string which is the actual ID
-                ID = re.sub(pattern35, '', ID)
-                ID = re.sub("#", '', ID)
-                IDlist.append(ID.zfill(3) + "/" + str(setcount))
-                IDlist.append(ID.zfill(3) + "/" + str(setcount))# append twice for rh and non-foil
-            line = re.sub(pattern3, '', line)
-            line = re.sub(pattern4, '', line)
-            namelist.append(str(line) + " (Non-Foil)")
-            namelist.append(str(line) + " (Reverse Holo)")
-            IDcounter += 1
+        ID = re.match(pattern3, line)
+        if ID:
+            ID = ID.group(0)  # returning the matched string which is the actual ID
+            ID = re.sub(pattern35, '', ID)
+            ID = re.sub("#", '', ID)
+            #IDlist.append(ID.zfill(3) + "/" + setcount.zfill(3))
+        line = re.sub(pattern3, '', line)
+        line = re.sub(pattern4, '', line)
+        rarity, rh = singlecardinfo(url,line,IDcounter)
+        if rarity == "Common":
+            rarityplus = "[C - Common]"
+            foilstatus = ["(Non-Foil)","(Reverse Holo)"]
+        elif rarity == "Uncommon":
+            rarityplus = "[U - Uncommon]"
+            foilstatus = ["(Non-Foil)", "(Reverse Holo)"]
+        elif rarity == "Double Rare":
+            rarityplus = "[RR - Double Rare]"
+            foilstatus = ["(Foil)"]
+        elif rarity == "Illustration Rare":
+            rarityplus = "[IR - Illustration Rare]"
+            foilstatus = ["(Foil)"]
+        elif rarity == "Ultra Rare":
+            rarityplus = "[UR - Ultra Rare]"
+            foilstatus = ["(Foil)"]
+        elif rarity == "Special Illustration Rare":
+            rarityplus = "[SIR - Special Illustration Rare]"
+            foilstatus = ["(Foil)"]
+        elif rarity == "Hyper Rare":
+            rarityplus = "[HR - Hyper Rare]"
+            foilstatus = ["(Foil)"]
+        for i in range(len(foilstatus)):
+            fullname = engorjap +" Pokemon " + setcode + f" {seriesname}: " + rarityplus + foilstatus[i]
+            namelist.append(fullname)
+            IDlist.append(ID.zfill(3) + "/" + setcount.zfill(3))
+        IDcounter += 1
+#        if re.search("ex<",line) or IDcounter > setcountint: #only 1 set for ex
+#            #matching ID with "#<digit> - " format
+#            ID = re.match(pattern3,line)
+#            if ID:
+#                ID = ID.group(0) #returning the matched string which is the actual ID
+#                ID = re.sub(pattern35,'', ID)
+#                ID = re.sub("#", '',ID)
+#                IDlist.append(ID.zfill(3)+"/"+setcount.zfill(3))
+#            line = re.sub(pattern3,'',line)
+#            line = re.sub(pattern4,'',line)
+#            namelist.append(str(line))
+#            IDcounter += 1
+#        else:
+#            # matching ID with "#<digit> - " format
+#            ID = re.match(pattern3, line)
+#            if ID:
+#                ID = ID.group(0)  # returning the matched string which is the actual ID
+#                ID = re.sub(pattern35, '', ID)
+#               ID = re.sub("#", '', ID)
+#                IDlist.append(ID.zfill(3) + "/" + str(setcount))
+#                IDlist.append(ID.zfill(3) + "/" + str(setcount))# append twice for rh and non-foil
+#            line = re.sub(pattern3, '', line)
+#            line = re.sub(pattern4, '', line)
+#            namelist.append(str(line) + " (Non-Foil)")
+#            namelist.append(str(line) + " (Reverse Holo)")
+#            IDcounter += 1
     dict_df = {'ID':IDlist,'Name':namelist}
     dfa = pd.DataFrame(data=dict_df)
-    return (dfa,seriesname)
+    timeend = time.time()
+    timetaken = timeend - timestart
+    filename = setcode + "_" + seriesname + ".csv"
+    return (dfa,filename,timetaken)
+
+def singlecardinfo(url, name, ID):
+    rhflag = False
+    urlcard = re.sub(' ', '-', name)
+    urlcard = re.sub("'", "", urlcard)
+    urlcard = url + urlcard + '-Card-' + str(ID)
+    page = requests.get(urlcard)
+    soup = BeautifulSoup(page.content,"html.parser")
+    rare = soup.find_all("div",class_="infoblurb")
+    for each in rare:
+        each0 = str(each)
+        each1 = each0.split("</div>")
+        each2 = each1[0].split("</strong>")
+        rarity = each2[1].strip()
+    rh = soup.find_all("h1")
+    for each in rh:
+        each = str(each)
+        if re.search("Alternate Versions of this Card",each):
+            rhflag = True
+    return (rarity, rhflag)
 
 if __name__ == "__main__":
-    SV35,filename = SV35_main()
-    filename = filename +".csv"
+    SV35,filename,time = SV35_main()
     print(f"\n{filename}\n")
+    #pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
     print(SV35)
+    print(f"Time take is {time} seconds.")
+#    print(SV35.iloc[1])
+#    print(SV35.iloc[111])
     choiceflag = False
     while choiceflag == False:
         choice = input("Do you want this as csv file (Y/N): ")

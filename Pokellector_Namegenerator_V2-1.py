@@ -21,6 +21,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
+import time
 
 def SV35_main():
     url = input("Please type the pokellector link (including https://): ")
@@ -47,6 +48,7 @@ def SV35_main():
             print("How big is the set in this series: ")
             setcount = input("e.g. xxx/135 -> type 135, xxx/162 -> type 162\n")
 
+    timestart = time.time()
     iconset = soup.find_all(class_="icon set")
     for each in iconset:
         each = str(each)
@@ -70,7 +72,7 @@ def SV35_main():
         #changing tag
         line = re.sub(pattern1,'',line) 
         line = re.sub(pattern2,'',line)
-        if re.search("ex<",line) or IDcounter > setcount: #only 1 set for ex
+        if re.search("ex<",line) or IDcounter > setcountint: #only 1 set for ex
             #matching ID with "#<digit> - " format
             ID = re.match(pattern3,line)
             if ID:
@@ -98,13 +100,16 @@ def SV35_main():
             IDcounter += 1
     dict_df = {'ID':IDlist,'Name':namelist}
     dfa = pd.DataFrame(data=dict_df)
-    return (dfa,seriesname)
+    timeend = time.time()
+    timetaken = timeend - timestart
+    return (dfa,seriesname,timetaken)
 
 if __name__ == "__main__":
-    SV35,filename = SV35_main()
+    SV35,filename,time = SV35_main()
     filename = filename +".csv"
     print(f"\n{filename}\n")
     print(SV35)
+    print(f"Time take is {time} seconds.")
     choiceflag = False
     while choiceflag == False:
         choice = input("Do you want this as csv file (Y/N): ")
