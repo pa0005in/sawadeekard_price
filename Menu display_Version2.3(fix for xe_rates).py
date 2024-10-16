@@ -37,6 +37,8 @@ Created on Thu Nov 16 04:24:31 2023
 #--changed all column reference to iloc with more confidence of shopify csv structure
 #--added the conversion variable multiplier
 #Adjusted initial menu for SV series, SWSH series and Japanese instead of English and Japanese
+#Bugfix for xe_rates
+#--css was changed, new method used re.search for specific keyword instead
 
 
 
@@ -450,14 +452,18 @@ class ScarletViolet:
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
-        ratedata = soup.find_all('div', style='margin-top:24px')
+        ratedata = soup.find_all('div')
+        filterlist = []
         for each in ratedata:
             each = str(each)
-            holder1 = re.split(">", each)
-            holder21 = re.split("<", holder1[6])
-            holder22 = re.split("<", holder1[7])
+            if re.search("faded-digits", each):
+                filterlist.append(each)
+            filterlist.sort(key=len)
+            holder1 = re.split(">", filterlist[0])
+            holder21 = re.split("<", holder1[4])
+            holder22 = re.split("<", holder1[5])
             rates = holder21[0] + holder22[0]
-        return rates
+        return (rates)
 
     def sv_main(self, filename=""):
         swdk_name = ScarletViolet.swdk(self,swdkurl = swdkurl,swdkurl_page = swdkurl_page,setnamereplace = setnamereplace, setsize = setsize)
@@ -744,14 +750,18 @@ class SwordShield:
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
-        ratedata = soup.find_all('div', style='margin-top:24px')
+        ratedata = soup.find_all('div')
+        filterlist = []
         for each in ratedata:
             each = str(each)
-            holder1 = re.split(">", each)
-            holder21 = re.split("<", holder1[6])
-            holder22 = re.split("<", holder1[7])
+            if re.search("faded-digits", each):
+                filterlist.append(each)
+            filterlist.sort(key=len)
+            holder1 = re.split(">", filterlist[0])
+            holder21 = re.split("<", holder1[4])
+            holder22 = re.split("<", holder1[5])
             rates = holder21[0] + holder22[0]
-        return rates
+        return (rates)
 
     def swsh_main(self, filename=""):
         swdk_name = SwordShield.swdk(self,swdkurl = swdkurl,swdkurl_page = swdkurl_page,setnamereplace = setnamereplace, setsize = setsize)
@@ -978,13 +988,17 @@ class SV2a_Japanese():
         url = 'https://www.xe.com/currencyconverter/convert/?Amount=1000&From=JPY&To=SGD'
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
-        ratedata = soup.find_all('div', style='margin-top:24px')
+        ratedata = soup.find_all('div')
+        filterlist = []
         for each in ratedata:
             each = str(each)
-            holder1 = re.split(">", each)
-            holder21 = re.split("<", holder1[6])
-            holder22 = re.split("<", holder1[7])
-            rates = (holder21[0] + holder22[0])
+            if re.search("faded-digits", each):
+                filterlist.append(each)
+            filterlist.sort(key=len)
+            holder1 = re.split(">", filterlist[0])
+            holder21 = re.split("<", holder1[4])
+            holder22 = re.split("<", holder1[5])
+            rates = holder21[0] + holder22[0]
         return (rates)
 
     def jp_main(self, filename = ""):
@@ -1082,7 +1096,7 @@ class controller:
                             if csvexist:
                                 for key in setdict:
                                     sv_holder = ScarletViolet(setkey = key, csvexist = csvexist)
-                                    sv_holder.sv_main(filename = gdriveprefix + csvdict[key])
+                                    sv_holder.sv_main(filename = csvdict[key])
                             else:
                                 for key in setdict:
                                     sv_holder = ScarletViolet(setkey = key, csvexist = csvexist)
@@ -1114,7 +1128,7 @@ class controller:
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                                 csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             svobj = ScarletViolet(setkey = key, csvexist = csvexist)
-                            svobj.sv_main(filename = gdriveprefix + csvdict[key])
+                            svobj.sv_main(filename = csvdict[key])
                             print("This is done!")
                 except ExitException():
                     sys.exit()
@@ -1189,7 +1203,7 @@ class controller:
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                                 csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             swshobj = SwordShield(setkey = key, csvexist = csvexist)
-                            swshobj.swsh_main(filename = gdriveprefix+csvdict[key])
+                            swshobj.swsh_main(filename = csvdict[key])
                             print("This is done!")
                 except ExitException():
                     sys.exit()
@@ -1221,7 +1235,7 @@ class controller:
                             if csvexist:
                                 for key in setdict:
                                     jp_holder = SV2a_Japanese(setkey = key, csvexist = csvexist)
-                                    jp_holder.jp_main(filename = gdriveprefix + csvdict[key])
+                                    jp_holder.jp_main(filename = csvdict[key])
                             else:
                                 for key in setdict:
                                     jp_holder = SV2a_Japanese(setkey = key, csvexist = csvexist)
@@ -1239,7 +1253,7 @@ class controller:
                                 shpfychoice = input("Do you have the Shopify csv files? (Y/N) \n")
                                 csvexist,choiceflag = yesnochk(shpfychoice,choiceflag)
                             jpobj = SV2a_Japanese(setkey = key, csvexist = csvexist)
-                            jpobj.jp_main(filename = gdriveprefix+csvdict[key])
+                            jpobj.jp_main(filename = csvdict[key])
                             print("This is done!")
                 except ExitException():
                     sys.exit()

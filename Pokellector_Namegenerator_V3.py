@@ -87,6 +87,7 @@ def SV35_main():
             ID = ID.group(0)  # returning the matched string which is the actual ID
             ID = re.sub(pattern35, '', ID)
             ID = re.sub("#", '', ID)
+            fullID = ID.zfill(3) + "/" + setcount.zfill(3)
             #IDlist.append(ID.zfill(3) + "/" + setcount.zfill(3))
         line = re.sub(pattern3, '', line)
         line = re.sub(pattern4, '', line)
@@ -113,9 +114,9 @@ def SV35_main():
             rarityplus = "[HR - Hyper Rare]"
             foilstatus = ["(Foil)"]
         for i in range(len(foilstatus)):
-            fullname = engorjap +" Pokemon " + setcode + f" {seriesname}: " + rarityplus + foilstatus[i]
+            fullname = f"{engorjap} Pokemon {setcode} {seriesname}: {fullID} {line} {rarityplus} + {foilstatus[i]}"
             namelist.append(fullname)
-            IDlist.append(ID.zfill(3) + "/" + setcount.zfill(3))
+            IDlist.append(fullID)
         IDcounter += 1
 #        if re.search("ex<",line) or IDcounter > setcountint: #only 1 set for ex
 #            #matching ID with "#<digit> - " format
