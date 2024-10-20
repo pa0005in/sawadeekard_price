@@ -39,6 +39,7 @@ Created on Thu Nov 16 04:24:31 2023
 #Adjusted initial menu for SV series, SWSH series and Japanese instead of English and Japanese
 #Bugfix for xe_rates
 #--css was changed, new method used re.search for specific keyword instead
+# added SV6.5 and SV07 for tnt webpages
 
 
 
@@ -84,6 +85,8 @@ swdkurl = {
     "SV4.5": "https://sawadeekard.com/collections/eng-scarlet-violet-sv4-5-paldean-fates",
     "SV05": "https://sawadeekard.com/collections/eng-scarlet-violet-sv05-temporal-forces",
     "SV06": "https://sawadeekard.com/collections/eng-scarlet-violet-sv06-twilight-masquerade",
+    "SV6.5": "",
+    "SV07": "",
     "SWSH12.5": "https://sawadeekard.com/collections/eng-swsh-12-5-crown-zenith"
 }
 
@@ -97,6 +100,8 @@ swdkurl_page = {
     "SV4.5": 15,
     "SV05": 16,
     "SV06": 17,
+    "SV6.5": "",
+    "SV07": "",
     "SWSH12.5": 16
 }
 
@@ -110,6 +115,8 @@ setnamereplace = {
     "SV4.5": "[ENG] Pokemon SV4.5 Paldean Fates: ",
     "SV05": "[ENG] SV05 Temporal Forces: ",
     "SV06": "[ENG] SV06 Twilight Masquerade: ",
+    "SV6.5": "[ENG] SV6.5 Shrouded Fable: ",
+    "SV07": "[ENG] SV07 Stellar Crown",
     "SWSH12.5": "[ENG] SWSH12 Crown Zenith: ",
 }
 
@@ -123,6 +130,8 @@ setsize = {
     "SV4.5": "091",
     "SV05": "162",
     "SV06": "167",
+    "SV6.5": "064",
+    "SV07": "142",
     "SWSH12.5": "159",
     "SWSH12.5GG": "GG70",
 }
@@ -137,6 +146,8 @@ tntrh = {
     "SV4.5": "https://www.trollandtoad.com/pokemon/paldean-fates/19795",
     "SV05": "https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19895",
     "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19923",
+    "SV6.5": "https://www.trollandtoad.com/shrouded-fable-singles/19996",
+    "SV07": "https://www.trollandtoad.com/scarlet-violet-stellar-crown-singles/20019",
     "SWSH12.5" : "https://www.trollandtoad.com/crown-zenith-singles/19428"
 }
 
@@ -150,6 +161,8 @@ tntrh_page = {
     "SV4.5": 3,
     "SV05": 4,
     "SV06": 4,
+    "SV6.5": 3,
+    "SV07": 4,
     "SWSH12.5": 3
 }
 
@@ -163,6 +176,8 @@ tntsingles = {
     "SV4.5": "https://www.trollandtoad.com/pokemon/paldean-fates/19797",
     "SV05": "https://www.trollandtoad.com/pokemon/scarlet-violet-temporal-forces/19897",
     "SV06": "https://www.trollandtoad.com/pokemon/scarlet-violet-twilight-masquerade/19925",
+    "SV6.5": "https://www.trollandtoad.com/shrouded-fable-singles/19997",
+    "SV07": "https://www.trollandtoad.com/scarlet-violet-stellar-crown-singles/20018",
     "SWSH12.5": "https://www.trollandtoad.com/crown-zenith-singles/19429"
 }
 
@@ -176,6 +191,8 @@ tntsingles_page = {
     "SV4.5": 6,
     "SV05": 5,
     "SV06": 5,
+    "SV6.5": 3,
+    "SV07": 5,
     "SWSH12.5": 5
 }
 
@@ -1054,7 +1071,9 @@ class controller:
                         'SV04': "ENG SV04 PAR.csv",
                         'SV4.5': "ENG SV4.5 PAF.csv",
                         'SV05': "ENG SV05 TEF.csv",
-                        'SV06': "ENG SV06 TWM.csv"
+                        'SV06': "ENG SV06 TWM.csv",
+                        'SV6.5': "ENG SV6.5 SFA.csv",
+                        'SV07': "ENG SV07 SCR.csv"
                     }
                     setdict = {
                         'SV01': "SV01 Scarlet & Violet Base set",
@@ -1064,7 +1083,9 @@ class controller:
                         'SV04': "SV04 Paradox Rift",
                         'SV4.5': "SV4.5 Paldean Fates",
                         'SV05': "SV05 Temporal Forces",
-                        'SV06': "SV06 Twilight Masquerade"
+                        'SV06': "SV06 Twilight Masquerade",
+                        'SV6.5': "SV6.5 Shrouded Fable",
+                        'SV07': "SV07 Stellar Crown"
                     }
                     #} #manual include set names
                     objdict ={}
@@ -1079,6 +1100,8 @@ class controller:
                         print(f"6. {setdict['SV4.5']}")
                         print(f"7. {setdict['SV05']}")
                         print(f"8. {setdict['SV06']}")
+                        print(f"9. {setdict['SV6.5']}")
+                        print(f"10. {setdict['SV07']}")
                         print("00. All listed series")
                         print("X. Exit\n")
                         #To know which set to scrape
@@ -1121,6 +1144,10 @@ class controller:
                                 key = 'SV05'
                             elif choice == '8':
                                 key = 'SV06'
+                            elif choice == '9':
+                                key = 'SV6.5'
+                            elif choice == '10':
+                                key = 'SV07'
                             # To check if shopify csv file exists
                             while choiceflag == False:
                                 print("The required files are:")

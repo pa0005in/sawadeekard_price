@@ -87,6 +87,8 @@ for each in eng:
     
     for i in range(len(holder)):
         holderlist.append(holder[i].split('title='))
+        #re.search ('ex') and re.search ('Basic' and 'Energy') is for pokemon and energy cards respectively
+        #therefore not required to have the check for I, St, Su and PT types
         if re.search('"ex"',holder[i]):
             new_row = {
                 'ID':holder[i].split('title=')[0].split('</td>')[0].split('FF">')[1].strip(),
@@ -106,6 +108,14 @@ for each in eng:
                     'Type':holder[i].split('title=')[3].split('"')[1],
                     'Rarity':holder[i].split('title=')[4].split('"')[1]
                     }
+                if new_row['Type'] == 'I':
+                    new_row['Type'] = 'Item'
+                elif new_row['Type'] == 'St':
+                    new_row['Type'] = 'Stadium'
+                elif new_row['Type'] == 'Su':
+                    new_row['Type'] = 'Support'
+                elif new_row['Type'] == 'PT':
+                    new_row['Type'] = 'Pokemon Tool'
                 new_row = pd.DataFrame(new_row, index=[0])
                 df_merged = pd.concat([df_merged, new_row], ignore_index=True)
             except:
@@ -125,6 +135,14 @@ for each in eng:
                         'Type':holder[i].split('title=')[2].split(';">')[1].split("</th>")[0].strip(),
                         'Rarity':holder[i].split('title=')[3].split('"')[1]
                         }
+                if new_row['Type'] == 'I':
+                    new_row['Type'] = 'Item'
+                elif new_row['Type'] == 'St':
+                    new_row['Type'] = 'Stadium'
+                elif new_row['Type'] == 'Su':
+                    new_row['Type'] = 'Support'
+                elif new_row['Type'] == 'PT':
+                    new_row['Type'] = 'Pokemon Tool'
                 new_row = pd.DataFrame(new_row, index=[0])
                 df_merged = pd.concat([df_merged, new_row], ignore_index=True)                    
     finallist = []
@@ -140,6 +158,8 @@ for each in eng:
             finallist.append(f"[ENG] Pokemon {setcode} {tablename}: {df_merged.iloc[i,0]} {df_merged.iloc[i,2]} [{df_merged.iloc[i,3]}] [R - Rare] (Reverse Holo)")
         elif df_merged.iloc[i,4] == 'Double Rare':
             finallist.append(f"[ENG] Pokemon {setcode} {tablename}: {df_merged.iloc[i,0]} {df_merged.iloc[i,2]} [{df_merged.iloc[i,3]}] [RR - Double Rare] (Foil)")
+        elif df_merged.iloc[i, 4] == 'ACE SPEC Rare':
+            finallist.append(f"[ENG] Pokemon {setcode} {tablename}: {df_merged.iloc[i, 0]} {df_merged.iloc[i, 2]} [{df_merged.iloc[i, 3]}] [AS - ACE SPEC] (Foil)")
         elif df_merged.iloc[i,4] == 'Shiny Rare':
             finallist.append(f"[ENG] Pokemon {setcode} {tablename}: {df_merged.iloc[i,0]} {df_merged.iloc[i,2]} [{df_merged.iloc[i,3]}] [SR - Shiny Rare] (Foil)")
         elif df_merged.iloc[i,4] == 'Ultra Rare':
