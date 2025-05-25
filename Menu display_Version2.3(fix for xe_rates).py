@@ -1054,7 +1054,7 @@ class controller:
             #Split by language, Japanese cards will use YYT, English cards are undecided
             print("1. Scarlet and Violet Series")
             print("2. Sword and Shield Series")
-            print("3. Japanese SV2a 151")
+            print("3. Japanese Sets")
             print("X. Exit\n")
 
             #choice obtained using input
