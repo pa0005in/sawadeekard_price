@@ -42,7 +42,10 @@ Created on Thu Nov 16 04:24:31 2023
 # added SV6.5 and SV07 for tnt webpages
 #============================================================================
 #Version 2.4
-
+# [Not done] Logsheet for every run
+# [Not done] Create check for all files
+# [Not done] Skip files if not there
+# [Not done] Generate single page for all sets
 
 
 import pandas as pd
