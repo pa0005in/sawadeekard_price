@@ -77,6 +77,22 @@ for each in data:
     
 tbl_round.sort(key=len,reverse = True)
 
+eng_counter = 0
+jap_counter = 0
+
+for i in range(len(tbl_round)):
+    if re.search("Illustration Rare",tbl_round[i]):
+        eng[eng_counter] = tbl_round[i]
+        eng_counter += 1
+    elif re.search("AR",tbl_round[i]):
+        jap[jap_counter] = tbl_round[i]
+        jap_counter += 1
+    else:
+        print(f"Set {i+1} of tbl_round is not classified.")
+
+assert eng_counter > 0, "There are no english sets to generate."
+
+"""
 if len(tbl_round) == 2:
     if re.search("Illustration Rare",tbl_round[0]):
         eng[0] = tbl_round[0]
@@ -101,16 +117,17 @@ if len(tbl_round) == 1:
         jap[0] = tbl_round[0]
     if len(eng) == 0:
         print("No english sets found.")
+"""
 
-df_merged = pd.DataFrame(columns=['ID', 'Mark','Name', 'Type','Rarity'])
 for each in eng:
+    df_merged = pd.DataFrame(columns=['ID', 'Mark', 'Name', 'Type', 'Rarity'])
     place = eng[each]
     # if re.search('align="center"', each):
     #     pass
     holder=place.split("<tr>")
     del_ctr = 0
     holderlist = []
-    
+
     for i in range (len(holder)):
         if re.search('text-align:left; color',holder[i-del_ctr]):
             # print(holder[i-del_ctr] + "wtf")
@@ -122,10 +139,10 @@ for each in eng:
         else:
             del holder[i-del_ctr]
             del_ctr += 1
-    
+
     print(tablename)
     raw_data[tablename]=holder
-    
+
     for i in range(len(holder)):
         holderlist.append(holder[i].split('title='))
         #re.search ('ex') and re.search ('Basic' and 'Energy') is for pokemon and energy cards respectively
@@ -185,8 +202,8 @@ for each in eng:
                 elif new_row['Type'] == 'PT':
                     new_row['Type'] = 'Pokemon Tool'
                 new_row = pd.DataFrame(new_row, index=[0])
-                df_merged = pd.concat([df_merged, new_row], ignore_index=True)                    
-    c
+                df_merged = pd.concat([df_merged, new_row], ignore_index=True)
+    df_merged = df_merged.merge(cardsplit, how = "left", on = "Rarity")
     finallist = []
     for i in range(len(df_merged)):
         finallist.append(f"[ENG] Pokemon {setcode} {tablename}: {df_merged.iloc[i,0]} {df_merged.iloc[i,2]} [{df_merged.iloc[i,3]}] {df_merged.iloc[i,5]}")
